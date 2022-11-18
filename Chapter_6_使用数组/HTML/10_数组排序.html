@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组排序</title>
+    <script>
+        var a = [1, 2, 3, 4, 5];
+        a.reverse();
+        console.log(a); //返回数组[5,4,3,2,1]
+
+        var a = ["a", "f", "e", "c", "t"];
+        a.sort();
+        console.log(a); //返回数组[a,c,e,f,t]
+
+        var a = ["aba", "baa", "aab"];
+        a.sort();
+        console.log(a); //返回数组[aab,aba,baa]
+
+        //升序
+        function f(a, b) {
+            return a - b;
+        }
+        var a = [3, 2, 5, 6, 1, 8, 4, 9, 7, 0];
+        a.sort(f);
+        console.log(a);
+
+
+        //降序
+        // function f(a, b) {
+        //     return b - a;
+        // }
+        // var a = [3, 2, 5, 6, 1, 8, 4, 9, 7, 0];
+        // a.sort(f);
+        // console.log(a);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

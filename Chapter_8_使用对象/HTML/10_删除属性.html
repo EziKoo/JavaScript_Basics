@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除属性</title>
+</head>
+
+<body>
+  <script>
+    //使用delete运算符可以删除对象属性，这与变量操作相同
+    var obj = {
+      x: 1
+    }; //定义对象
+    delete obj.x; //删除对象的属性x
+    console.log(obj.x); //返回undefined
+
+    //但删除对象属性后，不是将该属性设置为undefined，而是从对象中彻底清除掉属性。
+    //若使用for/in语句来枚举对象属性，只能枚举属性值为：undefined的属性，而不会枚举已删除属性
+    var o = { //定义对象
+      x: 1,
+      y: 2,
+      z: 3
+    };
+
+    delete o.x;
+
+    for (var i in o) {
+      console.log(o[i]); //读取对象属性值，只能读取到2,3
+    }
+  </script>
+</body>
+
+</html>

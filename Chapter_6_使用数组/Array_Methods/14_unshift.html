@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>unshift</title>
+</head>
+<body>
+<script>
+  //14、unshift
+  //方法将一个或多个元素添加到数组的开头，并返回该数组的新长度（该方法修改原有数组）。
+  //arr.unshift(element1, ..., elementN)
+  const array1 = [1, 2, 3];
+
+  console.log(array1.unshift(4, 5));  //5
+
+  console.log(array1);  //[4, 5, 1, 2, 3]
+
+  let arr = [1, 2]
+  arr.unshift(0)
+  console.log(arr); //[0, 1, 2]
+
+  arr.unshift(-2, -1)
+  console.log(arr); //[-2, -1, 0, 1, 2]
+
+  arr.unshift([-2, -5])
+  console.log(arr); //[[-2,-5],-2, -1, 0, 1, 2]
+
+  arr.unshift([-7, -4], [-9])
+  console.log(arr); //[[-7, -4], [-9],[-2,-5],-2, -1, 0, 1, 2]
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>slice</title>
+</head>
+<body>
+<script>
+  //15、slice
+  /*
+  方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。
+  原始数组不会被改变。
+   */
+  const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+  console.log(animals.slice(2));  //['camel', 'duck', 'elephant']
+  //不改变原数组
+  console.log(animals); //['ant', 'bison', 'camel', 'duck', 'elephant']
+
+  console.log(animals.slice(2, 4)); //['camel', 'duck']
+
+  console.log(animals.slice(1, 5)); //['bison', 'camel', 'duck', 'elephant']
+
+  console.log(animals.slice(-2)); //['duck', 'elephant']
+
+  console.log(animals.slice(2, -1));  //['camel', 'duck']
+
+  console.log(animals.slice()); //['ant', 'bison', 'camel', 'duck', 'elephant']
+
+</script>
+</body>
+</html>

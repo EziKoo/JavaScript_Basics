@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态生成文档内容</title>
+</head>
+
+<body>
+  <script>
+    document.write("hello", ",", "chy<br/>"); //
+    document.write("hello,chy");
+
+    function f() {
+      document.write("<p>调用事件处理函数时动态生成的内容</p>");
+    }
+    document.write("<p onclick='f()'>文档解析时动态生成的内容</p>");
+  </script>
+</body>
+
+</html>

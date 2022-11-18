@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用迭代器</title>
+    <script>
+        //设置each()迭代器
+        Array.prototype.each = function(fun) { //数组迭代器，扩展Array原型方法
+            try { //异常处理，避免不可预测的错误
+                this.i || (this.i = 0); //初始化迭代计数器
+                if (this.length > 0 && fun.constructor == Function) { //如果数组长度大于0，且参数为函数
+                    while (this.i < this.length) { //遍历数组
+                        var e = this[this.i]; //获取当前元素
+                        if (e && e.constructor == Array) { //如果元素存在，且为数组
+                            e.each(fun); //递归调用迭代器
+                        } else {
+                            fun.apply(e, [e]);
+                        }
+                        this.i++; //递加计数器
+                    }
+                    this.i = null; //如果遍历完毕，则清空计数器
+                }
+            } catch (w) {} //捕获异常，暂时不处理
+            return this; //返回当前数组
+        }
+
+        var a = [1, [2, [3, 4]]];
+        var f = function(x) {
+            console.log(x);
+        }
+        a.each(f); //调用迭代器，为每个元素执行一次函数传递
+
+
+
+
+        Array.prototype._edit = Array.prototype.edit ||
+            (Array.prototype.edit = function() {
+                var b = arguments, //获取参数，并定义一个临时数组
+                    a = [];
+                this.each(function() { //调用迭代器，遍历所有元素
+                    a.push(b[0].call(b[1], this)); //调用参数函数，把当前元素作为参数传入
+                });
+                return a; //返回临时数组
+            });
+        Object.prototype.edit = Array.prototype._edit;
+
+        var a = [1, 2, 3, 4];
+        var f = function(x) {
+            return x * x;
+        }
+        var b = a.edit(f);
+        alert(b);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

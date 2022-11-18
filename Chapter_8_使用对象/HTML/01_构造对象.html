@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>构造对象</title>
+</head>
+
+<body>
+
+  <script>
+    // //1、使用new运算符来构造对象
+    // var a = new Array; //创建数组结构对象，当没有参数的时候，小括号是可以省略的
+    // var b = new Array(); //创建数组结构的对象
+    // var c = new Array(1, 2, 3); //创建数组结构的对象，并初始化它们为1,2,3
+    // alert(c[2]); //返回值3，读取显示新创建数组里的元素
+
+    // //使用不同类型的构造函数定义个各种实例
+    // var o = new Object(); //定义一个空对象
+    // var a = new Array(); //定义一个空数组
+    // var f = new Function(); //定义一个空函数
+    // console.log(o);
+    // console.log(a);
+    // console.log(f);
+
+    //2、自己定义类，来使用它来创建新的对象
+    // var obj = function () { //自己定义类obj的数据结构
+    //   this.x = 1; //类成员x
+    //   this.y = 2; //类成员y
+    // };
+    // // var b = new obj; //创建自定义类obj的对象实例
+    // // alert(b.x); //返回1
+
+    // var b = obj(); //这里的obj()相当于构造函数对象，必须要用new运算符
+    // alert(obj.x); //返回undifened
+
+
+    var obj = new Object();
+    obj.name = "chenhuiyi";
+    obj.name = "fjjd"; //这是修改属性值
+    console.log(obj);
+    console.log(obj.name);
+    delete obj.name; //删除对象的属性
+    console.log(obj.name); //undefined
+
+    //对象的属性名不强制要求遵循标识符规范
+    //  什么乱七八糟的名字都可以使用，也可以用关键字。
+    //  也可以用数字开头的属性名
+    //但是如果要用特殊的属性名，不能采用.的方式来操作
+    //  需要用另一种方式：
+    //    语法：对象["属性名"] = 属性值
+    //    读取时也要采用这种方式
+    //但是最好还是尽量按照标识符的规范来命名
+    // obj.var = "hhh";
+    // console.log(obj.var);
+    // obj[123] = 789;
+    // console.log(obj[123]);
+    // obj["& * % & ^ & * ^ & $ &"] = "hfjdks";
+    // console.log(obj["& * % & ^ & * ^ & $ &"]);
+
+    //使用[]这种形式去操作属性，更加灵活
+    //在[]中可以直接传递一个变量，这样变量值是多少就会读取到那个属性
+    // obj["123"] = 789;
+    // obj["nihao"] = "nihao";
+
+    // var n = "nihao";
+    // console.log(obj[n]);
+
+
+    // var obj1 = new Object();
+    // var obj2 = new Object();
+    var obj1 = {};
+    var obj2 = {};
+    obj1.name = "chy";
+    obj2.name = "chy";
+    console.log(obj1 == obj2); //false
+    console.log(obj1.name == obj2.name); //true
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>读取属性值</title>
+</head>
+
+<body>
+  <div id="red" class="red class">红盒子</div>
+  <div id="blue" class="blue class">蓝盒子</div>
+  <label id="label" for="dd">嘿嘿</label>
+  <input type="text" name="" id="dd">
+
+  <label id="label1" class="class1" for="textfield">文本框:
+    <input type="text" name="" id="textfield">
+  </label>
+
+  <script>
+    var red = document.getElementById("red"); //获取红盒子
+    console.log(red.getAttribute("id")); //显示红盒子的id属性值
+    var blue = document.getElementById("blue"); //获取蓝色盒子
+    console.log(blue.getAttribute("id")); //显示蓝盒子的id属性值
+
+    //HTML DOM也支持使用点语法读取属性值，使用比较简单，也获得所有的浏览器的支持
+    var red = document.getElementById("red");
+    console.log(red.id); //red
+    console.log(red.className); //redcla
+    var blue = document.getElementById("blue");
+    console.log(blue.id); //blue
+    console.log(blue.className); //bluecla
+    var label = document.getElementById("label");
+    console.log(label.htmlFor); //dd
+
+
+    //使用className读写样式类
+    var label = document.getElementById("label1");
+    console.log(label1.className);
+    console.log(label1.htmlFor);
+
+    //对于复合类型样式，需要使用split()方法劈开返回的字符串，然后遍历读取类样式
+    //所有类名生成的数组
+    var classNameArray = document.getElementById("red").className.split(" ");
+    for (var i in classNameArray) {
+      console.log(classNameArray[i]);
+    }
+  </script>
+</body>
+
+</html>

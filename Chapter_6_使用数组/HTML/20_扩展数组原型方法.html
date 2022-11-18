@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展数组原型方法</title>
+    <script>
+        Array.prototype._sum = Array.prototype.sum ||
+            (Array.prototype.sum = function() {
+                var n = 0;
+                for (var i in this) {
+                    if (this[i] = parseFloat(this[i])) {
+                        n += this[i];
+                    }
+                }
+                return n;
+            });
+        Object.prototype.sum = Array.prototype._sum;
+        var a = [1, 2, 3, 4, 5, "d", 6, 7, 8, 9, "9"];
+        alert(a.sum()); //返回54，忽略元素d
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

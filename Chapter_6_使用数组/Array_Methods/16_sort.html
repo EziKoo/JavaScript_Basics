@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sort</title>
+</head>
+<body>
+<script>
+  //16、sort
+  /*
+  方法用原地算法对数组的元素进行排序，并返回数组。默认排序顺序是在将元素转换为字符串，
+  然后比较它们的 UTF-16 代码单元值序列时构建的
+
+  由于它取决于具体实现，因此无法保证排序的时间和空间复杂性。
+   */
+
+  const months = ['March', 'Jan', 'Feb', 'Dec'];
+  months.sort();
+  console.log(months);  //['Dec', 'Feb', 'Jan', 'March']
+
+  const array1 = [1, 30, 4, 21, 100000];
+  array1.sort();
+  //先将第一位为1开头的排在前面
+  console.log(array1);  //[1, 100000, 21, 30, 4]
+</script>
+</body>
+</html>

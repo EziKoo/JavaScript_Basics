@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检测浏览器类型和版本号</title>
+</head>
+
+<body>
+  <script>
+    var ua = navigator.userAgent.toLowerCase(); //获取用户端信息
+    console.log(ua);
+    var info = {
+      ie: /msie/.test(ua) && !/opera/.test(ua),
+      op: /opera/.test(ua),
+      sa: /version.*safari/.test(ua),
+      ch: /chrome/.test(ua),
+      ff: /gecko/.test(ua) && !/webkit/.test(ua)
+    };
+    (info.ie) && console.log("IE浏览器");
+    (info.op) && console.log("Opera浏览器");
+    (info.sa) && console.log("Safari浏览器");
+    (info.ff) && console.log("Firefox浏览器");
+    (info.ch) && console.log("Chrome浏览器");
+  </script>
+</body>
+
+</html>

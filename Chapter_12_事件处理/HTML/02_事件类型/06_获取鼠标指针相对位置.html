@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取鼠标指针相对位置</title>
+</head>
+
+<body>
+  <input type="text" id="text">
+  <span style="position:absolute;">
+    <div id="div1" style="width:200px;height:160px;border:solid 1px red;"></div>
+  </span>
+  <script>
+    var t = document.getElementById("text");
+    var div1 = document.getElementById("div1");
+    div1.onmouseover = function (event) {
+      var event = event || window.event;
+      if (event.offsetX || event.offsetY) {
+        t.value = event.offsetX + " " + event.offsetY;
+      } else if (event.layerX || event.layerY) {
+        t.value = (event.layerX - 1) + " " + (event.layerY - 1);
+      }
+    }
+  </script>
+</body>
+
+</html>

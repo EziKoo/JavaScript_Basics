@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>offsetWidth和offsetHeight</title>
+</head>
+
+<body>
+  <div style="height:200px;width:200px;">
+    <div style="height:50%;width:50%;">
+      <div style="height:50%;width:50%;">
+        <div style="height:50%;width:50%;">
+          <div id="div" style="height:50%;width:50%;border-style: solid;display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var div = document.getElementById("div");
+    var w = div.offsetWidth;
+    var h = div.offsetHeight;
+    console.log("div.offsetHeight = " + h);
+    console.log("div.offsetWidth = " + w);
+  </script>
+</body>
+
+</html>

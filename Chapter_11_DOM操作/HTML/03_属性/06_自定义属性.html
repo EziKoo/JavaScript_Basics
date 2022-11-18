@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义属性</title>
+</head>
+
+<body>
+  <div id="box" data-myid="13432" data-myname="chenhuiyi11" data-pass="3287"></div>
+  <script>
+    var div = document.getElementById("box");
+    //访问自定义属性值
+    var id = div.dataset.myid;
+    var name = div.dataset.myname;
+    var pass = div.dataset.mypass;
+    //重置自定义属性值
+    div.dataset.myid = "5210763";
+    div.dataset.myname = "chenhuiyi";
+    div.dataset.mypass = "chenhuiyi555";
+    //检测自定义属性
+    if (div.dataset.myname) {
+      console.log(div.dataset.myname);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>调用构造函数</title>
+</head>
+
+<body>
+  <script>
+    //调用构造函数
+    // function Point(x, y) {
+    //   this.x = x;
+    //   this.y = y;
+    //   this.sum = function () {
+    //     return this.x + this.y;
+    //   }
+    // }
+
+    // //如果构造函数不需要传入参数，可以省略小括号
+    // var p1 = new Point(100, 200); //实例化对象1
+    // var p2 = new Point(300, 400); //实例化对象2
+    // console.log(p1.x);
+    // console.log(p2.x);
+    // console.log(p1.sum()); //300
+    // console.log(p2.sum()); //700
+
+    var a = function () {
+      this.x = 2;
+      this.y = 3;
+    };
+
+    var b = a(); //只能写成var b = new a();才是正确的
+    // console.log(b.x); //注意这里是错误的，因为b并不是a的实例对象，所以无权访问a的私有属性
+  </script>
+</body>
+
+</html>

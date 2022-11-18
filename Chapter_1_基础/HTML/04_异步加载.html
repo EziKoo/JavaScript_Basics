@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延迟执行</title>
+    <!-- async 是不确定执行的，可能是在文档加载之前相应，也可能是在文档加载完之后再进行相应 -->
+    <!-- 意思是不用等人，各走各的任务 -->
+    <script async src="../JS/03_test1.js"></script>
+    <script async src="../JS/03_test2.js"></script>
+    <script>
+        hi();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

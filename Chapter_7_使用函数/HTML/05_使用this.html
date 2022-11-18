@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用this</title>
+  <script>
+    /*
+      解析器在调用函数时每次都会向函数内部传递一个隐含的参数，
+        这个隐含的参数就是this，this指向的是一个对象
+        这个对象我们称为函数执行的上下文对象
+        根据函数的调用方式的不同，this会指向不同的对象
+          1、以函数的形式调用时，this永远都是指向window对象
+          2、以方法的形式调用时，this就是调用方法的那个对象
+    
+    
+    */
+
+    function fun() {
+      console.log(this);
+      console.log(this.name);
+    }
+
+    var name = "全局的name属性"
+    // fun();
+    window.fun();
+
+    var obj = {
+      name: "chy",
+      age: 17,
+      sayName: fun
+    }
+
+    var obj2 = {
+      name: "lulu",
+      age: 16,
+      sayName: fun
+    }
+
+    obj.sayName();
+    obj2.sayName();
+
+    //一个函数被谁调用，this就指向谁
+    // var o = {
+    //     name: "对象o",
+    //     f: function() {
+    //         return this;
+    //     }
+    // }
+    // o.o1 = {
+    //     name: "对象o1",
+    //     me: o.f
+    // }
+    // var who = o.o1.me();
+    // alert(who.name); //返回"对象o1"
+
+    // var o = {
+    //     name: "对象o",
+    //     f: function() {
+    //         return this;
+    //     }
+    // }
+    // o.o1 = {
+    //     name: "对象o1",
+    //     me: o.f()
+    // }
+    // var who = o.o1.me;
+    // alert(who.name); //返回"对象o"
+
+    // function f() {
+    //     alert(this.x + this.y);
+    // }
+    // var o = {
+    //     x: 1,
+    //     y: 2
+    // }
+    // f.call(o); //返回3
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

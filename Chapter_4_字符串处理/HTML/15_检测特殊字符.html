@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测特殊字符</title>
+    <script>
+        Array.prototype.each = function(f) {
+            try {
+                this.i || (this.i = 0);
+                if (this.length > 0 && f.constructor == Function) {
+                    //如果数组长度大于0，参数为函数
+                    while (this.i < this.length) {
+                        var e = this[this.i];
+                        if (e && e.constructor == Array) {
+                            //如果元素存在，且为数组
+                            e.each(f); //递归调用迭代器
+                        } else {
+                            f.apply(e, [e]);
+                        }
+                        this.i++; //递加计数器
+                    }
+                    this.i = null; //如果遍历完成，则清
+                }
+            } catch (w) { //捕获以后
+
+            }
+            return this; //返回当前数组
+        }
+
+
+        String.prototype.check = function() {
+            //特殊字符检测，参数为特殊字符列表，返回true表示存在，否则不存在
+            if (arguments.length < 1) throw new Error("缺少参数");
+            //如果没有参数，则抛出异常
+            var a = [],
+                _this = this;
+            //定义空数组，并把检测的字符串存储在局部变量中
+            for (var i = 0; i < arguments.length; i++) {
+                //遍历参数，把参数列表转换为数组
+                a.push(arguments[i]); //把每个参数推入数组
+            }
+            var i = -1;
+            a.each(function() {
+                //调用数组的扩展方法each()，实现迭代数组，并为每个元素调用匿名函数
+                if (i != -1) {
+                    return true; //如果临时变量不等于-1，则提前返回true
+                } else {
+                    i = _this.search(this); //否则把检索的字符串下标位置传递
+                }
+            });
+            if (i == -1) {
+                return false; //如果i等于-1，则返回false，说明没有检测到指定字符
+            } else {
+                return true; //如果i不等于-1，则返回true，说明检测到指定字符
+            }
+        }
+
+        var s = '<script language = "javascript" type = "text/javascript">';
+        //定义字符串常量
+        var b = s.check("<", ">"); //调用String对象的扩展方法，检测字符串
+        alert(b); //返回true，说明存在特殊字符"<"或">"
+
+        var s = '<script language = "javascript" type = "text/javascript">';
+        var a = ["{"];
+        var b = s.check(a);
+        alert(b); //返回false
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

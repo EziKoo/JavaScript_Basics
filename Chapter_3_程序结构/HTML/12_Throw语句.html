@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw语句</title>
+    <script>
+        // try {
+        //     for (var i = 0; i < 10; i++) {
+        //         if (i > 5) throw new Error("循环变量的值大于5了"); //定义错误对象，并抛出异常
+        //         alert(i);
+        //     }
+        // } catch (error) {
+        //     alert("循环变量的值已经大于5了");
+        // } //捕获错误，其中error就是new Error()的实例
+
+        function divide(num1, num2) {
+            if (typeof num1 != "number" || typeof num2 != "number") {
+                throw new Error("divide(): 两个参数必须是数字");
+            }
+            return num1 / num2;
+        }
+
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message);
+            }
+        }
+
+        function divide(num1, num2) {
+            assert(typeof num1 == "number" && typeof num2 == "number",
+                "divide():两个参数必须是数字。"
+            );
+            return num1 / num2;
+        }
+
+        var result = divide(10, 23);
+        result = divide("hi", 3);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

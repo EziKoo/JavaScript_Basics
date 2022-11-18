@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用length</title>
+    <script>
+        function f(x, y, z) {} //定义包含3个形参的空函数f
+        alert(f.length); //返回3
+
+        //下面使用checkArg()函数，用来检测一个函数的形参和实参是否一致，如果不一致则抛出异常
+        function checkArg(a) { //检测函数实参与形参是否一致
+            if (a.length != a.callee.length) { //如果实参与形参个数不同，则抛出异常
+                throw new Error("实参和形参不一致");
+            }
+        }
+
+        function f(a, b, c) {
+            checkArg(arguments);
+            return (a + b + c) / 2;
+        }
+
+        alert(f(4, 4)); //抛出异常，实参和形参不一致
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

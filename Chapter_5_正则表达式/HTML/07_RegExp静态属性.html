@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegExp静态属性</title>
+    <script>
+        //长名
+        var s = "JavaScript,not JavaScript";
+        var r = /(Java)Script/gi;
+        var a = r.exec(s); //执行匹配操作
+        console.log(RegExp.input); //返回JavaScript,not JavaScript
+        console.log(RegExp.lastIndex); //返回undefined
+        console.log(RegExp.leftContext); //null
+        console.log(RegExp.rightContext); //返回,not JavaScript
+        console.log(RegExp.lastMatch); //返回JavaScript
+        console.log(RegExp.lastParen); //返回Java
+
+        console.log("\n");
+
+        //短名
+        var s = "JavaScript,not JavaScript";
+        var r = /(Java)(Script)/gi;
+        var a = r.exec(s);
+        console.log(RegExp["$_"]); //返回JavaScript,not JavaScript
+        console.log(RegExp["$`"]); //null
+        console.log(RegExp["$'"]); //返回,not JavaScript
+        console.log(RegExp["$&"]); //返回JavaScript
+        console.log(RegExp["$+"]); //返回Java
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

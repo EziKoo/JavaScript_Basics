@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分时函数</title>
+    <script>
+        var timeChunk = function(ary, fn, count) {
+            var t;
+            var start = function() {
+                for (var i = 0; i < Math.min(count || 1, ary.length); i++) {
+                    var obj = ary.shift();
+                    fn(obj);
+                }
+            };
+            return function() {
+                t = setInterval(function() {
+                    if (ary.length === 0) {
+                        return clearInterval(t);
+                    }
+                    start();
+                }, 200);
+            };
+        };
+
+        var arr = [];
+        for (var i = 1; i <= 10000; i++) {
+            var span = document.createElement("span");
+            span.style.padding = "6px 12px";
+            span.innerHTML = i;
+            arr.push(span);
+        }
+        var fn = function(obj) {
+            document.body.appendChild(obj);
+        }
+
+        timeChunk(arr, fn, 100)();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

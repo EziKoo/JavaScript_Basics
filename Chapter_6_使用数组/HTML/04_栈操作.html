@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栈操作</title>
+    <script>
+        function d2b(num) {
+            var a = [],
+                r, b = ''; //a 为栈，r为余数，b为二进制字符串
+            while (num > 0) {
+                r = Math.floor(num % 2); //获取余数
+                a.push(r); //把余数堆入栈中
+                num = Math.floor(num / 2); //获取相除后整数部分值，准备下一步求余
+            }
+            while (a.length) {
+                b += a.pop().toString(); //返回二进制字符串
+            }
+            return b;
+        }
+        console.log(d2b(5));
+        console.log(d2b(44));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

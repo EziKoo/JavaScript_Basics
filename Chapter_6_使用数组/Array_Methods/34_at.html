@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>at</title>
+</head>
+<body>
+<script>
+  //34、at
+  /*
+  方法接收一个整数值并返回该索引的项目，允许正数和负数。负整数从数组中的最后一个项目开始倒数。
+
+  方括号符号没有问题。例如，array[0]将返回第一个项目。然而，对于后面的项目，不要使用array.length，
+  例如，对于最后一个项目，可以调用array.at(-1)
+
+  参数：要返回的数组元素的索引（位置）。当传递负数时，支持从数组末端开始的相对索引；
+  也就是说，如果使用负数，返回的元素将从数组的末端开始倒数。
+   */
+
+  const array1 = [5, 12, 8, 130, 44];
+
+  let index = 2;
+
+  console.log(`Using an index of ${index} the item returned is ${array1.at(index)}`);
+  // expected output: "Using an index of 2 the item returned is 8"
+
+  index = -2;
+
+  console.log(`Using an index of ${index} item returned is ${array1.at(index)}`);
+  // expected output: "Using an index of -2 item returned is 130"
+
+
+  // 数组及数组元素
+  const cart = ['apple', 'banana', 'pear'];
+
+  // 一个函数，用于返回给定数组的最后一个项目
+  function returnLast(arr) {
+    return arr.at(-1);
+  }
+
+  // 获取 'cart' 数组的最后一项
+  const item1 = returnLast(cart);
+  console.log(item1); // 'pear'
+
+  // 在 'cart' 数组中添加一项
+  cart.push('orange');
+  const item2 = returnLast(cart);
+  console.log(item2); // 'orange'
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设计倒计时</title>
+</head>
+
+<body>
+  <h1 id="showtime"></h1>
+  <script>
+    //设计一个倒计时,求出2022年5月19日还有多久
+    var showtime = function () {
+      var nowtime = new Date(); //获取当前时间
+      endtime = new Date("2022/5/19"); //定义结束时间
+      var lefttime = endtime.getTime() - nowtime.getTime(), //距离结束时间的毫秒数
+        leftd = Math.floor(lefttime / (1000 * 60 * 60 * 24)), //计算天数
+        lefth = Math.floor(lefttime / (1000 * 60 * 60) % 24), //计算小时数
+        leftm = Math.floor(lefttime / (1000 * 60) % 60), //计算分钟数
+        lefts = Math.floor(lefttime / 1000 % 60); //计算秒数
+      return leftd + "天" + lefth + ":" + leftm + ":" + lefts; //返回倒计时的字符串
+    }
+    var div = document.getElementById("showtime");
+    setInterval(function () {
+      div.innerHTML = showtime();
+    }, 1000);
+  </script>
+</body>
+
+</html>

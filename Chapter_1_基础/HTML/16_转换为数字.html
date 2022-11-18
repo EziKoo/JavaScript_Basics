@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转换为数字</title>
+    <script>
+        //1、使用parseInt()
+        alert(parseInt("123abc")); //返回数字123
+        alert(parseInt("1.77")); //返回数字1
+        alert(parseInt(".123")); //返回数字NaN
+        //2、使用parseFloat(),与上面唯一不同是parseFloat是可以识别小数点
+        alert(parseFloat("123.2")); //123.2
+        alert(parseFloat("123")); //123
+        alert(parseFloat("010")); //10
+        alert(parseFloat("0x10")); //0
+        alert(parseFloat("x10")); //NaN
+        //3、使用乘号运算符
+        var a = 1;
+        var b = "1";
+        alert(a + b); //返回字符串“11”
+
+        var a = 1;
+        var b = "1";
+        alert(a + (b * 1)); //返回数值2
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

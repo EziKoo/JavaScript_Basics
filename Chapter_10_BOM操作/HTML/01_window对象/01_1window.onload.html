@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>window.onload</title>
+  <script>
+    
+    /*
+        onload事件会在整个页面加载完成之后才触发
+        为window绑定一个onload事件
+          该事件对应的响应函数将会在页面加载完成之后执行，
+          这样可以确保我们的代码执行时所有的DOM对象已经加载完毕
+          不会出现获取不到DOM对象的情况了
+      */
+    window.onload = function () {
+      alert("我出来了");
+      var btn = document.getElementById("btn");
+      console.log(btn);
+    }
+    // alert("我出来了");
+    // var btn = document.getElementById("btn");
+    // console.log(btn); //返回一个null
+  </script>
+</head>
+
+<body>
+  <button id="btn">我是一个按钮</button>
+</body>
+
+</html>

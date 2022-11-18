@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字取整</title>
+</head>
+
+<body>
+  <script>
+    //使用parseInt()方法可以对小数进行取整，另外还可以使用Math对象的静态函数也可以进行对小数去整
+    //Math.floor()：向下取整
+    //Math.ceil()：向上去整
+    //Math.round()：四舍五入
+
+    console.log(Math.floor(2.4)); //2
+    console.log(Math.floor(-3.4)); //-4
+    console.log(Math.ceil(2.4)); //3
+    console.log(Math.ceil(-2.4)); //-2
+    console.log(Math.round(2.7)); //3
+    console.log(Math.round(2.4)); //2
+    console.log(Math.round(-3.6)); //-4
+
+    //下面代码结合Math.floor()和Math.ceil()方法，设计一个数字取整的函数
+    var toInt = function (num) {
+      var num = Number(num); //强制转换为数字
+      return num < 0 ? Math.ceil(num) : Math.floor(num);
+    }
+    console.log(toInt(2.3)); //2
+    console.log(toInt(-2.3)); //-2
+  </script>
+</body>
+
+</html>

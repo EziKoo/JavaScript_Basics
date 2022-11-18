@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的值和字符长度</title>
+    <script>
+        var s = "javascript";
+        // var a = s.toString();
+        // alert(a); //返回字符串"javascript"
+
+        //valueOf()方法与toString()方法功能相同，它也能够返回字符串的原始值
+        // var s = "javascript";
+        // var a = s.valueOf(); //返回字符串"javascript"
+        // alert(a);
+
+        //在javascript中，任何对象都支持toString()方法，不过，用户可以重写toString()和valuOf()方法，以便个性化显示字符串
+        // String.prototype.toString = function(color) {
+        //     var color = color || "red";
+        //     return '<span style = "color:' + color + '">' + this.valueOf() + '</span>';
+        // }
+        // document.write(s.toString()); //显示红色字符串"javascript"
+        // document.write(s.toString("blue")); //显示蓝色字符串"javascript"
+
+        //为String扩展原型方法byteLength(),该方法将枚举每个字符，并根据字符编码，
+        //判断当前字符是单字节还是双字节，然后统计字符串的字符长度
+        // String.prototype.byteLength = function() {
+        //     var b = 0;
+        //     l = this.length;
+        //     if (l) {
+        //         for (i = 0; i < l; i++) {
+        //             if (this.charCodeAt(i) > 255) {
+        //                 b += 2;
+        //             } else {
+        //                 b++;
+        //             }
+        //         }
+        //         return b;
+        //     } else {
+        //         return 0;
+        //     }
+        // }
+
+        // var s = "String类型长度";
+        // alert(s.byteLength()); //返回14
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

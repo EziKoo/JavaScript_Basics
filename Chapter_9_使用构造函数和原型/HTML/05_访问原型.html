@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>访问原型</title>
+</head>
+
+<body>
+  <script>
+    //原型实际上就是一个普通对象，继承了Object类，由JavaScript自动创建并依附于每个函数身上。
+    //访问原型对象有3种方法
+    //1、obj.__proto__
+    //2、obj.constructor.ptototype
+    //3、Object.getPrototypeOf(obj)
+
+    var F = function () {};
+    var obj = new F(); //实例化
+    var proto1 = Object.getPrototypeOf(obj); //引用原型
+    console.log(proto1);
+    var proto2 = obj.__proto__;
+    console.log(proto2);
+    var proto3 = obj.constructor.prototype;
+    console.log(proto3);
+    var proto4 = F.prototype;
+    console.log(proto4);
+
+    console.log(proto1 == proto2); //true
+    console.log(proto1 == proto3); //true
+    console.log(proto1 == proto4); //true
+    console.log(proto2 == proto3); //true
+    console.log(proto2 == proto4); //true
+    console.log(proto3 == proto4); //true
+  </script>
+</body>
+
+</html>

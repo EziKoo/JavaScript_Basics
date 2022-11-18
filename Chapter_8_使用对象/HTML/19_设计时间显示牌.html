@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设计时间显示牌</title>
+</head>
+
+<body>
+
+  <h1 id="showtime"></h1>
+  <script>
+    //设计一个时间显示牌
+    var showtime = function () {
+      var nowdate = new Date(); //创建一个Date对象，获取当前时间
+      // console.log(nowdate);
+      var year = nowdate.getFullYear(), //获取当前年份
+        month = nowdate.getMonth() + 1, //获取月份，getMonth()得到的是0-11,需要加1
+        date = nowdate.getDate(), //获取当前日期
+        day = nowdate.getDay(), //获取一周中的某一天，getDate()得到的是0——6
+        week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+        h = nowdate.getHours(), //时
+        m = nowdate.getMinutes(), //分
+        s = nowdate.getSeconds(), //秒
+        h = checkTime(h),
+        m = checkTime(m),
+        s = checkTime(s);
+      return year + "年" + month + "月" + date + "日" + week[day] + " " + h + ":" + m + ":" + s;
+    }
+    //定义一个辅助函数，把一位数字的时间改为两位数字显示
+    var checkTime = function (i) {
+      if (i < 10) {
+        i = '0' + i;
+      }
+      return i;
+    }
+
+    //为标签绑定一个定时器，在定时器中设置每秒钟调用一次时间显示函数
+    var div = document.getElementById("showtime");
+    setInterval(function () {
+      div.innerHTML = showtime();
+    }, 1000);
+  </script>
+</body>
+
+</html>

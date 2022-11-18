@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册事件</title>
+</head>
+
+<body>
+  <button id="btn1">按钮1</button>
+  <button id="btn2">按钮2</button>
+  <button id="btn3">按钮3</button>
+
+  <p id="p1">为对象注册多个事件</p>
+  <script>
+    //示例1
+    var btn = document.getElementsByTagName("button");
+    console.log(btn);
+
+    //因为document.getElementsByTagName()返回的是一个伪数组，并不是真正的数组。
+    //而for/in不可以遍历伪数组，所以这里的i值并不是纯粹的1,2,3
+    //实验表明，下面的i输出的是0,1,2,length
+    //注意不能用for in 语句来实现遍历。因为会把btn对象中的length也遍历出来，而3不能添加事件。所以会报错
+    // for (var i in btn) {
+    //   console.log(i); //返回0,1,2,length
+    //   // console.log(btn[i]); //输出button#btn1、button#btn2、button#btn3、3，意思是循环了4次，第四次会报错
+    //   btn[i].addEventListener('click', function () {
+    //     alert(this.innerHTML);
+    //   }, true); //为每个按钮对象注册一个事件监听函数，定义在捕获阶段进行响应
+    // }
+
+    //而for/of是可以遍历伪数组的
+    // for (var i of btn) {
+    //   console.log(i); //返回button#btn1、button#btn2、button#btn3
+    //   // console.log(btn[i]); //输出button#btn1、button#btn2、button#btn3、3，意思是循环了4次，第四次会报错
+    //   //错误方式
+    //   // btn[i].addEventListener('click', function (e) {
+    //   //   alert(this.innerHTML);
+    //   // }, true); //为每个按钮对象注册一个事件监听函数，定义在捕获阶段进行响应
+    //   //正确方式，因为i本身就是button#btn1、button#btn2、button#btn3
+    //   i.addEventListener('click', function (e) {
+    //     console.log(this.innerHTML);
+    //   })
+    // }
+
+    //也可以使用传统方法，用btn的长度来进行循环
+    // for (var i = 0; i < btn.length; i++) {
+    //   console.log(btn[i]);
+    //   btn[i].addEventListener('click', function (e) {
+    //     alert(this.innerHTML);
+    //   }, true); //为每个按钮对象注册一个事件监听函数，定义在捕获阶段进行响应
+    // }
+
+
+    // btn.addEventListener("click", function () {
+    //   alert(this.innerHTML);
+    // }, true);
+
+    // function alt() {
+    //   alert(this.innerHTML);
+    // }
+
+    //示例2
+    // var p1 = document.getElementById("p1"); //捕获段落句柄
+    // p1.addEventListener("mouseover", function () {
+    //   this.style.background = 'blue'; //为段落元素注册第1个事件监听事件
+    // }, true);
+    // p1.addEventListener("mouseleave", function () {
+    //   this.style.background = 'red'; //为段落元素注册第2个事件监听事件
+    // }, true)
+  </script>
+</body>
+
+</html>

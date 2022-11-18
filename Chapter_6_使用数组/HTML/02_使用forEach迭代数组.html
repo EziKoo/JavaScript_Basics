@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用forEach迭代数组</title>
+    <script>
+        //使用forEach迭代数组letters，然后把每个元素的值和下标索引输出显示
+        // function ShowResults(value, index, ar) {
+        //     document.write("value:  " + value);
+        //     document.write("index:  " + index);
+        //     document.write("<br/>");
+        // }
+        // var letters = ['a', 'b', 'c'];
+        // letters.forEach(ShowResults);
+
+        //使用forEach迭代数组numbers，然后计算数组元素的和并输出
+        // var numbers = [10, 39, 9];
+        // var sum = 0;
+        // numbers.forEach(function(value) {
+        //     sum += value;
+        // });
+        // alert(sum);
+
+        //使用forEach()方法的第2个参数，该参数为回调函数的this传递对象，当迭代数组过程中，先读取数组元素的值，然后再改写它的值
+        var obj = {
+            showResults: function(value, index) {
+                var squared = this.calcSquare(value);
+                document.write("value:" + value);
+                document.write("index:" + index);
+                document.write("squared:" + squared);
+                document.write("<br/>");
+            },
+            calcSquare: function(x) {
+                return x * x
+            }
+        }
+        var numbers = [5, 4];
+        numbers.forEach(obj.showResults, obj);
+        numbers.forEach(function(value, index) {
+            this.showResults(value, index)
+        }, obj);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

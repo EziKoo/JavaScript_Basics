@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS选择器</title>
+</head>
+
+<body>
+  <div class="content">
+    <ul>
+      <li>首页</li>
+      <li class="red">财经</li>
+      <li class="blue">娱乐</li>
+      <li class="red">时尚</li>
+      <li class="blue">互联网</li>
+    </ul>
+  </div>
+  <script>
+    //CSS选择器，下面可以获取第1个li元素
+    var li1 = document.querySelector(".content ul li");
+    console.log(li1);
+    //下面可以获取所有li元素
+    var arrli = document.querySelectorAll(".content ul li");
+    console.log(arrli);
+    //如果要获取所有class为red的li元素
+    var redli = document.querySelectorAll("li.red");
+    console.log(redli);
+    //可以一次性获取两类节点
+    var lis = document.querySelectorAll("li.red,li.blue");
+    console.log(lis);
+
+
+    //示例2
+    var result = [];
+    var lis1 = document.getElementsByTagName("li");
+    var classname = ' ';
+    len = lis1.length;
+    for (var i = 0; i < len; i++) {
+      classname = lis1[i].className;
+      if (classname === 'red' || classname === 'blue') {
+        result.push(lis1[i]);
+      }
+    }
+    console.log(result);
+  </script>
+</body>
+
+</html>

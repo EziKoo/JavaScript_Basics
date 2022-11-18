@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建文本节点</title>
+</head>
+
+<body>
+  <script>
+    //示例1
+    // var element = document.createElement("div");
+    // element.className = "red";
+    // element.style.color = "red";
+    // var hello = document.createTextNode("陈慧亿");
+    // element.appendChild(hello);
+    // document.body.appendChild(element);
+
+    //示例2
+    //可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况。为了避免这种情况，一般应该在父元素上调用normalize()
+    //删除空文本节点，合并相邻文本节点
+    var element = document.createElement("div");
+    element.className = "red";
+    element.style.color = "red";
+    var hello = document.createTextNode("陈慧亿");
+    element.appendChild(hello);
+    var anotherTextNode = document.createTextNode("你好！");
+    element.appendChild(anotherTextNode);
+    document.body.appendChild(element);
+    //输出element节点的子节点个数
+    console.log(element.childNodes.length); //返回2
+    element.normalize(); //使文本标准化
+    console.log(element.childNodes.length); //返回1
+    console.log(element.firstChild.nodeValue); //返回陈慧亿
+  </script>
+</body>
+
+</html>

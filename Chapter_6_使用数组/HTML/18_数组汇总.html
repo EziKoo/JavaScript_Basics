@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组汇总</title>
+    <script>
+        function appendCurrent(previousValue, currentValue) {
+            return previousValue + "::" + currentValue;
+        }
+        var elements = ["abc", "def", 123, 456];
+        var result = elements.reduce(appendCurrent);
+        console.log(result); //返回abc::def::123::456
+
+        function addDigitValue(previousValue, currentValue, currentIndex, array) {
+            var exponent = (array.length - 1) - currentIndex;
+            var digitValue = currentValue * Math.pow(10, exponent);
+            return previousValue + digitValue;
+        }
+        var digits = [4, 1, 2, 5];
+        var result = digits.reduce(addDigitValue, 0);
+        alert(result); //返回4125
+
+
+        function process(previousArray, currentValue) {
+            var nextArray;
+            if (currentValue >= 1 && currentValue <= 10) {
+                nextArray = previousArray.concat(currentValue);
+            } else {
+                nextArray = previousArray;
+            }
+            return nextArray;
+        }
+        var numbers = [20, 1, -5, 6, 50, 3];
+        var emptyArray = new Array();
+        var resultArray = numbers.reduce(process, emptyArray);
+        document.write(resultArray); //返回1,6,3
+
+
+
+        document.write("<br/>");
+        //使用reduceRight()方法，从右往左方向进行对元素调用指定回调函数
+        function appendCurrent(previousValue, currentValue) {
+            return previousValue + "::" + currentValue;
+        }
+        var elments = ["abd", "def", 123, 456];
+        var result = elements.reduceRight(appendCurrent);
+        document.write(result); //返回456::123::def::abc
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

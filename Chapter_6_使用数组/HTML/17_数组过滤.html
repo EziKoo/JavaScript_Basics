@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组过滤</title>
+    <script>
+        //使用filter()方法筛选出数组中的素数
+        // function CheckIfPrime(value, index, ar) {
+        //     high = Math.floor(Math.sqrt(value)) + 1;
+        //     for (var div = 2; div <= high; div++) {
+        //         if (value % div == 0) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // var numbers = [31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53];
+        // var primes = numbers.filter(CheckIfPrime);
+        // console.log(primes); //返回31,37,41,43,47,53
+
+
+
+        // //使用filter方法过滤数组中字符串的元素
+        // var arr = [5, "element", 10, "the", true];
+        // var result = arr.filter(
+        //     function(value) {
+        //         return (typeof value == 'string');
+        //     }
+        // );
+        // document.write(result); //返回element,the
+
+
+        // function Isc(value) {
+        //     var firstChar = value.substr(0, 3);
+        //     if (firstChar.toLowerCase() == "css") {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
+        // var filteredNames = Object.getOwnPropertyNames(window).filter(Isc);
+        // for (i in filteredNames) {
+        //     document.write(filteredNames[i] + "<br/>");
+        // }
+
+
+        // var f = function(value) {
+        //     if (typeof value !== 'number') {
+        //         return false;
+        //     } else {
+        //         return value >= this.min && value <= this.max;
+        //     }
+        // }
+        // var a = [6, 12, "15", 16, "the", -12];
+        // var obj = {
+        //     min: 10,
+        //     max: 20
+        // };
+        // var r = a.filter(f, obj);
+        // console.log(r); //返回12,16
+
+
+        function CheckValue(value, index, ar) {
+            if (index == 0) {
+                return true;
+            } else {
+                return ar[index - 1] == " ";
+            }
+        }
+        var sentnece = "The quick brown fox jumps over the lazy dog.";
+        var subset = [].filter.call(sentnece, CheckValue);
+        document.write(subset); //返回T,q,b,f,j,o,t,l,d
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

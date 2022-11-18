@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>reduceRight</title>
+</head>
+<body>
+<script>
+  //31、reduceRight  (和reduce差不多，区别是reduceRight是从右往左遍历)
+  /*
+  方法接受一个函数作为累加器（accumulator）和数组的每个值（从右到左）将其减少为单个值。
+  arr.reduceRight(callback(accumulator, currentValue[, index[, array]])[, initialValue])
+
+  如果在调用 reduceRight 时提供了 initialValue 参数，则 accumulator 等于 initialValue，
+  currentValue 等于数组中的最后一个元素。
+  如果没有提供 initialValue 参数，则 accumulator 等于数组最后一个元素，
+  currentValue 等于数组中倒数第二个元素。
+
+  如果数组为空，但提供了 initialValue 参数，或如果数组中只有一个元素，且没有提供 initialValue 参数，
+  将会直接返回 initialValue 参数或数组中的那一个元素。这两种情况下，都不会调用 callback 函数。
+  如果数组为空，且没有提供 initialValue 参数，则会抛出一个 TypeError 错误。
+   */
+
+  const array1 = [[0, 1], [2, 3], [4, 5]];
+
+  const result = array1.reduceRight((accumulator, currentValue) => accumulator.concat(currentValue));
+
+  console.log(result);
+  // expected output: Array [4, 5, 2, 3, 0, 1]
+
+  //返回20
+  const sum1 = [0, 1, 2, 3, 4].reduceRight(function(previousValue, currentValue, index, array) {
+    return previousValue + currentValue;
+  }, 10);
+
+  console.log(sum1);
+
+
+  let sum = [0, 1, 2, 3].reduceRight(function(a, b) {
+    return a + b;
+  });
+  console.log(sum);
+  // sum is 6
+
+</script>
+</body>
+</html>

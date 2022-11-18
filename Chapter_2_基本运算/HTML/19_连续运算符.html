@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连续运算符</title>
+    <script>
+        //最常见的就是连续赋值运算
+        var a = b = c = 1;
+
+        //在Js中，函数可以作为一个表达式，因为匿名函数它可以作为一个运算数，参与表达式运算
+        var f = function(x, y) { //定义匿名函数
+            return (x + y) / 2;
+        }
+        alert(f(10, 20));
+
+        alert(
+            (function(x, y) {
+                return (x + y) / 2;
+            })(10, 20) //直接调用匿名函数
+        ); //返回值15
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

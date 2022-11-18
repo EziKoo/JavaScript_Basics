@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置属性值</title>
+  <script>
+    //使用叠加的方式添加类也存在问题，这样容易添加大量重复的类。
+    //可以定义一个检测函数，判断元素是否包含指定的类，然后再决定是否添加类
+    function hasClass(element, className) {
+      var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+      return reg.test(element.className); //使用正则表达式检测是否有相同的样式
+    }
+
+    function addClass(element, className) {
+      if (!hasClass(element, className)) {
+        element.className += ' ' + className;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="red">红盒子</div>
+  <div id="blue">蓝盒子</div>
+  <label id="label1">文本框：
+    <input type="text" name="textfield" id="textfield">
+  </label>
+  <script>
+    //使用元素的setAttribute()方法可以设置元素的属性值，如果元素中存在指定的属性，它的值将被刷新
+    //如果不存在，setAttribute()方法将为元素创建该属性并赋值
+
+    //示例1
+    // var red = document.getElementById("red"); //获取红盒子的引用
+    // var blue = document.getElementById("blue"); //获取蓝盒子的引用
+    // red.setAttribute("title", "这是一个红盒子"); //对红盒子对象设置title属性和值
+    // red.setAttribute("style", "color:red"); //为红盒子设置style属性和值
+    // blue.setAttribute("title", "这是一个蓝盒子"); //为蓝盒子对象设置title属性和值
+    // blue.setAttribute("style", "color:blue"); //为蓝盒子设置style属性和值
+
+
+    //示例2
+    // var hello = document.createTextNode("Hello World!"); //创建一个文本节点
+    // var h1 = document.createElement("h1"); //创建一个一级标题
+    // h1.setAttribute("title", "这是一级标题"); //为一级标题定义一个title属性
+    // h1.appendChild(hello); //把文本节点增加到一级标题中
+    // document.body.appendChild(h1); //把一级标题增加到文档中
+
+
+    //示例3
+    // var label1 = document.getElementById("label1");
+    // label1.htmlFor = "textfield";
+    // label1.className = "class1";
+
+    //示例4、直接使用className添加类样式，会覆盖掉元素原来的类样式，这时就可以采用叠加的方法添加类
+    // var red = document.getElementById("red");
+    // red.className = "red";
+    // red.className += " class";
+
+
+    //示例5
+    var red = document.getElementById("red");
+    addClass(red, 'red');
+    addClass(red, 'red'); //这里不会再添加
+    addClass(red, "class");
+  </script>
+</body>
+
+</html>

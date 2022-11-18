@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>补充内容</title>
+  <script>
+    console.log("\u2620");
+    //undefined 衍生自null
+    //所以这两个值做相等判断是，会返回true
+    console.log(undefined == null); //返回true
+    //NaN不和任何值相等
+    console.log(NaN == NaN); //返回false
+    //JS中可以通过isNaN()函数来判断一个值是否是NaN
+    // b = 'sdjlf';//返回true
+    b = 23; //返回false
+    console.log(isNaN(b));
+  </script>
+</head>
+
+<body>
+  <!-- 在网页中使用Unicode编码
+      &#编码; 这里的编码需要的是10进制
+  -->
+  <h1 style="font-size:100px">&#9829;</h1>
+</body>
+
+</html>

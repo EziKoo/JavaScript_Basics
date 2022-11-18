@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用闭包</title>
+    <script>
+        //使用闭包结构能够跟踪动态环境中数据的实时变化，并即时存储
+        // function f() {
+        //     var a = 1;
+        //     var b = function() { //定义一个闭包，并赋值给局部变量b
+        //         return a;
+        //     }
+        //     a++; //动态更新函数内局部变量a的值
+        //     return b;
+        // }
+        // var c = f();
+        // alert(c()); //返回2
+
+        var f = function() {
+            var a = [];
+            return function(x) {
+                a.push(x);
+                return a;
+            };
+        }();
+
+        var a = f(1);
+        console.log(a);
+        var b = f(2);
+        console.log(b);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

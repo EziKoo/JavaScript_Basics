@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>捕获事件流</title>
+</head>
+
+<body>
+  <script>
+    function bubble() {
+      var div = document.getElementsByTagName("div");
+      var show = document.getElementById("show");
+      for (var i = 0; i < div.length; i++) {
+        div[i].onclick = (function (i) {
+          return function () {
+            div[i].style.border = '1px dashed red'; //定义当前元素的边框线为红色虚线
+            show.innerHTML += div[i].className + ">"; //标识每个div元素的响应顺序
+          }
+        })(i);
+      }
+    }
+    window.onload = bubble;
+  </script>
+  <div class="div-1">div-1
+    <div class="div-2">div-2
+      <div class="div-3">div-3
+        <div class="div-4">div-4
+          <div class="div-5">div-5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p id="show"></p>
+</body>
+
+</html>

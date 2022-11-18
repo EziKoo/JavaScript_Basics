@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用字符编码转换为字符串</title>
+    <script>
+        var a = [35835, 32773, 24744, 22909];
+        b = [];
+        for (var i in a) {
+            b.push(String.fromCharCode(a[i])); //把每个字符编码都转换为字符串
+        }
+        alert(b.join(""));
+
+        var b = String.fromCharCode(35835, 32773, 24744, 22909);
+        alert(b);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

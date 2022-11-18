@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除属性</title>
+</head>
+
+<body>
+  <!-- <table width="100%" border="2">
+    <tr>
+      <td>数据表格</td>
+    </tr>
+  </table> -->
+  <!-- <button id="del">删除</button>
+  <button id="reset">恢复</button> -->
+
+  <script>
+    function hasClass(element, className) {
+      var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+      return reg.test(element.className); //使用正则表达式检测是否有相同的样式
+    }
+
+    function deleteClass(element, className) {
+      if (hasClass(element, className)) {}
+    }
+  </script>
+  <div id="red" class="red blue bold">红盒子</div>
+  <script>
+    //使用removeAttribute()方法可以删除指定的属性
+    // window.onload = function () {
+    //   var table = document.getElementsByTagName("table")[0]; //获取表格外框的引用
+    //   var del = document.getElementById("del"); //获取删除按钮的引用
+    //   var reset = document.getElementById("reset"); //获取恢复按钮的引用
+    //   del.onclick = function () {
+    //     table.removeAttribute("border"); //移出边框属性
+    //   }
+    //   reset.onclick = function () { //为恢复按钮绑定事件处理函数
+    //     table.setAttribute("border", 2); //设置表格边框属性
+    //   }
+    // }
+
+    var red = document.getElementById("red");
+    deleteClass(red, 'blue');
+  </script>
+</body>
+
+</html>

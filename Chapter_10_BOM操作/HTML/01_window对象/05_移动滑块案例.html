@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>移动滑块案例</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: absolute;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      //获取div
+      var box = document.getElementById("box1");
+      //设置一个速度
+      var speed = 10;
+      //设置一个方向
+      var dir = 0;
+      document.onkeydown = function () {
+        // console.log(event.keyCode);
+        dir = event.keyCode;
+      }
+      document.onkeyup = function () {
+        dir = 0;
+      }
+      //设置一个定时器，来控制速度
+      setInterval(function () {
+        switch (dir) {
+          case 37:
+            box.style.left = box.offsetLeft - speed + "px";
+            break;
+          case 38:
+            box.style.top = box.offsetTop - speed + "px";
+            break;
+          case 39:
+            box.style.left = box.offsetLeft + speed + "px";
+            break;
+          case 40:
+            box.style.top = box.offsetTop + speed + "px";
+            break;
+        }
+      }, 10);
+    }
+  </script>
+</head>
+
+<body>
+  <div id="box1"></div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForIn语句</title>
+    <script>
+        // var a = [1, true, "abc", 34, false]; //声明并初始化数组变量
+        // for (var b in a) { //遍历数组
+        //     alert(b); //显示枚举中临时变量值，0 1 2 3 4 
+        //     alert(a[b]); //显示每个元素的值，1 true abc 34 false
+        // }
+
+        // //传统方式
+        // var a = [1, true, "abc", 34, false];
+        // for (var b = 0; b < a.length; b++) {
+        //     alert(b);
+        //     alert(a[b]);
+        // }
+
+        //对象
+        // var o = {
+        //     x: 1,
+        //     y: true,
+        //     z: "true"
+        // }
+        // var a = []; //定义一个空数组
+        // var n = 0; //定义临时循环变量，并赋值为0;
+        // for (a[n++] in o);
+        // for (a[n++] in o) {;
+        // }
+        // alert(a[0]); //x
+
+        // for (var i = 0 in a) {
+        //     alert(i); //读取临时变量i的值
+        //     alert(a[i]); //读取数组元素的值
+        // }
+
+        //在下面示例中，for/in是无法读取内置对象Object所有属性
+        //无效代码
+        // for (var i = 0 in Object) {
+        //     alert(i);
+        //     alert(a[i]);
+        // }
+
+        //为Object内置对象自定义两个属性，则在for/in结构中可以枚举它们
+        Object.a = 1;
+        Object.b = true;
+        for (var i = 0 in Object) {
+            alert(i);
+            alert(Object[i]);
+        }
+
+        //但是客户端成员是可以枚举的
+        // for (var i = 0 in document) {
+        //     document.write("document." + i + "=" + document[i]);
+        //     document.write("<br/>");
+        // }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

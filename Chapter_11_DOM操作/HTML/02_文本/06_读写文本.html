@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>读写文本</title>
+</head>
+
+<body>
+  <h1>单击回答问题</h1>
+  <ul>
+    <li>你好</li>
+    <li>你叫什么</li>
+    <li>你干什么？</li>
+    <li>你喜欢JS吗？</li>
+  </ul>
+  <script>
+    var ul = document.getElementsByTagName("ul")[0]; //获取列表结构
+    var lis = ul.getElementsByTagName("li"); //获取列表结构的所有列表项
+    lis[0].onclick = function () { //为第1个列表项绑定事件处理函数
+      this.innerText = "<h1>谢谢</h1>"; //替换文本，而且文本中的HTML字符串，不被解析
+    }
+    lis[1].onclick = function () { //为第2个列表项绑定事件处理函数
+      this.innerHTML = "<h2>我是一名初学者</h2>"; //替换HTML文本
+    }
+    lis[2].onclick = function () {
+      this.outerText = "<h1>我是学生</h1>"; //覆盖列表项标签及其包含内容，而且文本中的HTML字符串，不被解析
+    }
+    lis[3].onclick = function () {
+      this.outerHTML = "<h2>当然喜欢</h2>"; //覆盖列表项标签及其包含内容
+    }
+  </script>
+</body>
+
+</html>

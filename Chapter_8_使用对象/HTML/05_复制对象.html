@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复制对象</title>
+</head>
+
+<body>
+  <script>
+    //复制对象就是利用for/in遍历对象中的每一个属性，然后把每个对象的成员赋值给另一个对象
+    // var obj = {
+    //   x: 'chy',
+    //   y: 28
+    // };
+    // var obj1 = {};
+    // for (i in obj) {
+    //   obj1[i] = obj[i];
+    // }
+    // console.log(obj1 === obj); //false，说明两个对象不同
+    // console.log(obj1.x); //返回chy
+    // console.log(obj1.y); //返回28
+
+
+    function F(x, y) { //构造函数
+      this.x = x;
+      this.y = y;
+      this.add = function () {
+        return this.x + this.y;
+      }
+    }
+    F.prototype.mul = function () {
+      return this.x * this.y;
+    }
+    var f = new F(2, 3);
+    var o = {};
+    for (i in f) {
+      o[i] = f[i];
+    }
+
+    console.log(o.x); //2
+    console.log(o.y); //3
+    console.log(o.add()); //5
+    console.log(o.mul()); //6
+  </script>
+</body>
+
+</html>

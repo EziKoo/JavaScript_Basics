@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>捕获键盘响应</title>
+</head>
+
+<body>
+  <textarea name="text" id="text" cols="26" rows="16"></textarea>
+  <script>
+    //keydown：用户在键盘上按下某按键是发生。一直按着某按键则会不断触发（opera浏览器除外）。
+    //keypress： 用户按下一个按键， 并产生一个字符时发生（ 也就是不管类似shift、 alt、 ctrl之类的键， 就是说用户按了一个能在屏幕上输出字符的按键keypress事件才会触发）。 一直按着某按键则会不断触发。
+    //keyup： 用户释放某一个按键是触发。
+    var n = 1; //定义编号变量
+    var text = document.getElementById("text"); //获取文本区域的引用指针
+    text.onkeydown = f;
+    text.onkeyup = f;
+    text.onkeypress = f;
+
+    function f(e) {
+      var e = e || window.event;
+      text.value += (n++) + "=" + e.type + " (keyCode=" + e.keyCode + ")\n";
+    }
+  </script>
+</body>
+
+</html>

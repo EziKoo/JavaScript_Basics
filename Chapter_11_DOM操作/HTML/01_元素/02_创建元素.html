@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建元素</title>
+</head>
+
+<body>
+  <script>
+    var p = document.createElement("p"); //创建段落标签
+    var info = "nodeName:" + p.nodeName; //获取元素名称
+    info += ",nodeType:" + p.nodeType; //获取元素类型，如果为1则表示元素及节点
+    console.log(info);
+    p.innerHTML = "陈慧亿";
+    document.body.appendChild(p);
+    var div1 = document.createElement("div"); //创建div标签
+    div1.innerHTML = "这是一个div元素";
+    div1.style.color = 'red';
+    document.body.appendChild(div1);
+  </script>
+</body>
+
+</html>

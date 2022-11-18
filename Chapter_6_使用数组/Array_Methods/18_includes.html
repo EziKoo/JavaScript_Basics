@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>includes</title>
+</head>
+<body>
+<script>
+  //18、includes
+  // 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回 false。
+
+  const array1 = [1, 2, 3];
+
+  console.log(array1.includes(2));  //true
+
+  const pets = ['cat', 'dog', 'bat'];
+
+  console.log(pets.includes('cat'));  //true
+
+  console.log(pets.includes('at'));   //false
+
+  //可以指定从哪个元素开始查找
+  array2 = [1, 24, 99, 546, 2, 32, 199]
+  //指定从数组下标为3的位置开始查找
+  console.log(array2.includes(99, 3));  //false
+
+
+</script>
+</body>
+</html>

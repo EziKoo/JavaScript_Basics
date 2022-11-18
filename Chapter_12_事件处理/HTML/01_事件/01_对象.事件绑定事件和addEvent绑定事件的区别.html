@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象.事件绑定事件和addEvent绑定事件的区别</title>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+  <script>
+    /*
+      1、使用 对象.事件 = 函数 的形式绑定响应函数
+        它只能同时为一个元素的一个事件绑定一个响应函数
+        不能绑定多个，如果绑定了多个，则后面会覆盖掉前面的响应函数
+      
+      2、addEventListener()
+        通过这个方法也可以为元素绑定响应函数
+        参数：
+          1、事件的字符串，不要on
+          2、回调函数，当事件触发时该函数会被调用
+          3、是否在捕获阶段触发事件，需要一个布尔值，一般都传false，表示使用冒泡阶段
+    */
+
+    var btn = document.getElementById("btn");
+    //下面的代码只弹我是按钮2，说明只能有一个响应函数，按钮2覆盖掉了按钮1
+    // btn.onclick = function () {
+    //   alert("我是按钮1");
+    // }
+    // btn.onclick = function () {
+    //   alert("我是按钮2");
+    // }
+
+    //下面函数会依次弹按钮1和按钮2和按钮3，说明可以同时为一个元素的相同事件绑定多个响应函数
+    //这样当事件触发时，响应函数会按照函数的绑定顺序执行
+    btn.addEventListener('click', function () {
+      alert("我是按钮1");
+    }, false)
+    btn.addEventListener('click', function () {
+      alert("我是按钮2");
+    }, false)
+    btn.addEventListener('click', function () {
+      alert("我是按钮3");
+    }, false)
+  </script>
+</body>
+
+</html>

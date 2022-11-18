@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串截取</title>
+    <script>
+        //substr()方法，不建议使用
+        //slice()方法
+        //substring()方法
+
+        //在下面示例中，使用lastIndexOf()先获取字符串的最后一个点号的下标位置，然后从其后的位置开始截取4个字符
+        // var s = "http://www.mysite.cn/index.html";
+        // var b = s.substr(s.lastIndexOf(".") + 1, 4); //截取最后一个点号4个字符
+        // alert(b);//返回子字符串"html"
+
+        // var s = "http://www.mysite.cn/index.html";
+        // var a = s.indexOf("www"); //获取起始点下标
+        // var b = s.indexOf("/", a); //获取结束后点下标
+        // var c = s.substring(a, b); //返回www.mysite.cn
+        // var d = s.slice(a, b); //返回www.mysite.cn
+        // alert(c);
+        // alert(d);
+
+
+        // var s = "http://www.mysite.cn/index.html";
+        // var a = s.indexOf("www"); //获取起始点下标
+        // var b = s.indexOf("/", a); //获取结束后点下标
+        // var c = s.substring(b, a); //返回www.mysite.cn
+        // var d = s.slice(b, a);
+        // alert(c);
+        // alert(d); //返回空字符串
+
+
+        var s = "http://www.mysite.cn/index.html";
+        var a = s.indexOf("www"); //获取起始点下标
+        var b = s.indexOf("/", a); //获取结束后点下标
+        var c = s.substring(-b, -a); //返回空字符串
+        var d = s.slice(-b, -a); //返回www.mysite.cn
+        alert(c); //返回空字符串
+        alert(d);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

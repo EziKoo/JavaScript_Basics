@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>委托事件</title>
+</head>
+
+<body>
+  <button id="btn">添加列表项</button>
+  <ul id="ul">
+    <li>列表项1</li>
+    <li>列表项2</li>
+    <li>列表项3</li>
+  </ul>
+  <script>
+    //事件委托也称为事件托管或事件代理。就是把目标节点的时间绑定到祖先节点上。
+    //这种简单而优雅的事件注册方式基于：事件传播过程中，逐层冒泡总能被祖先节点捕获
+
+    //这个示例中，在ul中动态添加的li元素没有点击事件
+    // var ul = document.getElementById("ul");
+    // var lis = ul.getElementsByTagName("li");
+    // for (var i = 0; i < lis.length; i++) {
+    //   lis[i].addEventListener('click', function (e) {
+    //     var e = e || window.event;
+    //     var target = e.target || e.srcElement;
+    //     alert(e.target.innerHTML);
+    //   }, false);
+    // }
+    // var i = 4;
+    // var btn = document.getElementById("btn");
+    // btn.addEventListener('click', function () {
+    //   var li = document.createElement("li");
+    //   li.innerHTML = "列表项" + i++;
+    //   ul.appendChild(li);
+    // }, false);
+
+
+
+    //利用事件委托，直接在祖先节点上绑定事件。利用冒泡逐层传播实现在祖先节点中动态添加相应的节点依然会产生事件
+    var ul = document.getElementById("ul");
+    var lis = ul.getElementsByTagName("li");
+    ul.addEventListener('click', function (e) {
+      var e = e || window.event;
+      var target = e.target || e.srcElement;
+      if (e.target && e.target.nodeName.toUpperCase() === 'LI') {
+        alert(e.target.innerHTML);
+      }
+    }, false);
+
+
+    var i = 4;
+    var btn = document.getElementById("btn");
+    btn.addEventListener('click', function () {
+      var li = document.createElement("li");
+      li.innerHTML = "列表项" + i++;
+      ul.appendChild(li);
+    }, false);
+  </script>
+</body>
+
+</html>

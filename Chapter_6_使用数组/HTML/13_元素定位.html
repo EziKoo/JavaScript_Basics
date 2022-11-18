@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素定位</title>
+    <script>
+        //indexOf()方法
+        //lastIndexOf()方法
+        var a = ["ab", "cd", "ef", "ab", "cd"];
+        console.log(a.indexOf("cd")); //1
+        console.log(a.indexOf("cd", 2)); //4
+        console.log(a.indexOf("gh")); //-1
+        console.log(a.indexOf("ab", -2)); //先对-2加上数组长度5，所以为("ab",3)，返回3
+
+        var a = ["ab", "cd", "ef", "ab", "cd"];
+        console.log(a.lastIndexOf("cd")); //4
+        console.log(a.lastIndexOf("cd", 2)); //1
+        console.log(a.lastIndexOf("gh")); //-1
+        console.log(a.lastIndexOf("ab", -3)); //先对-3加上数组长度5，所以为("ab",2)，返回0
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用交互对话框</title>
+</head>
+
+<body>
+  <script>
+    //window对象定义了3个人机交互的方法，alert()，confirm()，prompt();
+    //这三个方法仅作为开发人员的内侧工具
+    //alert()提示对话框
+    //confirm()确认对话框
+    //prompt()输入对话框
+    var user = prompt("请输入你的用户名：");
+    if (!!user) { //把用户输入的信息转换为布尔值
+      var ok = confirm("您输入的用户名为：\n" + user + "\n请确认。");
+      if (ok) {
+        alert("欢迎您：\n" + user);
+      } else { //重新输入信息
+        user = prompt("请重新输入你的用户名：");
+        alert("欢迎您：\n" + user);
+      }
+    } else {
+      user = prompt("请输入你的用户名：");
+    }
+  </script>
+</body>
+
+</html>

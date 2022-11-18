@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>替换节点</title>
+  <style>
+    #red {
+      border: solid 2px red;
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    #blue {
+      border: solid 2px blue;
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="red">
+    <h1>红色盒子
+      <p>这是h2里面的段落元素</p>
+    </h1>
+  </div>
+  <div id="blue">
+    蓝色盒子
+  </div>
+  <button id="ok">移动</button>
+  <script>
+    //replaceChild()方法可以将某个子节点替换为另一个
+
+    //示例1，发现问题，替换节点后，原来的一级标题所包含的标题文本已经不存在。这说明替换节点的操作不是替换元素的名称，
+    //而是替换其包含的所有子节点以及其包含的所有内容
+    //同样的道理，如果替换节点还包含子节点，则子节点将一同被插入到被替换的节点中，可以借助replaceChild()方法
+    //在文档中使用现有的节点替换另一个存在的节点
+    // var ok = document.getElementById("ok"); //获取按钮元素的引用
+    // ok.onclick = function () { //为按钮注册一个鼠标单击事假处理函数
+    //   var red = document.getElementById("red"); //获取红色盒子的引用
+    //   var h1 = document.getElementsByTagName("h1")[0]; //获取二级标题元素的引用
+    //   var h2 = document.createElement("h2"); //创建一个一级标题元素
+    //   red.replaceChild(h2, h1); //把二级标题替换为一级标题
+    // }
+
+    //示例2
+    //把蓝色盒子替换掉红色盒子中包含的一级标题元素，此时可以看到，蓝盒子原来显示的位置已经被删除。同时
+    //被替换的元素h1也被删除
+    // var ok = document.getElementById("ok"); //获取按钮元素的引用
+    // ok.onclick = function () { //为按钮注册一个鼠标单击事假处理函数
+    //   var red = document.getElementById("red"); //获取红色盒子的引用
+    //   var blue = document.getElementById("blue"); //获取蓝色盒子的引用
+    //   var h1 = document.getElementsByTagName("h1")[0]; //获取二级标题元素的引用
+    //   red.replaceChild(blue, h1); //把二级标题替换为一级标题
+    // }
+
+
+    //示例3
+    // var ok = document.getElementById("ok"); //获取按钮元素的引用
+    // ok.onclick = function () { //为按钮注册一个鼠标单击事假处理函数
+    //   var red = document.getElementById("red"); //获取红色盒子的引用
+    //   var blue = document.getElementById("blue"); //获取蓝色盒子的引用
+    //   var h1 = document.getElementsByTagName("h1")[0]; //获取二级标题元素的引用
+    //   var del_h1 = red.replaceChild(blue, h1); //把红色盒子包含的一级标题替换为蓝色盒子
+    //   red.parentNode.insertBefore(del_h1, red); //把替换掉的一级标题插入到红色盒子前面
+    // }
+  </script>
+</body>
+
+</html>

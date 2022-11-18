@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>flatMap</title>
+</head>
+<body>
+<script>
+  //26、flatMap：不会影响原始数组
+  /*
+  方法首先使用映射函数映射每个元素，然后将结果压缩成一个新数组。它与 map 连着深度值为 1 的 flat 几乎相同，
+  但 flatMap 通常在合并成一种方法的效率稍微高一些。
+  var new_array = arr.flatMap(function callback(currentValue[, index[, array]]) {
+    // return element for new_array
+  }[, thisArg])
+   */
+
+  // map() 与 flatMap()
+
+  let arr1 = [1, 2, 3, 4];
+
+  arr1.map(x => [x * 2]);
+  // [[2], [4], [6], [8]]
+
+  arr1.flatMap(x => [x * 2]);
+  // [2, 4, 6, 8]
+
+  // only one level is flattened
+  arr1.flatMap(x => [[x * 2]]);
+  // [[2], [4], [6], [8]]
+
+
+  let arr2 = ["it's Sunny in", "", "California"];
+
+  console.log(arr2.map(x => x.split(" ")));
+  // [["it's","Sunny","in"],[""],["California"]]
+
+  console.log(arr2.flatMap(x => x.split(" ")));
+  // ["it's","Sunny","in", "", "California"]
+
+  //证明不会影响原始数组
+  console.log(arr2);
+
+</script>
+</body>
+</html>

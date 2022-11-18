@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义字符串</title>
+    <script>
+        // var s = "true"; //把布尔值转换为字符串
+        // var s = "123"; //把数值转换为字符串
+        // var s = "[1,2,3]"; //把数组转换为字符串
+        // var s = "{x:1,y:2}"; //把对象转换为字符串
+        // var s = "alert('Hello,World')"; //把可执行表达式转换为字符串
+
+        // //单引号和双引号配合使用，以应对特殊形式的字符串需要
+        // var s = "alert('Hello,World')";
+        // var s = 'alert("Hello,World")';
+
+        // //非法字符串，不能同时用一种引号
+        // // var s = "alert("Hello,World")";
+        // // var s = 'alert('Hello,World')';
+
+        // //使用转义字符来引用字符串
+        // //非法
+        // // var s = """;
+        // //合理
+        // var s = "\"";
+
+        // //对于字符串类型的语句或表达式，可以调用静态方法eval()来执行
+        // var s = "alert('Hello,World')";
+        // eval(s);
+
+        //通过new运算符，调用String()构造函数，将创建一个字符串型对象
+        // var s = new String(); //创建一个空字符串对象，并赋值给变量s
+        // var s = new String("我是构造字符串"); //创建字符串对象，初始化后s的值就是参数里的值
+        // alert(s);
+
+        // var s1 = new String(1);
+        // var s2 = "1";
+        // alert(typeof s1); //返回Object，说明是引用型对象
+        // alert(typeof s2); //返回String，说明是值类型字符串
+
+        // var s = String(12345); //包装字符串
+        // alert(s); //返回字符串"12345"
+        // alert(typeof s); //返回String，说明该方法不再是对象
+
+        // var s = String(1, 2, 3, 4, 5); //带有多个参数，只对第一个参数进行字符串转换
+        // alert(s); //返回字符串"1"
+        // alert(typeof s); //返回String，数值被转换成字符串了
+
+        //下面的变量n在构造函数内经过多次计算之后，最后值递增为5
+        var n = 1;
+        var s = new String(++n, ++n, ++n, ++n);
+        alert(s); //返回2
+        alert(n); //返回5
+        alert(typeof s); //返回Object
+        alert(typeof n); //返回number
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

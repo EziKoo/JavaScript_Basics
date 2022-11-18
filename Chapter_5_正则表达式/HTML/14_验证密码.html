@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证密码</title>
+    <script>
+        //同时包含数字和小写字母
+        //同时包含数字和大写字母
+        //同时包含小写字母和大写字母
+        var regex = /((?=.*[0-9])(?=.*[a-z])|(?=.*[0-9])(?=.*[A-Z])|(?=.*[a-z])(?=.*[A-Z]))^[0-9A-Za-z]{6,12}$/;
+        console.log(regex.test("1234567")); //false全是数字
+        console.log(regex.test("abcdef")); //false全是小写字母
+        console.log(regex.test("ABCDEFGH")); //false全是大写字母
+        console.log(regex.test("ab23c")); //false不足6位
+        console.log(regex.test("ABCDEF234")); //true大写字母和数字
+        console.log(regex.test("abcdEF234")); //true三者都有
+
+        //至少包含两种字符意思是
+        //不能全是数字
+        //不能全是小写字母
+        //不能全是大写字母
+        var regex = /(?!^[0-9]{6,12}$)(?!^[a-z]{6,12}$)(?!^[A-Z]{6,12}$)^[0-9A-Za-z]{6,12}$/;
+        console.log(regex.test("1234567")); //false全是数字
+        console.log(regex.test("abcdef")); //false全是小写字母
+        console.log(regex.test("ABCDEFGH")); //false全是大写字母
+        console.log(regex.test("ab23c")); //false不足6位
+        console.log(regex.test("ABCDEF234")); //true大写字母和数字
+        console.log(regex.test("abcdEF234")); //true三者都有
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匹配成对标签</title>
+    <script>
+        //匹配一个开始标签，可以使用正则<[^>]+>
+        //匹配一个闭标签，可以使用正则<\/[^>]+>
+        //匹配成对标签可以是/<([^>]+)>[\d\D]*<\/\1>/;
+        var regex = /<([^>]+)>[\d\D]*<\/\1>/;
+        var string1 = "<title>标题文本</title>";
+        var string2 = "<p>段落文本</p>";
+        var string3 = "<div>非法嵌套</p>";
+        console.log(regex.test(string1)); //返回true
+        console.log(regex.test(string2)); //返回true
+        console.log(regex.test(string3)); //返回false
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

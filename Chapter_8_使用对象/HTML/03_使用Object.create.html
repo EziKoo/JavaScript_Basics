@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用create创建对象</title>
+</head>
+
+<body>
+  <script>
+    //使用Object.crea定义一个对象，继承null，包含两个可枚举的属性size和shape，属性值分别为large,round
+    // var newObj = Object.create(null, {
+    //   size: {
+    //     value: "large",
+    //     enumerable: true
+    //   },
+    //   shape: {
+    //     value: "round",
+    //     enumerable: true
+    //   }
+    // });
+
+    // console.log(newObj.size); //返回large
+    // console.log(newObj.shape); //返回round
+    // console.log(Object.getPrototypeOf(newObj)); //返回null
+
+    // var firstLine = {
+    //   x: undefined,
+    //   y: undefined
+    // };
+    // var secondLine = Object.create(Object.prototype, {
+    //   x: {
+    //     value: undefined,
+    //     writable: true,
+    //     enumerable: true,
+    //     configurable: true
+    //   },
+    //   y: {
+    //     value: undefined,
+    //     writable: true,
+    //     enumerable: true,
+    //     configurable: true
+    //   }
+    // });
+
+    // console.log(Object.getPrototypeOf(firstLine));
+    // console.log(Object.getPrototypeOf(secondLine));
+
+    // var shape = {
+    //   name: 'chy',
+    //   age: 19
+    // };
+    // var Square = Object.create(shape);
+    // console.log(Square.name); //返回chy
+    // console.log(Square.age); //返回19
+
+    //定义一个对象，使用访问器属性b来读写数据属性a
+    var obj = Object.create(Object.prototype, {
+      a: {
+        //数据属性
+        writable: true,
+        value: 'a'
+      },
+      b: { //访问器属性b
+        get: function () {
+          return this.a;
+        },
+        set: function (value) {
+          this.a = value;
+        }
+      }
+    });
+    console.log(obj.a); //返回'a'
+    console.log(obj.b); //返回'a'
+    obj.b = 10;
+    console.log(obj.b); //返回10
+  </script>
+</body>
+
+</html>

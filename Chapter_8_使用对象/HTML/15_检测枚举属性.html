@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检测枚举属性</title>
+</head>
+
+<body>
+  <script>
+    //检测枚举属性
+    function F() {
+      this.a = 1;
+      this.b = 3;
+    }
+    F.prototype.c = 4;
+    F.d = 9;
+    var o = new F();
+    for (var i in o) {
+      console.log(i); //返回a,b,c
+    }
+    console.log(o.propertyIsEnumerable('a')); //true
+    console.log(o.propertyIsEnumerable('b')); //true
+    console.log(o.propertyIsEnumerable('c')); //false
+    console.log(o.propertyIsEnumerable('d')); //false
+    var o = F;
+    console.log(o.propertyIsEnumerable('d')); //true
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加法运算</title>
+    <script>
+        var n = 5; //定义并初始化任意一个数值
+        alert(NaN + n); //返回NaN，NaN与任意运算数相加，结果都是NaN
+        alert(Infinity + n); //返回Infinity,Infinity与任意运算数相加，结果都是Infinity
+        alert(Infinity + Infinity); //返回Infinity,Infinity与Infinity相加，结果是Infinity
+        alert((-Infinity) + (-Infinity)); //返回-Infinity,-Infinity与-Infinity相加，结果是-Infinity
+        alert((-Infinity) + (Infinity)); //返回NaN，正负Infinity相加，结果是NaN
+
+        // 加法运算符能够根据运算数的数据类型，尽可能的把数字转换成可以执行相加运算或相连运算或字符串
+        alert(1 + 1); //返回2，进行相加运算
+        alert(1 + "1"); //返回"11"，进行相连运算。如果运算中有一个是字符串，则把数值转换成字符串
+        alert("1" + "1"); //返回"11"，如果运算数都是字符串，则进行相连运算
+
+        //由于空字符串的位置不同，运算结果也是不同
+        alert(3.0 + 4.3 + ""); //返回"7.3"
+        alert(3.0 + "" + 4.3); //返回"34.3"，先将3.0转换成字符串3，再和4.3相连，的"34.3"
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

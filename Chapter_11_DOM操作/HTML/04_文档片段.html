@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文档片段</title>
+</head>
+
+<body>
+  <ul id="ul"></ul>
+  <script>
+    //DocumentFragment是一个虚拟的节点类型，仅存在与内存中，没有添加到文档树中
+    var element = document.getElementById("ul");
+    var fragment = document.createDocumentFragment();
+    var browers = ['Firefox', 'Chrome', 'Opera', 'Safari', 'Internet', 'Explorer'];
+    browers.forEach(function (browers) {
+      var li = document.createElement('li');
+      li.textContent = browers;
+      fragment.appendChild(li);
+    });
+    element.appendChild(fragment);
+  </script>
+</body>
+
+</html>

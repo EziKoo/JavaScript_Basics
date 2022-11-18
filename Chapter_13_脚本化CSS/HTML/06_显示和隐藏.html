@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>显示和隐藏</title>
+</head>
+
+<body>
+  <!-- <p>p1</p>
+  <p class="main">p2</p>
+  <p>p3</p> -->
+  <p style="float:right; border: solid 1px red; width: 100px; height: 100px;">p1</p>
+  <script>
+    // var p = document.getElementsByTagName("p");
+    // for (var i = 0; i < p.length; i++) {
+    //   if (p[i].className == "main") continue;
+    //   //如果class属性值为main的话，则跳过
+    //   p[i].style.display = "none"; //隐藏元素
+    // }
+
+    //设置或切换元素的显示或隐藏
+    //参数：e表示操作元素，b为true时，将显示元素e;b为false时，将隐藏元素e
+    //如果省略参数b，则根据元素e的显示状态，进行显示或隐藏切换
+    function display(e, b) {
+      //如果第二个参数存在且不为布尔值，则抛出异常
+      if (b && (typeof b != "boolean")) throw new Error("第二个参数应该是布尔值");
+      var c = getStyle(e, "display"); //获取当前元素的显示属性 
+      (c != "none") && (e._display = c); //记录元素的显示性质
+      e._display = e._display || "";
+      if (b || (c == "none")) {
+        e.style.display = e._display;
+      } else {
+        e.style.display = "none"; //否则隐藏元素
+      }
+    }
+
+    var p = document.getElementsByTagName("p")[0];
+    display(p); //切换显示
+    display(p); //切换显示
+  </script>
+</body>
+
+</html>

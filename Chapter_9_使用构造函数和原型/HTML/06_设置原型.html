@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置原型</title>
+</head>
+
+<body>
+  <script>
+    //为对象直接量设置原型
+    var proto = {
+      name: "prototype"
+    }; //原型对象
+    var obj1 = {}; //普通对象直接量
+    obj1.__proto__ = proto;
+    console.log(obj1.name);
+
+    var obj2 = {};
+    Object.setPrototypeOf(obj2, proto); //设置原型
+    console.log(obj2.name);
+
+    var obj3 = Object.create(proto);
+    console.log(obj3.name);
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>访问文档对象</title>
+</head>
+
+<body>
+
+  <img src="../../../favicon.ico" alt="就不给你看" name="img">
+  <form action="http://www.baidu.com/" name="form" method="post"></form>
+  <script>
+    // console.log(window.location === location); //true
+
+    // console.log(window.navigator === navigator); //true
+
+    // console.log(window.screen === screen); //true
+
+    // console.log(window.history === history); //true
+
+    // console.log(window.window === window); //true   
+
+    // console.log(window.document === document); //true 
+
+    //1、使用name访问元素
+    // console.log(document.img.src); //返回图像的地址
+    // console.log(document.form.action); //返回表单提交的路径
+
+    //2、使用文档对象集合快速检索
+    // console.log(document.images[0].src);
+    // console.log(document.forms[0].action);
+
+    //3、如果设置了name属性，也可以使用关联数组引用对应的元素对象
+    // console.log(document.images["img"].src);
+    // console.log(document.forms["form"].action);
+  </script>
+</body>
+
+</html>

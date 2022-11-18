@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除元素</title>
+    <script>
+        //delete删除
+        var a = [1, 2, true, "a", "b"]; //定义数组
+        delete a[0]; //删除指定下标的元素
+        console.log(a); //返回[,2,true,"a","b"]
+        alert(a.length); //虽然删除了第一个元素，但是数组长度没变
+
+        //length删除
+        var a = [1, 2, true, "a", "b"]; //定义数组
+        a.length = 3; //删除了尾部2个元素
+        console.log(a); //返回[1,2,true]
+
+        //splice删除
+        var a = [1, 2, 3, 4, 5]; //定义数组
+        a.splice(1, 2); //第三个参数或更多是添加元素
+        console.log(a); //返回[1,4,5]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

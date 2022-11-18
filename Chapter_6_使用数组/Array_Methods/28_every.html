@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>every</title>
+</head>
+<body>
+<script>
+  //28、every
+  /*
+    方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。
+    若收到一个空数组，此方法在任何情况下都会返回 true。
+    arr.every(callback(element[, index[, array]])[, thisArg])
+    如果回调函数的每一次返回都为 truthy 值，返回 true，否则返回 false。
+   */
+  const isBelowThreshold = (currentValue) => currentValue < 40;
+
+  const array1 = [1, 30, 39, 29, 10, 13];
+
+  console.log(array1.every(isBelowThreshold));  //true
+  // expected output: true
+
+  const array2 = [21,55,2,5,34]
+  console.log(array2.every(isBelowThreshold));  //false
+
+  function isBigEnough(element, index, array) {
+    console.log(index);
+    console.log(array);
+    return element >= 10;
+  }
+
+  [12, 54, 18, 130, 44].every(isBigEnough); // true
+
+  //下面代码执行完5后就没继续执行了
+  [12, 5, 8, 130, 44].every(isBigEnough);   // false
+
+  //使用箭头函数会更简短
+  [12, 5, 8, 130, 44].every(x => x >= 10); // false
+  [12, 54, 18, 130, 44].every(x => x >= 10); // true
+
+
+</script>
+</body>
+</html>

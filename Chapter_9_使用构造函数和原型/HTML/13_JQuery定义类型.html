@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定义类型</title>
+</head>
+
+<body>
+  <script>
+    var JQuery = function () {
+      //空函数
+    }
+    var $ = JQuery = function () {
+      //为JQuery类型起个别名：$
+    }
+    JQuery.prototype = {
+      //扩展的原型对象
+    }
+    JQuery.fn = JQuery.prototype = {
+      //为JQuery的原型起一个别名
+    }
+
+    //模范JQuery框架，给JQuery原型添加两个成员，一个是原型属性version，一个是原型方法size()，
+    //分别定义JQuery框架的版本号和JQuery对象的长度
+    JQuery.fn = JQuery.prototype = {
+      version: "3.3.1", //原型属性，版本号
+      size: function () { //原型方法，对象长度
+        return this.length;
+      }
+    }
+  </script>
+</body>
+
+</html>

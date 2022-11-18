@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>快速删除对象</title>
+</head>
+
+<body>
+  <h1>标题文本</h1>
+  <p>段落文本</p>
+  <div id="box">盒子</div>
+  <script>
+    /*
+      键盘事件一般都会绑定给一些可以获取到焦点的对象或者是document
+    */
+    document.onclick = function (e) {
+      var e = e || window.event;
+      var t = e.target || e.srcElement;
+      if (e.ctrlKey && e.shiftKey) {
+        t.parentNode.removeChild(t);
+      }
+    }
+  </script>
+</body>
+
+</html>

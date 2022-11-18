@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>entries</title>
+</head>
+<body>
+<script>
+  //21、entries
+  // 方法返回一个新的Array Iterator对象，该对象包含数组中每个索引的键/值对。
+  const array1 = ['a', 'b', 'c'];
+
+  const iterator1 = array1.entries();
+
+  console.log(iterator1); //Array Iterator{}
+
+  console.log(iterator1.next().value);  //[0, 'a']
+
+  console.log(iterator1.next().value);  //[1, 'b']
+
+  console.log(iterator1.next().value);  //[2, 'c']
+
+
+
+
+</script>
+</body>
+</html>

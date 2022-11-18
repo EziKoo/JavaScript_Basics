@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注销事件</title>
+</head>
+
+<body>
+  <input id="inp1" type="button" value="点击我">
+  <input id="inp2" type="button" value="删除事件">
+  <script>
+    var inp1 = document.getElementById("inp1");
+    var inp2 = document.getElementById("inp2");
+
+    function ok() {
+      alert("你好！陈慧亿");
+    }
+
+    function del_ok() {
+      inp1.removeEventListener("click", ok, false);
+    }
+    inp1.addEventListener("click", ok, false);
+    inp2.addEventListener("click", del_ok, false);
+  </script>
+</body>
+
+</html>

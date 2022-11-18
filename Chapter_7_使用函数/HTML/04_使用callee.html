@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用callee()函数</title>
+    <script>
+        //使用arguments.callee()获取匿名函数，然后通过函数的length属性获取函数形参个数，
+        //最后比较实参和形参个数以检测用户传递的参数是否符合要求
+        var result = (function(a, b, c) {
+            var num1 = arguments.length; //获取实参个数
+            var num2 = arguments.callee.length; //获取形参个数
+            if (num1 != num2) {
+                throw new Error("实参和形参个数不一致");
+            } else {
+                return a + b + c;
+            }
+        })(3, 4, 5);
+        alert(result) //如果(3,4)抛出异常，实参和形参个数不一致，如果(3,4,5)返回12
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

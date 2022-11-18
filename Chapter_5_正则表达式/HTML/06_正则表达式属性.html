@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式属性</title>
+    <script>
+        // var r = /\w/g; //声明正则表达式直接量
+        // alert(r.global); //返回true
+        // alert(r.ignoreCase); //返回false
+        // alert(r.multiline); //返回false
+        // alert(r.source); //返回\w
+
+        // var s = "javascript is not java";
+        // var r = /a/gi; //正则表达式直接量
+        // r.exec(s); //第1次执行匹配
+        // alert(r.lastIndex); //返回值为2
+        // r.exec(s); //第2次执行匹配
+        // alert(r.lastIndex); //返回值为4
+        // r.exec(s); //第3次执行匹配
+        // alert(r.lastIndex); //返回值为20
+        // r.exec(s); //第4次执行匹配
+        // alert(r.lastIndex); //返回值为22
+        // r.exec(s); //第5次执行匹配
+        // alert(r.lastIndex); //返回值为0
+
+        // var s = "0123456789";
+        // var r = /\d/g; //匹配单个数字
+        // r.lastIndex = 5;
+        // var a = r.exec(s); //执行匹配
+        // alert(a); //返回5
+
+
+        var s = "JavaScript";
+        var r = /\w/g;
+        console.log("r.global = " + r.global);
+        console.log("r.ignoreCase = " + r.ignoreCase);
+        console.log("r.multiline = " + r.multiline);
+        console.log("r.source = " + r.source);
+        console.log("r.lastIndex = " + r.lastIndex);
+        r.exec(s);
+        console.log("r.lastIndex = " + r.lastIndex);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

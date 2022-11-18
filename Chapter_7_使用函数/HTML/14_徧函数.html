@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徧函数</title>
+    <script>
+        function wrap(tag) {
+            var stag = '<' + tag + '>';
+            var etag = '</' + tag.replace(/s.*/, '') + '>';
+            return function(x) {
+                return stag + x + etag;
+            }
+        }
+        var b = wrap('b');
+        document.write(b('粗体字'));
+        var i = wrap('i');
+        document.write(i('斜体字'));
+        var u = wrap('u');
+        document.write(u('下划线字'));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

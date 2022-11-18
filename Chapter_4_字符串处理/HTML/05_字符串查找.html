@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串查找</title>
+    <script>
+        //使用charAt()把字符串中每个字符都装入一个数组中，从而可以为String类型扩展一个原型方法
+        //用来把字符串转换为数组。
+        // String.prototype.toArray = function() { //把字符串转换为数组
+        //     var l = this.length, //获取当前字符串长度，并定义空数组
+        //         a = [];
+        //     if (l) { //如果存在则执行循环操作，预防空字符串
+        //         for (var i = 0; i < l; i++) { //遍历字符串，枚举每个字符
+        //             a.push(this.charAt(i)); //把每个字符按顺序装入数组
+        //         }
+        //     }
+        //     return a; //返回数组
+        // }
+
+        // var s = "abcdefghijklmn".toArray(); //把字符串转换为数组
+        // for (var i in s) {
+        //     alert(s[i]); //遍历返回数组，显示每个字符
+        // }
+
+        //IndexOf()方法
+        // var s = "javascript";
+        // var i = s.indexOf("a", -10);
+        // alert(i); //返回值为1，即字符串中的第二个字符
+
+        // var s = "http://www.mysite.cn/";
+        // var a = s.indexOf("www"); //第一个w的下标位置为7
+        // alert(a);
+
+
+        // var s = "http://www.mysite.cn/";
+        // var b = s.indexOf("."); //第一个.的下标位置为10
+        // var e = s.indexOf(".", b + 1); //返回值为17，即第二个.的位置，从第11开始匹配的.在整个字符串中的下标为17
+        // alert(e);
+
+        // var s = "http://www.mysite.cn/index.html";
+        // var e = s.lastIndexOf("."); //返回值为26，从右往左开始检索的第一个.的下标为26
+        // alert(e);
+
+        // var s = "http://www.mysite.cn/index.html";
+        // var e = s.lastIndexOf(".", 11); //返回值为10，从下标为11的位置从右往左开始检索的第一个.的下标为10
+        // alert(e);
+
+
+        //String.search()//检索与正则表达式匹配的子串，只有一个参数，参数为正则表达式
+        var s = "http://www.mysite.cn/index.html";
+        var n = s.search("//"); //返回值为5
+        alert(n);
+
+        //与search()方法相比，match()方法要强太多，它能够找出所有匹配的信息，并存储在一个数组中返回。
+        var s = "http://www.mysite.cn/index.html"; //;匹配字符串
+        var a = s.match(/(\.).*(\.)*(\.)/); //执行一次匹配检索
+        alert(a.length); //返回4，说明返回的是一个包含4个元素的数组
+        alert(a[0]); //返回字符串".mysite.cn/index."
+        alert(a[1]); //返回第1个字符. 是由第1个子表达式匹配
+        alert(a[2]); //返回第2个字符. 是由第2个子表达式匹配
+        alert(a[3]); //返回第3个字符. 是由第3个子表达式匹配
+
+        alert(a.index); //返回值10，说明第一个点号字符的起始下标位置
+        alert(a.input); //返回被匹配字符串"http://www.mysite.cn/index.html"
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>封装事件</title>
+</head>
+
+<body>
+  <button id="btn">添加列表项</button>
+  <ul id="ul">
+    <li>列表项1</li>
+    <li>列表项2</li>
+    <li>列表项3</li>
+  </ul>
+  <script>
+    //定义事件模块对象EventUtil。该事件包含事件处理中常规的操作，如注册事件，销毁事件，获取事件对象，获取按钮和键盘信息
+    var EventUtil = {
+      //注册事件，参数包括：注册对象，事件类型和事件处理函数
+      addHandler: function (element, type, handler) {
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = handler;
+        }
+      },
+      getButton: function (event) {
+        if (document.implementation.hasFeature("MouseEvents", "2.0")) {
+          return event.button; //如果是标准事件直接返回
+        } else {
+          switch (event.button) {
+            case 0:
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+              return 0;
+            case 2:
+            case 6:
+              return 2;
+            case 4:
+              return 1;
+          }
+        }
+      },
+      //获取键盘值编码
+      getCharCode: function (event) {
+        if (typeof event.charCode == 'number') {
+          return event.charCode;
+        } else {
+          return event.keyCode;
+        }
+      },
+      //获取剪贴板文本
+      getClipboardText: function (event) {
+        var clipboardData = (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+      },
+      //获取事件对象
+      getEvent: function (event) {
+        return event ? event : window.event;
+      },
+      //获取当前响应对象
+      getTarget: function (event) {
+        return event.target || event.srcElement;
+      },
+      //阻止默认事情发生，参数为事件对象
+      preventDefault: function (event) {
+        if (event.preventDefault) {
+          event.preventDefault();
+        } else {
+          event.returnValue = false;
+        }
+      },
+      //移出已注册或已绑定的事件
+      removeHandler: function (element, type, handler) {
+        if (element.removeEventListener) {
+          element.removeEventListener(type, handler, false);
+        } else if (element.datachEvent) {
+          element.datachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = null;
+        }
+      },
+      //阻止事件流传播，参数为事件对象
+      stopPropagation: function (event) {
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        } else {
+          event.cancelBubble = true;
+        }
+      }
+    };
+  </script>
+  <script>
+    var ul = document.getElementById("ul");
+    var lis = ul.getElementsByTagName("li");
+    for (var i = 0; i < lis.length; i++) {
+      //注册事件
+      EventUtil.addHandler(lis[i], 'click', function (e) {
+        var e = EventUtil.getEvent(e); //获取事件对象
+        var target = EventUtil.getTarget(e); //获取响应元素
+        alert(e.target.innerHTML);
+      });
+    }
+    var i = 4;
+    var btn = document.getElementById("btn");
+    EventUtil.addHandler(btn, 'click', function (e) {
+      var li = document.createElement("li");
+      li.innerHTML = "列表项" + i++;
+      ul.appendChild(li);
+    });
+  </script>
+</body>
+
+</html>

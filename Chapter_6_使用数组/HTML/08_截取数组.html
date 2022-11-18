@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>截取数组</title>
+    <script>
+        //使用splice()方法执行的返回值是被删除的子数组
+        var a = [1, 2, 3, 4, 5]; //定义数组
+        var b = a.splice(2); //从第3个元素开始执行删除，a.splice()返回的是删除的数组元素
+        console.log(b); //被删除的子数组是[3,4,5]
+
+        var a = [1, 2, 3, 4, 5]; //定义数组
+        var b = a.splice(2, 0); //如果没有删除元素，则返回的是一个空数组
+        console.log(b.constructor == Array); //返回true，说明是一个空数组
+
+        var a = [1, 2, 3, 4, 5, 99, 100, 22];
+        var b = a.splice(2);
+        console.log(b); //返回[3,4,5,99,100,22]
+
+        var a = [1, 2, 3, 4, 5, 99, 100, 22];
+        var b = a.slice(2, 5); //截取第3个元素到第6个元素前的所有元素
+        console.log(b); //返回[3,4,5]
+
+        var a = [1, 2, 3, 4, 5, 99, 100, 22];
+        var b = a.slice(2);
+        console.log(b); //返回[3,4,5,99,100,22]
+
+        var a = [1, 2, 3, 4, 5, 99, 100, 22];
+        var b = a.slice(-4, -2);
+        console.log(b); //返回[5,99]
+
+        var a = [1, 2, 3, 4, 5, 99, 100, 22];
+        var b = a.slice(-2, -4);
+        console.log(b); //返回空数组
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用for迭代数组</title>
+  <script>
+    //数组中的length属性是可读可写的
+    /*
+    如果修改了length大于原长度，则多出来部分会空出来，没设值
+    如果修改了length小于原长度，则原数组中多出来的元素被删除
+    */
+    var a = [1, "fd1", , , , , , , true, , , , , , , "ss", , , , , 4, , , 66, "b", , , ];
+    var b = [],
+      num = 0;
+    // for (var i = 0; i < a.length; i++) { //遍历数组
+    //     if (typeof a[i] == "number") { //如果是数字就放入到b数组中
+    //         b.push(a[i]);
+    //     }
+    //     num++; //计数器
+    // }
+    // console.log(num); //返回27说明循环了27次
+    // console.log(b); //返回[1,4,66]
+
+    //使用for/in语句进行迭代可以跳过空元素
+    for (i in a) {
+      if (typeof a[i] == "number") {
+        b.push(a[i]);
+        console.log(i); //数组的索引
+      }
+      num++;
+    }
+    console.log(num); //返回7，说明只循环了7次，把a数组中的空元素都过滤掉了
+    console.log(b); //返回[1,4,66]
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

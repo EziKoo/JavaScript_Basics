@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数节流</title>
+</head>
+
+<body>
+    <div id="box" style="border:solid 1px red;">test</div>
+</body>
+
+<script>
+    var o = {
+        id: null,
+        f: function(e) {
+            e.innerHTML = e.innerHTML + "ok<br>";
+        },
+        //使用定时器对函数进行节流
+        e: function(box) {
+            clearTimeout(this.id);
+            //避免this被污染
+            //因为在异步交互中，函数内的this指针指向的是widow对象
+            var that = this;
+            this.id = setTimeout(function() {
+                that.f(box);
+            }, 100);
+        }
+    };
+    var div = document.getElementById("box");
+    div.onmousemove = function() {
+        o.f(box);
+    }
+</script>
+
+</html>

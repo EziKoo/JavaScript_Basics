@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>禁用超链接跳转</title>
+</head>
+
+<body>
+  <a name="tag" id="tag" href="#">链接a</a>
+  <a name="tag" id="tag" href="#">链接a</a>
+  <a name="tag" id="tag" href="#">链接a</a>
+  <script>
+    //鼠标点击事件包括4个-->click(单击)、dbclick(双击)、mousedown(按下)、mouseup(松开)
+    var a = document.getElementsByTagName("a"); //获取页面中所有超链接元素
+    for (var i = 0; i < a.length; i++) {
+      if (new RegExp(window.location.href).test(a[i].href)) {
+        //如果当前超链接href属性中包含本页面的URL信息
+        a[i].onclick = function () { //则为超链接注册鼠标单击事件
+          return false; //将禁止超链接的默认行为
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

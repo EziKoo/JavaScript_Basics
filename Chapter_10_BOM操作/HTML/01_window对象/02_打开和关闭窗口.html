@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打开和关闭窗口</title>
+</head>
+
+<body>
+  <script>
+    var url = "http://www.baidu.com/";
+    var features =
+      "height = 100,width = 100,top = 100,left =100,toolbar = no,menubar = no,scrollbars = no,resizable = no";
+    document.write('<a href = "http://www.baidu.com/" target = "newW">切换到百度首页</a>');
+    var me = window.open(url, "newW", features);
+    setTimeout(function () {
+      if (me.closed) {
+        console.log("创建的窗口已关闭。");
+      } else {
+        me.close();
+      }
+    }, 3000); //3秒钟后关闭该窗口
+  </script>
+</body>
+
+</html>

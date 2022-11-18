@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义闭包</title>
+    <script>
+        //定义闭包
+        // function f(x) {
+        //     return function() {
+        //         return x;
+        //     };
+        // }
+
+        // var c = f(5);
+        // alert(c()); //返回5
+
+        // //闭包
+        // function f(x) { //外部函数
+        //     return function(y) { //内部函数，通过返回内部函数，实现外部引用
+        //         return x + y; //访问外部函数的参数
+        //     };
+        // }
+        // var c = f(5); //调用外部函数，获取引用内部函数
+        // alert(c(6)); //返回11，调用内部函数，原外部函数的参数继续存在
+
+
+        //第二种闭包
+        var c; //声明全局变量
+        function f(x) {
+            c = function(y) {
+                return x + y;
+            };
+        }
+        f(5);
+        console.log(c(6)); //使用全局变量c调用内部函数，返回11
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

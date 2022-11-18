@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测数组</title>
+    <script>
+        var a = [8, 2, 5, 6];
+        console.log(typeof a); //返回Object
+        console.log(Array.isArray(a)); //返回true
+
+        console.log(2 in a); //返回true
+        //下面的"3"返回true是因为，这里的"3"是数组的属性，也就是数组下标，a数组有下标3所以返回true
+        console.log("3" in a); //返回true
+        console.log("1" in a); //返回true
+        //因为a数组没有下标4所以会返回false
+        console.log("4" in a); //返回false
+        console.log("r" in a); //返回false
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

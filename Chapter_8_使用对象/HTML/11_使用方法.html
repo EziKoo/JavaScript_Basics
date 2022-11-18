@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用方法</title>
+</head>
+
+<body>
+  <script>
+    //方法也是函数，当函数被赋值给对象的属性时，就被称为方法。方法和函数的唯一区别就是
+    //方法内常用this引用调用对象。来获取对象中的其他属性，其实在普通函数中也有this,只不过不常用。而在java，c++中比较常用
+
+    // var obj = {
+    //   x: function () { //定义对象的方法，我们称x为对象obj的方法
+    //     console.log("method");
+    //   }
+    // };
+    // obj.x(); //使用小括号运算符来激活函数
+
+    // //也可以使用点语法来在对象外给对象添加一个方法
+    // var obj1 = {};
+    // obj1.x = function () {
+    //   console.log("点语法添加方法");
+    // }
+    // obj1.x(); //调用对象的方法
+
+    // var o = {
+    //   x: function () { //定义对象方法
+    //     console.log(this.y); //访问当前对象的属性y的值
+    //   }
+    // };
+
+    // o.x(); //因为在o对象中还没有定义y属性，所以这里返回undefined
+    // o.y = 'chy';
+    // o.x(); //返回chy
+
+    //对象方法与普通函数用法完全相同，可以在方法中传递参数，可以设计返回值
+    // var obj = {
+    //   f: function (n) {
+    //     return n * 10;
+    //   },
+    //   fn: function () {
+    //     return this.f(4);
+    //   }
+    // };
+
+    // var n = obj.f(5); //调用方法，传递参数5进入方法中
+    // console.log(n); //返回50
+    // console.log(obj.fn()); //返回40
+
+    // var o = new Object(); //对象实例化
+    // o.name = 'o';
+    // o.who = function () {
+    //   console.log(o.name);
+    // }
+    // o.who(); //返回o
+
+    function who() {
+      console.log(this);
+    }
+    who(); //who为全局函数，这里的this指向的是window对象，所以这里返回的是window
+
+    var o = new Object();
+    o.name = 'o';
+    o.who = who;
+    var f = new Object();
+    f.name = 'f';
+    f.who = who;
+
+    o.who(); //返回o
+    f.who(); //返回f
+  </script>
+</body>
+
+</html>

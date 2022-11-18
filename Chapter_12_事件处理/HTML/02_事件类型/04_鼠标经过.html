@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标经过</title>
+</head>
+
+<body>
+  <div>
+    <div id="box1">
+      <div>盒子</div>
+    </div>
+  </div>
+  <script>
+    var div = document.getElementsByTagName("div");
+    // var div1 = document.getElementById("box1");
+    // div1.onmouseover = function () {
+    //   //如果没有规定形参，则默认event是浏览器传过来的事件对象
+    //   console.log(event);
+    // }
+    // 获取3个嵌套div元素
+    for (var i = 0; i < div.length; i++) {
+      div[i].onmouseover = function (e) {
+        this.style.border = "solid blue";
+      }
+      div[i].onmouseout = function () {
+        this.style.border = "solid red";
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>访问元素</title>
+</head>
+
+<body>
+  <div id="box" name="box1" class="box2">盒子</div>
+  <!-- <input type="text" name="inp" id=""> -->
+  <script>
+    //1、通过带有唯一id的单个对象，返回的是单个对象
+    // var box = document.getElementById("box"); //获取指定盒子的引用
+    // var info = "nodeName:" + box.nodeName; //获取该节点的名称
+    // info += "\rnodeType:" + box.nodeType; //获取该结点的类型
+    // info += "\rparentNode:" + box.parentNode.nodeName; //获取该节点的父节点名称
+    // info += "\rchildNodes:" + box.childNodes[0].nodeName; //获取该节点的子节点名称
+    // console.log(info);
+
+
+    //2、通过带有指定名称的对象集合。通常在表单元素中常见
+    // var box1 = document.getElementsByName("box1");
+    // var info = "nodeName:" + box1[0].nodeName; //获取该节点的名称
+    // info += "\rnodeType:" + box1[0].nodeType; //获取该结点的类型
+    // info += "\rparentNode:" + box1[0].parentNode.nodeName; //获取该节点的父节点名称
+    // info += "\rchildNodes:" + box1[0].childNodes[0].nodeName; //获取该节点的子节点名称
+    // console.log(info);
+
+
+    //3、通过带有指定标签名的对象集合
+    // var box = document.getElementsByTagName("div");
+    // var info = "nodeName:" + box[0].nodeName; //获取该节点的名称
+    // info += "\rnodeType:" + box[0].nodeType; //获取该结点的类型
+    // info += "\rparentNode:" + box[0].parentNode.nodeName; //获取该节点的父节点名称
+    // info += "\rchildNodes:" + box[0].childNodes[0].nodeName; //获取该节点的子节点名称
+    // console.log(info);
+
+    //4、通过带有指定类名的对象集合
+    var box2 = document.getElementsByClassName("box2");
+    var info = "nodeName:" + box2[0].nodeName; //获取该节点的名称
+    info += "\rnodeType:" + box2[0].nodeType; //获取该结点的类型
+    info += "\rparentNode:" + box2[0].parentNode.nodeName; //获取该节点的父节点名称
+    info += "\rchildNodes:" + box2[0].childNodes[0].nodeName; //获取该节点的子节点名称
+    console.log(info);
+  </script>
+</body>
+
+</html>

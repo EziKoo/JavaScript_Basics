@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组与字符的转换</title>
+    <script>
+        var a = [1, [2, 3], 4, 5, [6, 7, 8], 9];
+        var s = a.toString(); //把数组转换为字符串
+        console.log(s); //返回字符串"1,2,3,4,5,6,7,8,9"
+
+        var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        var b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        var s = a + b; //实际上会调用toString()方法
+        console.log(s); //返回字符串"1,2,3,4,5,6,7,8,9,01,2,3,4,5,6,7,8,9,0"
+
+        var a = [1, 2, 3, 4, 5];
+        var s = a.toLocaleString(); //把数组转换为本地字符串
+        console.log(s); //返回1,2,3,4,
+
+        var a = [1, 2, 3, 4];
+        var s = a.join("="); //指定分隔符
+        console.log(s); //返回1=2=3=4
+
+        var s = "1 = 2 = 3 = 4";
+        var a = s.split("="); //分隔字符串为数组
+        console.log(a); //返回数组["1","2","3","4"]
+        console.log(typeof a[2]);
+        console.log(a.constructor == Array); //返回true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

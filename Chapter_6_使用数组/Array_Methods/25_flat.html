@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>flat</title>
+</head>
+<body>
+<script>
+  //25、flat：(扁平化嵌套数组)，不会影响原始数组
+  /*
+    方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+    var newArray = arr.flat([depth])
+    depth：指定要提取嵌套数组的结构深度，默认值为 1。
+   */
+
+  const arr1 = [0, 1, 2, [3, 4]];
+
+  console.log(arr1.flat());
+  // expected output: [0, 1, 2, 3, 4]
+
+  const arr2 = [0, 1, 2, [[[3, 4]]]];
+
+  console.log(arr2.flat(2));
+  // expected output: [0, 1, 2, [3, 4]]
+
+  console.log(arr2.flat(3));
+  // expected output: [0, 1, 2, 3, 4]
+
+
+  let arr3 = [1, 2, [3, 4]];
+  console.log(arr3.flat());
+  // [1, 2, 3, 4]
+
+  //以下代码证明，flat函数不会影响原始数组
+  console.log(arr3)
+
+  let arr4 = [1, 2, [3, 4, [5, 6]]];
+  console.log(arr4.flat());
+  // [1, 2, 3, 4, [5, 6]]
+
+  let arr5 = [1, 2, [3, 4, [5, 6]]];
+  console.log(arr5.flat(2));
+  // [1, 2, 3, 4, 5, 6]
+
+  //使用 Infinity，可展开任意深度的嵌套数组
+  let arr6 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+  console.log(arr6.flat(Infinity));
+  // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+  // flat() 方法会移除数组中的空项：
+  let arr7 = [1, 2, , 4, 5];
+  console.log(arr7.flat());
+  // [1, 2, 4, 5]
+
+</script>
+</body>
+</html>

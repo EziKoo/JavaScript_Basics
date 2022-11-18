@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>实现防抖</title>
+
+  <script type="text/javascript">
+    /*
+      1、通过定时器+高阶函数+闭包实现
+     */
+  </script>
+</head>
+<body>
+  账号：<input type="text">
+  密码：<input type="text">
+  <button id="btn">点击发送请求</button>
+
+  <script type="text/javascript">
+    const btn = document.querySelector("#btn")
+
+    function change() {
+      console.log("我被点击了")
+    }
+
+    function fandou(cb,time) {
+      //先定义个定时器变量
+      let timer
+      return function (){
+        clearTimeout(timer)
+        timer = setTimeout(()=>{
+          cb()
+        },time)
+      }
+    }
+
+    btn.addEventListener('click',fandou(change,1000))
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>把命令转换为表达式</title>
+    <script>
+        //在Js中匿名函数可以通过arguments.callee()函数来调用匿名函数，实现函数重复调用。从而达到递归效果，就可以是循环结构
+        var a = ((a == 1) && alert(1) || //如果a == 1，则提示1
+            (a == 2) && alert(2) || //如果a == 2，则提示2
+            (a == 3) && alert(3) || //如果a == 3，则提示3
+            (a == 4) && alert(4) || //如果a == 4，则提示4
+            alert(undefined)); //否则提示undefined，多个逻辑表达式连续运算
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

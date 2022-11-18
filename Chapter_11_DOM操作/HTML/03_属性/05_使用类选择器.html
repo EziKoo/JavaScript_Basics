@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用类选择器</title>
+</head>
+
+<body>
+  <!-- <div class="red">
+    <h1>红盒子</h1>
+  </div>
+  <div class="blue red">蓝盒子</div>
+  <div class="green red">绿盒子</div> -->
+
+  <div id="box">
+    <div class="blue red green">blue red green
+      <div class="red"></div>
+    </div>
+  </div>
+  <div class="blue red black">blue red black</div>
+  <script>
+    //下面使用document.getElementsByClassName("red")方法选择文档中所有包含red类的元素
+    // var divs = document.getElementsByClassName("red");
+    // for (var i = 0; i < divs.length; i++) {
+    //   //使用innerHTML属性可以返回调用元素包含的所有子节点对应的HTML标记字符串。注意是字符串
+    //   console.log(divs[i].innerHTML);
+    // }
+
+    var divs = document.getElementById("box").getElementsByClassName("blue red");
+    for (var i = 0; i < divs.length; i++) {
+      console.log(divs[i].innerHTML);
+    }
+    console.log(divs[0].getElementsByClassName("red")); //在元素上调用只会返回后代元素中匹配的元素
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try_Catch语句</title>
+    <script>
+        //try不能单独出现，后面必须跟上一个catch
+        // try {
+        //     a + b;
+        // } catch (error) {
+        //     alert("非法变量。")
+        //     alert(error.name);
+        //     alert(error.message);
+        // } finally { //不管try语句是否完全执行，finally语句最后都必须要执行
+        //     alert("继续执行");
+        // }
+
+        function test() {
+            try {
+                return 2;
+            } catch (error) {
+                return 1;
+            } finally {
+                return 0;
+            }
+        }
+
+        var a = test(); //最终返回的是finally的0
+        alert(a);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

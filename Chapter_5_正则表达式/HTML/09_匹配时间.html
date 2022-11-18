@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匹配时间</title>
+    <script>
+        var regex = /^([01][0-9]|[2][0-3]):[0-5][0-9]$/;
+        // var regex = /^[01][0-9]|[2][0-3]:[0-5][0-9]$/;//注意这里的前面没打()会使得下面第三个是true，因为没打()，前面的18可以匹配到
+        console.log(regex.test("23:44")); //返回true
+        console.log(regex.test("02:33")); //返回true
+        console.log(regex.test("18:93")); //返回false
+
+        var regex = /^(0?[0-9]|1[0-9]|[2][0-3]):(0?[0-9]|[1-5][0-9])$/;
+        console.log(regex.test("23:44")); //返回true
+        console.log(regex.test("02:33")); //返回true
+        console.log(regex.test("7:9")); //返回true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>findLast</title>
+</head>
+<body>
+<script>
+  //35、findLast
+  /*
+    方法返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回-1。
+    arr.findIndex(callback[, thisArg])
+    返回值：数组中通过提供测试函数的第一个元素的索引。否则，返回-1
+   */
+
+  const array1 = [5, 12, 8, 130, 44];
+
+  const isLargeNumber = (element) => element > 13;
+
+  console.log(array1.findIndex(isLargeNumber));
+  // expected output: 3
+
+
+  // 以下示例查找数组中素数的元素的索引（如果不存在素数，则返回-1）。
+  function isPrime(element, index, array) {
+    let start = 2;
+    while (start <= Math.sqrt(element)) {
+      if (element % start++ < 1) {
+        return false;
+      }
+    }
+    return element > 1;
+  }
+
+  console.log([4, 6, 8, 12].findIndex(isPrime)); // -1, not found
+  console.log([4, 6, 7, 12].findIndex(isPrime)); // 2
+
+
+</script>
+</body>
+</html>

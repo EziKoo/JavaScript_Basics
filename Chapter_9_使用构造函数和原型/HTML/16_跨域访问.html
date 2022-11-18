@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跨域访问</title>
+</head>
+
+<body>
+  <script>
+    // var $ = JQuery = function () {
+    //   return JQuery.fn.init(); //调用原型方法init()，模拟类的初始化构造函数
+    // }
+    // JQuery.fn = JQuery.prototype = {
+    //   init: function () {
+    //     this.length = 0;
+    //     this._size = function () {
+    //       return this.length;
+    //     }
+    //     return this; //在原型的初始化方法中返回原型对象
+    //   },
+    //   version: '3.2.1',
+    //   size: function () {
+    //     return this.length;
+    //   }
+    // }
+    // console.log($().version); //读取属性3.2.1
+    // console.log($().size()); //调用方法0
+
+
+    // var $ = JQuery = function () {
+    //   return new JQuery.fn.init(); //调用原型方法init()，模拟类的初始化构造函数
+    // }
+    // JQuery.fn = JQuery.prototype = {
+    //   init: function () {
+    //     this.length = 0;
+    //     this._size = function () {
+    //       return this.length;
+    //     }
+    //     return this; //在原型的初始化方法中返回原型对象
+    //   },
+    //   version: '3.2.1',
+    //   size: function () {
+    //     return this.length;
+    //   }
+    // }
+    // console.log($().version); //undefined
+    // console.log($().size()); //报错size is not a function，由于作用域阻断，导致无法访问JQuery.fn对象的属性或方法
+
+
+    //用JQuery的原型覆盖掉init的原型对象，从而实现跨域访问
+    var $ = JQuery = function () {
+      return new JQuery.fn.init(); //调用原型方法init()，模拟类的初始化构造函数
+    }
+    JQuery.fn = JQuery.prototype = {
+      init: function () {
+        this.length = 0;
+        this._size = function () {
+          return this.length;
+        }
+        return this; //在原型的初始化方法中返回原型对象
+      },
+      version: '3.2.1',
+      size: function () {
+        return this.length;
+      }
+    }
+    JQuery.fn.init.prototype = JQuery.fn; //使用JQuery的原型对象覆盖init的原型对象
+    console.log($().version); //3.2.1
+    console.log($()._size()); //0
+    console.log($().size()); //0
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event对象</title>
+  <style>
+    #one {
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+    }
+
+    #two {
+      width: 200px;
+      height: 200px;
+      border: 1px solid green;
+    }
+
+    #three {
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="one">
+    <div id="two">
+      <a id="three" href="http://www.baidu.com">点击我</a>
+    </div>
+  </div>
+  <script>
+    //event对象是由系统自动创建的，其属性提供了有关事件的细节信息。event对象里面的方法可以控制事假的传播
+    //在DOM事件模型中，event对象作为实参被传递给事件监听函数。
+    var one = document.getElementById("one");
+    var two = document.getElementById("two");
+    var three = document.getElementById("three");
+
+    function onef(e) {
+      alert("我是最外层");
+      console.log(e.bubbles);
+      console.log(e.type);
+      console.log(e.target);
+    }
+
+    function twof(e) {
+      alert("我是中间层");
+    }
+
+    function threef(e) {
+      alert("我是最里层");
+      e.preventDefault();
+      // e.stopPropagation();
+    }
+
+    one.addEventListener("click", onef, false);
+    two.addEventListener("click", twof, false);
+    three.addEventListener("click", threef, false);
+  </script>
+</body>
+
+</html>

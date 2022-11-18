@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建属性节点</title>
+</head>
+
+<body>
+  <div id="box" style="color:red;border:solid 1px green">document.createAttribute(name)</div>
+  <img id="img1" src="" alt="就是不给你看">
+  <script>
+    //使用document对象的createAttribute()方法可以创建属性节点。
+    var element = document.getElementById("box");
+    var attr = document.createAttribute("align");
+    attr.value = "center";
+    element.setAttributeNode(attr); //为元素设置属性
+
+    console.log(element.getAttributeNode("align").name); //align
+    console.log(element.getAttributeNode("align").nodeName); //align
+    console.log(element.getAttributeNode("align").specified); //true
+    console.log(element.getAttributeNode("id").value); //box
+    console.log(element.getAttributeNode("id").specified); //true
+
+    console.log(element.getAttribute("align")); //center
+    console.log(element.getAttributeNode("align").value); //center
+    console.log(element.attributes["align"].value); //center
+
+
+    //示例2
+    var img = document.getElementById("img1");
+    img.setAttribute("src", "https://www.baidu.com"); //HTML属性
+    // img.src = "htttp://www.w3.org"; //JavaScript属性
+  </script>
+</body>
+
+</html>

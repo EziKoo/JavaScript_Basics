@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型链</title>
+</head>
+
+<body>
+  <script>
+    //javaScript中，实例对象在读取属性时，总是先检查私有属性，如果存在，则返回私有属性值，否则就会检索prototype原型。
+    //如果找到同名属性，则返回prototype原型的属性值
+
+    function Pr1(x) { //构造函数Pr1
+      this.x = x;
+    }
+    Pr1.prototype.x = 0;
+
+    function Pr2(x) { //构造函数Pr2
+      this.x = x;
+    }
+    Pr2.prototype = new Pr1(1); //原型对象为构造函数Pr1的实例
+
+    function Pr3(x) { //构造函数Pr3
+      this.x = x;
+    }
+    Pr3.prototype = new Pr2(2); //原型对象为构造函数Pr2的实例
+
+    var pr4 = new Pr3(3);
+    console.log(pr4.x); //返回3
+    delete pr4.x;
+    console.log(pr4.x); //返回2
+    delete Pr3.prototype.x;
+    console.log(pr4.x); //返回1
+    delete Pr2.prototype.x;
+    console.log(pr4.x); //返回0
+    delete Pr1.prototype.x;
+    console.log(pr4.x); //返回undefined
+  </script>
+</body>
+
+</html>

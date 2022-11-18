@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>访问文本节点</title>
+</head>
+
+<body>
+  <div id="div1">
+    <span class="red">div</span>
+    这是一个div元素
+  </div>
+  <script>
+    // var div = document.getElementById("div1");
+    // var text = div.innerText;
+    // console.log(text);
+
+    // text = div.firstChild.nodeValue;
+    // console.log(text);
+
+    // text = div.firstChild.data;
+    // console.log(text);
+
+    // var length = div.firstChild.length;
+    // //注意空格也算一个字符，一个中文汉字占两个字符
+    // console.log(length);
+
+    //获取指定元素包含的文本
+    //参数：e表示指定元素
+    //返回值：返回包含的所有文本，包括子元素中包含的文本
+    function text(e) {
+      var s = "";
+      var e = e.childNodes || e; //判断元素是否包含子节点
+      for (var i = 0; i < e.length; i++) { //遍历所有子节点
+        s += e[i].nodeType != 1 ? e[i].nodeValue : text(e[i].childNodes);
+        //通过递归遍历所有元素的子节点
+      }
+      return s;
+    }
+
+    var div = document.getElementById("div1");
+    var s = text(div); //调用读取元素的文本通用方法
+    console.log(s); //返回div 这是一个div元素
+  </script>
+</body>
+
+</html>

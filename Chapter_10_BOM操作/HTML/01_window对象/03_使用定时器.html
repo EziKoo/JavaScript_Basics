@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用定时器</title>
+</head>
+
+<body>
+  <!-- <p>段落文本</p> -->
+  <!-- <input type="text"> -->
+  <h1 id="h1"></h1>
+  <script>
+    /*
+      setInterval()
+        定义器调用
+        可以将一个函数，每隔一段时间执行一次
+        参数：
+          1、回调函数，该函数会每隔一段时间被调用一次
+          2、每次调用间隔时间，单位是毫秒
+        返回值：
+          返回一个Number类型的数据
+          这个数字用来作为定时器的唯一标识
+    */
+
+
+    // var p = document.getElementsByTagName("p")[0];
+    // p.onmousemove = function (i) {
+    //   setTimeout(function () {
+    //     alert(p.tagName);
+    //   }, 1000);
+    // }
+
+    // var t = document.getElementsByTagName("input")[0];
+    // var i = 1;
+
+    // function f() {
+    //   var out = setTimeout(function () {
+    //     t.value = i++;
+    //     f();
+    //   }, 1000);
+    //   if (i > 10) {
+    //     clearTimeout(out);
+    //     alert("10秒钟已到");
+    //   }
+    // }
+    // f();
+
+    //使用setInterval()
+    // var t = document.getElementsByTagName("input")[0];
+    // var i = 1;
+    // var out = setInterval(function () {
+    //   t.value = i++;
+    //   if (i > 10) {
+    //     clearInterval(out);
+    //     alert("10秒钟已到");
+    //   }
+    // }, 1000);
+
+    //获取h1元素
+    var num = 0;
+    var h1 = document.getElementById("h1");
+    var timer = setInterval(function () {
+      h1.innerHTML = num++;
+      if (num == 6) {
+        clearInterval(timer);
+      }
+    }, 1000);
+    // var timer2 = setInterval(function () {
+    //   h1.innerHTML = num++;
+    // }, 1000);
+    console.log(timer); //返回1
+    console.log(timer2); //返回2
+  </script>
+</body>
+
+</html>

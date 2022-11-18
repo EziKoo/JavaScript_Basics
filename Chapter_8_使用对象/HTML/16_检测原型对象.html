@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检测原型对象</title>
+</head>
+
+<body>
+  <script>
+    //在复杂程序中要判断一个对象是否是另一个对象的原型对象可以使用isPrototypeOf()方法来检测
+
+    // var f = function () {}
+    // f.prototype = {
+    //   a: 1,
+    //   b: function () {
+    //     return this.a * 3;
+    //   }
+    // }
+
+    // console.log(f.prototype.a);
+    // console.log(f.prototype.b());
+
+    // var o = new f();
+    // console.log(o.a);
+    // console.log(o.b());
+
+    // var b = f.prototype.isPrototypeOf(o);
+    // console.log(b); //true
+
+    // var o1 = {
+    //   a: 1,
+    //   b: function () {
+    //     return 3;
+    //   }
+    // };
+    // var f = function () {} //定义函数
+    // f.prototype = o1;
+
+    // var o = new f();
+    // var b = o1.isPrototypeOf(o);
+    // console.log(b); //true
+
+    //下面各种特殊对象的原型对象
+    //函数的原型对象可以是Object.prototype或者是Function.prototype
+    var f = function () {};
+    console.log(Object.prototype.isPrototypeOf(f)); //true
+    console.log(Function.prototype.isPrototypeOf(f)); //true
+
+    //Object和Function对象的原型对象比较特殊
+    console.log(Function.prototype.isPrototypeOf(Object)); //true
+    console.log(Object.prototype.isPrototypeOf(Function)); //true
+
+    //Function.prototype的原型对象可以是Object.prototype,但是Object.prototype的原型对象绝不是Function.prototype
+    console.log(Object.prototype.isPrototypeOf(Object.prototype)); //false
+    console.log(Object.prototype.isPrototypeOf(Function.prototype)); //true
+    console.log(Function.prototype.isPrototypeOf(Object.prototype)); //false
+    console.log(Function.prototype.isPrototypeOf(Function.prototype)); //false
+  </script>
+</body>
+
+</html>

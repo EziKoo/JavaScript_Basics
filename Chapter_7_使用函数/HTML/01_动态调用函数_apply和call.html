@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>apply和call方法动态调用</title>
+  <script>
+    /*
+          call()和apply()
+            这两个方法都是函数对象的方法，需要通过函数对象来调用
+            当对函数调用call()和apply()都会调用函数执行
+            在调用call()和apply()可以将一个对象指定为第一个参数
+              此时这个对象将会成为函数执行时的this
+            call()方法可以将实参在对象之后依次传递
+            apply()方法需要将实参封装到一个数组或伪类数组统一传递
+
+            this的情况
+              1、以函数形式调用时，this永远都是window
+              2、以方法的形式调用时，this是调用方法对象
+              3、以构造函数的形式调用时，this是新创建的那个对象
+              4、使用call和apply调用时，this是第一个参数指定的那个对象
+        */
+    //apply()和call()方法
+    // function f(x, y) {
+    //     return x + y;
+    // }
+
+    // function o(a, b) {
+    //     return a * b;
+    // }
+
+    // // alert(f.apply(o, [3, 4])); //返回7，使用apply()方法的话，第二个参数得是数组形式
+    // alert(f.call(o, 3, 4)); //返回7
+
+    var x = "global";
+
+    function a() {
+      this.x = "a";
+    }
+
+    function b() {
+      this.x = "b";
+    }
+
+    function c() {
+      alert(x);
+    }
+
+    function f() {
+      alert(this.x);
+    }
+
+    //返回字符global，即全局变量x的值。this此时指向window对象
+    f();
+    //返回字符global，即全局变量x的值。this此时指向window对象
+    f.call(window);
+    //返回字符a，即函数a内部的局部变量x的值。this此时指向函数a
+    f.call(new a());
+    //返回字符b，即函数b内部的局部变量x的值。this此时指向函数b
+    f.call(new b);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

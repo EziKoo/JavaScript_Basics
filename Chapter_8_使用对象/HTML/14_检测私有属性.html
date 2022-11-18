@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检测私有属性</title>
+</head>
+
+<body>
+  <script>
+    //根据继承关系的不同，对象属性可以分为两种：私有属性和继承属性
+    // function F() {
+    //   this.name = "私有属性";
+    // }
+    // F.prototype.name = "继承属性";
+
+    // var f = new F();
+    // console.log(f.hasOwnProperty("name")); //返回true,说明当前调用的name是私有属性
+    // console.log(f.name); //返回字符串"私有属性"
+
+    // var d = Date;
+    // console.log(d.hasOwnProperty('toString')); //false,说明toString不是Date对象的私有属性
+
+    // var d = Date.prototype;
+    // console.log(d.hasOwnProperty('toString')); //true，说明toString是Date.prototype对象的私有属性
+
+    var o = { //对象直接量
+      o1: { //子对象直接量
+        o2: { //孙子对象直接量
+          name: 1 //孙子对象直接量的属性
+        }
+      }
+    };
+    console.log(o.hasOwnProperty('o1')); //true
+    console.log(o.hasOwnProperty('o2')); //false
+    console.log(o.o1.hasOwnProperty('o2')); //true
+    console.log(o.o1.hasOwnProperty('name')); //false
+    console.log(o.o1.o2.hasOwnProperty('name')); //true
+  </script>
+</body>
+
+</html>

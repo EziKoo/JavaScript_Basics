@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串高级替换</title>
+    <script>
+        //把下面的字符串中每个单词转换为首字母大写形式显示
+        //方法一
+        // var s = 'jabascript is script , is not java'; //定义字符串
+        // //定义替换文本函数，参数为第1个子表达式匹配文本
+        // var f = function($1) {
+        //     //把匹配的文本的首字母转换为大写
+        //     return $1.substring(0, 1).toUpperCase() + $1.substring(1).toLowerCase();
+        // }
+        // var a = s.replace(/(\b\w+\b)/g, f);
+        // alert(a); //返回Jabascript Is Script , Is Not Java
+
+        //方法二
+        //$1表示的是正则表达式匹配出的文本，$2表示第1个子表达式匹配的文本即单词首字母，$3表示第2个子表达式匹配的文本
+        // var s = 'javascript is script , is not java'; //定义字符串
+        // // var a = s.replace(/\b(\w)(\w*)\b/g, "$2=$1");
+        // // alert(a);
+        // //定义替换文本函数
+        // var f = function(wr, $1, $2) {
+        //     //把匹配的文本的首字母转换为大写
+        //     return $1.toUpperCase() + $2;
+        // }
+        // var a = s.replace(/\b(\w)(\w*)\b/g, f);
+        // alert(a); //返回Jabascript Is Script , Is Not Java
+
+
+        //上面的方法二可以改写为
+        // var s = 'javascript is script , is not java'; //定义字符串
+        // //定义替换文本函数
+        // var f = function() {
+        //     //把匹配的文本的首字母转换为大写
+        //     return arguments[1].toUpperCase() + arguments[2];
+        // }
+        // var a = s.replace(/\b(\w)(\w*)\b/g, f);
+        // alert(a); //返回Jabascript Is Script , Is Not Java
+
+        //也就是说不为函数传递形参，直接调用函数的arguments属性，同样能够读取到正则表达式中相关匹配文本的信息
+        // arguments[0]: 表示每次匹配的文本， 即单词
+        // arguments[1]: 表示第1个子表达式匹配的文本， 即单词的首字母
+        // arguments[2]: 表示第2个子表达式匹配的文本， 即单词的余下字母
+        // arguments[3]: 表示匹配的文本的下标位置， 如第一个匹配的单词"javascript"的下标位置就是0，以此类推
+        // arguments[4]: 表示要执行匹配的字符串，这里表示javascript is script , is not java。
+
+
+        // var s = 'javascript is script , is not java'; //定义字符串
+        // //定义替换文本函数
+        // var f = function() {
+        //     //把匹配的文本的首字母转换为大写
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         alert("第" + (i + 1) + "个参数的值:" + arguments[i]);
+        //     }
+        // }
+        // var a = s.replace(/\b(\w)(\w*)\b/g, f);
+
+
+        var score = {
+                "张三": 56,
+                "李四": 76,
+                "王五": 87,
+                "赵六": 98
+            },
+            _score = "";
+        for (var id in score) { //JSON数据转换为字符串
+            _score += id + score[id];
+        }
+        // javascript中的match函数是使用正则表达式对字符串进行查找，并将查找的结果作为数组返回
+        var a = _score.match(/\d+/g), //匹配出的所有分值，输出为数组
+            sum = 0;
+        for (var i = 0; i < a.length; i++) { //遍历数组，求总分
+            sum += parseFloat(a[i]); //把元素值转换为数值后递加
+        }
+        var avg = sum / a.length; //求平均分
+
+        function f() {
+            var n = parseFloat(arguments[1]); //把匹配的分数转换为数值，第一个子表达式
+            return " : " + n + "分" + "(" + ((n > avg) ? ("超出平均分" + (n - avg)) : ("低于平均分" + (avg - n))) + "分) <br> ";
+        }
+        var s1 = _score.replace(/(\d+)/g, f);
+        document.write(s1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

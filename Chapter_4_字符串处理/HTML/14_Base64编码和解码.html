@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64编码和解码</title>
+    <script>
+        function b64Encode(str) {
+            return btoa(encodeURIComponent(str));
+        }
+
+        function b64Decode(str) {
+            return decodeURIComponent(atob(str));
+        }
+        var b = b64Encode('JavaScript从入门到精通');
+        var a = b64Decode(b);
+        alert(b);
+        console.log(b); //返回SmF2YVNjcmlwdCVFNCVCQiU4RSVFNSU4NSVBNSVFOSU5NyVBOCVFNSU4OCVCMCVFNyVCMiVCRSVFOSU4MCU5QQ==
+        alert(a); //返回JavaScript从入门到精通
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

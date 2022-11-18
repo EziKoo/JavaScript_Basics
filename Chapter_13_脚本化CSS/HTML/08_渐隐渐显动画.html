@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>渐隐渐显动画</title>
+</head>
+
+<body>
+  <div class="block" id="block1" style="width: 200px; height: 200px; background-color: red;"></div>
+  <script>
+    function setOpacity(e, n) {
+      var n = parseFloat(n);
+      if (n && (n > 100) || !n) n = 100;
+      if (n && (n < 0)) n = 0;
+      e.style.opacity = n / 100;
+    }
+
+    function fade(e, t, io) {
+      var t = t || 100;
+      if (io) {
+        var i = 0;
+      } else {
+        var i = 100;
+      }
+      var out = setInterval(function () {
+        setOpacity(e, i);
+        if (io) {
+          i++;
+          if (i >= 100) clearInterval(out);
+        } else {
+          i--;
+          if (i <= 0) clearInterval(out);
+        }
+      }, t);
+    }
+
+    e = document.getElementById("block1");
+    // fade(e, 50, true);
+    fade(e, 50, false);
+  </script>
+</body>
+
+</html>

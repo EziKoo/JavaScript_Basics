@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>call和apply和bind的使用</title>
+</head>
+<body>
+  <script type="text/javascript">
+    //call,apply,bind --> 这三个都是函数对象上的方法
+    function fun() {
+      //函数体
+      console.log(this)
+      console.log(this.name)
+      console.log('hello,world')
+    }
+
+    const dog = {
+      name: '旺财',
+      sayName() {
+        console.log("我是：" + this.name)
+      },
+      eat(food1, food2) {
+        console.log("我喜欢吃：" + food1 + food2)
+      }
+    }
+
+    const cat = {
+      name: "喵喵"
+    }
+
+    //1、call可以调用函数
+    //2、call可以改变函数中的this指向
+    // fun.call(cat)
+
+    dog.sayName.call(cat)
+    dog.eat("骨头")
+    //1、call方法
+    // dog.eat.call(cat, "鱼", "肉")
+    //2、apply方法
+    dog.eat.apply(cat, ["鱼", "肉"])
+    //3、bind方法，bind和call的区别是：call是直接调用方法，而bind方法是将一个函数返回出来，需要自己调用
+    let demo = dog.eat.bind(cat, "鱼", "肉")
+    demo()
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>标签语句</title>
+    <script>
+        //标签语句的语法格式为-> label:statements
+        //下面代码中，b就是标签名，而a就是对象的属性名，其中标签b就是
+        b: {
+            a: true;
+        }
+        a: { //标签语句的标记名
+            a: true; //对象属性的标记名
+        }
+        var o = {
+            a: true
+        }
+        alert(o.a); //通过对象成员标识符可以用对象成员
+
+        //以下是错误的
+        //不能使用标签语句的标记名来引用
+        b: {
+            a: true;
+        }
+        alert(b.a);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

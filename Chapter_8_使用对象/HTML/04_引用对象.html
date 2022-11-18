@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>引用对象</title>
+</head>
+
+<body>
+  <script>
+    //引用对象，对象中包含的数据被存放在堆区，存储在变量中的值它只是引用对象的地址见间接访问对象
+    var o = { //创建对象，并引用该对象给变量o1
+      x: 1, //存放在堆区的数据
+      y: true
+    };
+    var o1 = o; //引用对象
+    console.log(o1 === o); //返回true,说明两个对象相同
+    console.log(o1.x); //返回1
+    console.log(o1.y); //返回true
+
+    console.log(delete o); //fales，已经声明的对象不可删除
+    console.log(delete o.y); //true，已经声明的对象不可删除，但是可以删除对象中的属性
+    console.log(o1.x);
+    console.log(o.x);
+  </script>
+</body>
+
+</html>

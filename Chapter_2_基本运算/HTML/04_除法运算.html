@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>除法运算</title>
+    <script>
+        var n = 5;
+        alert(NaN / n); //返回NaN，如果都是NaN
+        alert(Infinity / n); //Infinity被任意数字除，结果是Infinity或-Infinity，符号由第2个操作数的符号决定
+        alert(Infinity / -n); //Infinity被任意数字除，结果是Infinity或-Infinity，符号由第2个操作数的符号决定
+        alert(Infinity / Infinity); //返回NaN
+        alert(n / 0); //0除一个非无穷大的数字，结果是Infinity或-Infinity，符号由第2个操作数的符号决定
+        alert(n / -0); //返回-Infinity，解释同上
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

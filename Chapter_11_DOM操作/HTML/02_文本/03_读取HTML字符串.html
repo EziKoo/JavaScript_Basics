@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>读取HTML字符串</title>
+</head>
+
+<body>
+  <div id="div1">
+    <style type="text/css">
+      p {
+        color: red;
+      }
+    </style>
+    <p><span>div</span>元素</p>
+  </div>
+  <script>
+    //使用元素的innerHTML属性可以返回调用元素包含的所有子节点对应的HTML标记字符串
+    var div = document.getElementById("div1");
+    var s = div.innerHTML;
+    console.log(s);
+  </script>
+</body>
+
+</html>

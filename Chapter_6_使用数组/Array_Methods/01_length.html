@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Length</title>
+</head>
+<body>
+<script>
+  //1、length
+  let a = new Array('first', 'second', 'third')
+  a[48] = '12'
+  console.log(a);
+  console.log(a.length);  //49
+
+  /*
+  length 属性的值是一个 0 到 2^32 - 1 的整数。
+  */
+  // let namelistA = new Array(4294967296); // 2 的 32 次方 = 4294967296
+  // let namelistC = new Array(-100) // 负号
+  //
+  // console.log(namelistA.length); // RangeError: 无效数组长度
+  // console.log(namelistC.length); // RangeError: 无效数组长度
+
+  /*
+  可以设置 length 属性的值来截断任何数组。
+  当通过改变length属性值来扩展数组时，实际元素的数目将会增加。
+  例如：将一个拥有 2 个元素的数组的 length 属性值设为 3 时，那么这个数组将会包含 3 个元素，
+  并且，第三个元素的值将会是 undefined 。
+   */
+  // let arr1 = [1,2,3]
+  // arr1.length = 5
+  // console.log(arr1);//数组有5个元素内容，最后两个元素为empty
+  //
+  // let arr2 = [1,2,4,5,6]
+  // arr2.length = 3
+  // console.log(arr2);//[1, 2, 4]
+</script>
+</body>
+</html>

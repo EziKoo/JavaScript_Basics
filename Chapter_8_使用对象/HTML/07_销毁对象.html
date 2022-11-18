@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>销毁对象</title>
+</head>
+
+<body>
+  <script>
+    //javaScript提供了一套垃圾回收机制，能够自动回收程序中无用的存储单元。不被任何外界引用
+
+    var o = { //创建对象，并引用该对象给变量
+      x: 1,
+      y: 'chy'
+    };
+    var o1 = o; //赋值变量o
+    o = null;
+
+    console.log(o1.x); //返回1
+    console.log(o); //null
+
+    //只有当对象之间量所有的外界引用都清空之后，JS才会在恰当的时候来注销这个对象
+    // o1 = null;
+    // console.log(o1.x); //直接报错，说明o已经被销毁了
+    // console.log(o);
+  </script>
+</body>
+
+</html>

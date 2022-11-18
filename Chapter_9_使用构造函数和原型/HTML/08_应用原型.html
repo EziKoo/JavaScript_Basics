@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>应用原型</title>
+</head>
+
+<body>
+  <script>
+    // //原型属性可以被所有实例访问，而私有属性只能被当前实例访问
+    // function p(x) { //构造函数
+    //   if (x) { //如果参数存在，则设置属性，该条件是关键
+    //     this.x = x; //使用参数初始化私有属性x的值
+    //   }
+    // }
+    // p.prototype.x = 0; //利用原型属性，设置私有属性x的默认值
+    // var p1 = new p(); //实例化一个没有参数的对象
+    // console.log(p1.x); //0  即显示私有属性的默认值
+    // var p2 = new p(2); //再次实例化，传递一个新的参数
+    // console.log(p2.x); //2  即显示私有属性的初始值
+
+    //利用原型间接实现本地数据备份。把本地对象的数据完全赋值给原型对象。备份对象
+    // function p(x) { //构造函数
+    //   this.x = x;
+    // }
+    // p.prototype.backup = function () {
+    //   for (i in this) {
+    //     p.prototype[i] = this[i];
+    //   }
+    // }
+    // var p1 = new p(4);
+    // p1.backup();
+    // p1.x = 32;
+    // console.log(p1.x);
+    // p1 = p.prototype;
+    // console.log(p1.x);
+
+    function p(x, y) { //求坐标点构造函数
+      if (x) this.x = x; //初始x轴值
+      if (y) this.y = y; //初始y轴值
+      p.prototype.x = 0;
+      p.prototype.y = 0; //默认y轴值
+    }
+
+    function L(p1, p2) { //求两点距离构造函数
+      var po1 = p1; //参数私有化
+      var po2 = p2; //参数私有化
+
+      // this.pt1 = function () { //获取起点坐标对象
+      //   return po1;
+      // }
+      // this.pt2 = function () { //获取终点坐标对象
+      //   return po2;
+      // }
+
+      //解决办法是：将this.pt1和this.pt2中新建一个临时性的构造类，设置该类的原型为po1，然后实例化构造类并返回。
+      //这样的原理是并没有改变po1中的x,y。而只是给临时构造类里面赋值。但是用的时候还是用的po1里面的x,y
+      //下面是解决方案
+      this.pt1 = function () { //获取起点坐标对象
+        function temp() {};
+        temp.prototype = po1;
+        return new temp();
+      }
+      this.pt2 = function () { //获取终点坐标对象
+        function temp() {};
+        temp.prototype = po1;
+        return new temp();
+      }
+
+
+      var pox = function () {
+        return Math.abs(po1.x - po2.x); //计算x轴距离，返回对函数引用
+      }
+      var poy = function () {
+        return Math.abs(po1.y - po2.y); //计算y轴距离，返回对函数引用
+      }
+      this.length = function () {
+        return Math.sqrt(pox() * pox() + poy() * poy());
+      }
+    }
+
+    var point1 = new p(1, 2); //实例化p构造函数，并初始化一个坐标点
+    var point2 = new p(10, 20);
+    var Len = new L(point1, point2);
+    console.log(Len.length()); //两点之间的距离为：20.12461179749811
+    //如果修改point1的坐标
+    Len.pt1().x = 50;
+    // console.log(Len.length()); //两点之间的距离为：43.86342439892262  发生改变
+    //解决完后
+    console.log(Len.length()); //两点之间的距离为：20.12461179749811
+  </script>
+</body>
+
+</html>

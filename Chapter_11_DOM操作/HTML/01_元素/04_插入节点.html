@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>插入节点</title>
+  <style>
+    #red {
+      border: solid 2px red;
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    #blue {
+      border: solid 2px blue;
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div id="box">
+    <p>hahah</p>
+  </div> -->
+
+  <!-- 示例1 -->
+  <div id="red">
+    <h1>红盒子</h1>
+  </div>
+  <div id="blue">
+    蓝盒子
+  </div>
+  <button id="ok">移动</button>
+  <script>
+    //有两种插入元素方法
+    //1、appendChild()，2、insertBefore()
+    //与appendChild()方法一样，insertBefore()方法可以把指定元素及其所包含的所有子节点都一起插入到指定位置中，
+    //同时会先删除移动的元素，然后再重新插入到新的位置
+
+
+    // var p = document.createElement("p"); //创建一个段落节点
+    // var txt = document.createTextNode("盒子模型"); //创建文本节点，文本内容为"盒子模型"
+    // p.appendChild(txt); //把文本节点增加到段落节点中
+    // document.getElementById("box").appendChild(p); //获取box元素，把段落节点增加进来
+
+    // var ok = document.getElementById("ok"); //获取按钮元素的引用
+    // ok.onclick = function () { //注册一个鼠标单击事件处理函数
+    //   var red = document.getElementById("red"); //获取红色盒子的引用
+    //   var blue = document.getElementById("blue"); //获取蓝色盒子的引用
+    //   blue.appendChild(red); //把红色盒子节点增加到蓝色节点中
+    // }
+
+    var ok = document.getElementById("ok"); //获取按钮元素的引用
+    ok.onclick = function () { //注册一个鼠标单击事件处理函数
+      var red = document.getElementById("red"); //获取红色盒子的引用
+      var blue = document.getElementById("blue"); //获取蓝色盒子的引用
+      var p1 = document.createElement("p");
+      var div = document.createElement("div");
+      p1.innerHTML = "蓝色的p段落";
+      div.innerHTML = "蓝色的div元素";
+      blue.appendChild(p1);
+      blue.appendChild(div);
+      var h1 = document.getElementsByTagName("h1")[0];
+      red.insertBefore(blue, h1); //把蓝盒子移动到红盒子内，且位于标题前面
+    }
+  </script>
+</body>
+
+</html>

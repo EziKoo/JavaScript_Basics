@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>引用构造函数</title>
+</head>
+
+<body>
+  <script>
+    //使用new.target来访问构造函数
+    function Point(x, y) {
+      'use strict'; //启用严格模式
+      if (!(this instanceof new.target)) return new new.target(x, y);
+
+      this.x = x;
+      this.y = y;
+    }
+    var p1 = new Point(100, 200);
+    console.log(p1.x); //返回100
+  </script>
+</body>
+
+</html>

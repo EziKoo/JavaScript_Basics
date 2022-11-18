@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串替换</title>
+    <script>
+        // var s = "http://www.mysite.cn/index.html";
+        // var b = s.replace(/html/, "com"); //把字符串html替换成com
+        // // alert(b);
+        // var b = s.replace("html", "com"); //这里的html会被强制转换成正则表达式
+        // alert(b);
+
+        // var s = "http://www.mysite.cn/index.html";
+
+        // function f(x) {
+        //     return x.substring(x.lastIndexOf(".") + 1, x.length - 1); //获取扩展名部分字符串
+        // }
+        // var b = s.replace(/(html)/, f(s)); //调用函数指定替换文本操作
+        // alert(b); //返回字符串"http://www.mysite.cn/index.htm";
+
+        //在replace()方法中约定了一个特殊的字符($)，这个美元符号如果附加一个序号就表示对正则表达式中匹配的子表达式存储的字符串引用
+        // var s = "javascript";
+        // var b = s.replace(/(java)(script)/, "$2-$1");
+        // alert(b); //返回script-java
+
+        //重复字符串
+        // var s = "javascript";
+        // var b = s.replace(/.*/, "$&$&");
+        // alert(b); //返回javascriptjavascript
+
+        //对匹配文本左侧的文本完全引用$`
+        // var s = "javascript";
+        // var b = s.replace(/script/, "$& != $`");
+        // alert(b); //返回javascript != java
+
+        //对匹配文本右侧的文本完全引用$’
+        // var s = "javascript";
+        // var b = s.replace(/java/, "$&$' is ");
+        // alert(b); //返回javascript is script
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

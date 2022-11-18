@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行匹配操作</title>
+    <script>
+        var s = "JavaScript"; //测试使用的字符串直接量
+        var r = /\w/g; //匹配模式为全局
+        while ((a = r.exec(s))) {
+            //显示每次匹配操作后返回的数组信息  
+            console.log("匹配文本 = " + a[0] + "   a.index = " + a.index + "   r.lastIndex = " + r.lastIndex);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

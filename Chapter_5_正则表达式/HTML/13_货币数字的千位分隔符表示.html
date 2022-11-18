@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>货币数字的千位分隔符表示</title>
+    <script>
+        //?=正向声明，执行匹配的字符后面必须有=
+        var s = "one:1;two=2";
+        var r = /\w*(?==)/g;
+        var a = r.exec(s);
+        alert(a); //返回two
+        //?!反向声明，执行匹配的字符后面必须不能有=
+        var r = /\w*(?!=)/g;
+        var a = r.exec(s);
+        alert(a); //返回one
+
+
+        var string = "123456789 1234567899",
+            // regex = /(?!\b)(?=(\d{3})+\b)/g;
+            regex = /\B(?=(\d{3})+\b)/g;
+        var result = string.replace(regex, ',');
+        console.log(result); //返回123,456,789 1,234,567,899
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

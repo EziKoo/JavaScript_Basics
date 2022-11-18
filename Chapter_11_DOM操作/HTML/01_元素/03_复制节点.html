@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复制节点</title>
+</head>
+
+<body>
+  <script>
+    //示例1
+    var p = document.createElement("p"); //创建p节点
+    var h1 = document.createElement("h1"); //创建一个h1元素
+    var txt = document.createTextNode("Hello World"); //创建一个文本节点
+    var hello = txt.cloneNode(false); //复制创建的文本节点
+    p.appendChild(txt); //把文本节点增加到段落节点中
+    h1.appendChild(p); //把段落节点增加到标题节点中
+    document.body.appendChild(h1); //把标题节点增加到body节点中
+    var p1 = p.cloneNode(false); //复制p节点，只复制p节点，而不复制p的子孙节点
+    var info = "nodeName:" + p1.nodeName;
+    info += "nodeType:" + p1.nodeType;
+    console.log(info);
+
+
+    //示例2
+    var h1 = document.createElement("h1"); //创建一个一级标题节点
+    h1.id = 'chy';
+    var p = document.createElement("p"); //创建一个段落标签节点
+    var txt = document.createTextNode("陈慧亿好帅！"); //创建一个文本节点
+
+    p.appendChild(txt); //将文本节点增加到段落标签中
+    h1.appendChild(p); //将段落节点增加到一级标题节点中
+    document.body.appendChild(h1); //将一级标题节点增加到body节点中
+
+    var new_h1 = h1.cloneNode(true); //复制标题元素及其所有子节点
+    new_h1.id = 'chy_copy';
+    document.body.appendChild(new_h1); //把复制的新标题元素增加到文档中
+  </script>
+</body>
+
+</html>

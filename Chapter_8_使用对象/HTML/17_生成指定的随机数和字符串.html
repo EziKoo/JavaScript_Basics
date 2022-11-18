@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成指定的随机数和字符串</title>
+</head>
+
+<body>
+  <script>
+    //获取指定范围内的随机数
+    var getRand = function (min, max) {
+      //利用parseInt来将小数位去整
+      return parseInt(Math.random() * (max - min) + min);
+    }
+    console.log(getRand(6, 20));
+
+    //获取指定长度的随机字符串
+    var getRandStr = function (length) {
+      var _string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //26个大写字母
+      _string += 'abcdefghijklmnopqrstuvwxyz'; //26个小写字母
+      _string += '0123456789-_'; //10个数字、连字符、下划线
+      var _temp = '',
+        _length = _string.length - 1;
+      for (var i = 0; i < length; i++) {
+        var n = parseInt(Math.random() * _length); //获取随机数字
+        _temp += _string[n];
+      }
+      return _temp; //返回映射后的字符串
+    }
+    console.log(getRandStr(5));
+  </script>
+</body>
+
+</html>

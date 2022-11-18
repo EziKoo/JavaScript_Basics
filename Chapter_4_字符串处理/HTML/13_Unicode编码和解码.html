@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicode编码和解码</title>
+    <script>
+        //不太提倡用escape()方法
+        // var s = "javascript中国";
+        // //escape()是不完全编码
+        // s = escape(s); //返回字符串"javascript%u4E2D%u56FD"
+        // alert(s);
+
+        // var s = "javascript中国";
+        // s = escape(s);
+        // alert(s);
+        // s = unescape(s); //返回字符串"javascript%u4E2D%u56FD"
+        // alert(s); //返回字符串"javascript中国"
+
+        //这种被解码的代码是不能够直接运行的，读者可以使用eval()方法来执行它
+        // var s = escape('alert("javascript中国")'); //编辑脚本
+        // var s = unescape(s); //解码脚本
+        // eval(s); //执行被解码的脚本
+
+        //encodeURI()方法能够把URI字符串进行转义处理
+        // var s = "javascript中国";
+        // s = encodeURI(s);
+        // alert(s); //返回javascript%E4%B8%AD%E5%9B%BD
+
+        // var s = "javascript中国";
+        // s = encodeURI(s); //URI编码
+        // alert(s); //返回javascript%E4%B8%AD%E5%9B%BD
+        // s = decodeURI(s); //URI解码
+        // alert(s); //返回javascript中国
+
+        // var s = "https://www.mysite.cn/navi/search/asp?keyword=URI";
+        // a = encodeURI(s);
+        // alert(a); //返回https://www.mysite.cn/navi/search/asp?keyword=URI
+        // b = encodeURIComponent(s);
+        // alert(b); //返回https%3A%2F%2Fwww.mysite.cn%2Fnavi%2Fsearch%2Fasp%3Fkeyword%3DURI
+
+        var s = "https://www.mysite.cn/navi/search/asp?keyword=URI";
+        b = encodeURIComponent(s);
+        b = decodeURIComponent(s); //解码
+        alert(b); //返回https://www.mysite.cn/navi/search/asp?keyword=URI
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

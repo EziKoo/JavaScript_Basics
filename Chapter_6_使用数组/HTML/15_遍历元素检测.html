@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历元素检测</title>
+    <script>
+        //every()方法
+        //some()方法
+        // function f(value, index, ar) {
+        //     if (value % 2 == 0) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
+        // var a = [2, 4, 5, 7, 8];
+        // if (a.every(f)) {
+        //     console.log("都是偶数。");
+        // } else {
+        //     console.log("不全是偶数。");
+        // }
+
+        //thisArg参数的用法
+        // var f = function(value) {
+        //     if (typeof value !== 'number') {
+        //         return false;
+        //     } else {
+        //         return value >= this.min && value <= this.max;
+        //     }
+        // }
+        // var a = [10, 15, 19];
+        // var obj = {
+        //     min: 10,
+        //     max: 20
+        // };
+        // if (a.every(f, obj)) {
+        //     console.log("都在指定范围内");
+        // } else {
+        //     console.log("部分不在范围内");
+        // }
+
+
+        function f(value, index, ar) {
+            if (value % 2 == 0) {
+                return true;
+            }
+        }
+        var a = [1, 15, 11, 20];
+        var evens = a.some(f);
+        alert(evens);
+        if (evens) {
+            console.log("不全是奇数");
+        } else {
+            console.log("全是奇数");
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

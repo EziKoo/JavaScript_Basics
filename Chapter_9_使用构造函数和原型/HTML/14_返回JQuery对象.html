@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>返回JQuery对象</title>
+</head>
+
+<body>
+  <script>
+    var JQuery = function () {
+      //空函数
+    }
+    var $ = JQuery = function () {
+      //为JQuery类型起个别名：$
+    }
+    JQuery.prototype = {
+      //扩展的原型对象
+    }
+    JQuery.fn = JQuery.prototype = {
+      //为JQuery的原型起一个别名
+    }
+
+    //模范JQuery框架，给JQuery原型添加两个成员，一个是原型属性version，一个是原型方法size()，
+    //分别定义JQuery框架的版本号和JQuery对象的长度
+    JQuery.fn = JQuery.prototype = {
+      version: "3.3.1", //原型属性，版本号
+      size: function () { //原型方法，对象长度
+        return this.length;
+      }
+    }
+
+    // //一般可以按如下方式调用
+    // var my$ = new $();
+    // console.log(my$.version);
+    // console.log(my$.size());
+
+    //但是Jquery框架是按下面方法进行调用的
+    // $().version;
+    // $().size();
+
+    //那么这是怎么实现的呢？
+    //可以使用return语句返回一个JQuery实例
+    var $ = JQuery = function () {
+      return new JQuery(); //返回类的实例
+    }
+    JQuery.fn = JQuery.prototype = {
+      version: '3.2.1',
+      size: function () {
+        return this.length;
+      }
+    }
+    //这样容易导致死循环
+    // $().version;
+    // $().size();
+
+    // var $ = JQuery = function () {
+    //   return JQuery.prototype; //返回类的原型
+    // }
+    // JQuery.fn = JQuery.prototype = {
+    //   version: '3.2.1',
+    //   size: function () {
+    //     return this.length;
+    //   }
+    // }
+    // console.log($().version); //读取属性3.2.1
+    // console.log($().size()); //调用方法undefined
+
+    // //但是以上形式，思路过于狭窄，无法实现框架内部的管理和扩展
+    // //下面方式才是最合理的
+    // var $ = JQuery = function () {
+    //   return JQuery.fn.init(); //调用原型方法init()，模拟类的初始化构造函数
+    // }
+    // JQuery.fn = JQuery.prototype = {
+    //   init: function () {
+    //     this.length = 0;
+    //     this._size = function () {
+    //       return this.length;
+    //     }
+    //     return this; //在原型的初始化方法中返回原型对象
+    //   },
+    //   version: '3.2.1',
+    //   size: function () {
+    //     return this.length;
+    //   }
+    // }
+    // console.log($().version); //读取属性3.2.1
+    // console.log($().size()); //调用方法undefined
+  </script>
+</body>
+
+</html>

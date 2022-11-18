@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编译正则表达式</title>
+    <script>
+        var s = "JavaScript"; //测试字符串
+        var r = /\w/g; //匹配模式
+        var n = 0;
+        while (r.test(s)) { //循环执行匹配验证
+            if (r.lastIndex == 3) { //当匹配第4个字符时，调整匹配模式
+                r.compile(/[A-Z]/g); //修改字符模式，定义仅匹配大写字母
+                r.lastIndex = 3; //设置下一次匹配的起始位置
+            }
+            console.log("匹配文本 = " + RegExp.lastMatch + "    r.lastIndex = " + r.lastIndex);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

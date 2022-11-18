@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toString方法</title>
+</head>
+
+<body>
+  <script>
+    //原型方法中的toString可以返回一个对象的字符串表示
+    //用户可以重写toString方法
+    function Me() {}; //自定义数据类型
+    Me.prototype.toString = function () {
+      //自定义Me数据类型的toString()方法
+      return "[Object Me]";
+    }
+
+    var me = new Me(); //实例一个对象
+    console.log(me.toString()); //返回[Object Me]
+    console.log(Object.prototype.toString.apply(me)); //默认返回[object Object]
+  </script>
+</body>
+
+</html>

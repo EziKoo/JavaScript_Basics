@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定义正则表达式</title>
+  <script>
+    /*
+          语法：
+            var 变量 = new RegExp("正则表达式","匹配模式");
+            使用typeof检查正则对象，会返回object
+            var reg = new RegExp("a");这个正则表达式可以检查一个字符串是否含有a
+            在构造函数中可以传递一个匹配模式作为第二个参数
+              可以是：
+                    i 忽略大小写
+                    g 全局匹配模式
+    */
+    var reg = new RegExp("ab", "i");
+
+    var str = "Acb";
+    /*
+      正则表达式的方法：
+        test()
+          使用这个方法可以检查一个字符串是否符合正则表达式的规则
+            如果符合返回true，否则返回false
+    */
+    var result = reg.test(str);
+    console.log(result);
+
+    /*
+      使用字面量来创建正则表达式
+        语法：var 变量 = /正则表达式/匹配模式
+    */
+
+    // //定义正则表达式有两种：构造正则表达式，正则表达式直接量
+
+    // //1、使用RegExp构造函数定义一个简单的正则表达式，匹配模式为字符"a"，没有设置第2个参数，所以这个正则表达式只能够匹配
+    // //字符串中的第1个小写字母a，后面的字母a将无法被匹配到
+    // var r = new RegExp("a"); //构造最简单的正则表达式
+    // var r = new RegExp("a", "gi"); //构造最简单的正则表达式
+    // var s = "JavaScript!=JAVA"; //定义字符串直接量
+    // var a = s.match(r); //调用正则表达式执行匹配操作，返回匹配的数组
+    // alert(a); //返回数组["a"]
+    // // alert(a.index); //返回值为1，匹配的下标位置
+
+    // var a = new RegExp("\\b\\w", "gi"); //构造正则表达式对象
+    // var b = new RegExp(a); //对正则表达式对象进行再封装
+    // var c = RegExp(a); //返回正则表达式直接量
+    // alert(b);
+    // alert(c);
+
+    // //正则表达式直接量，直接量要比构造正则表达式效率要高。
+    // var r = /\b\w/gi;
+    // var s = "JavaScript JAVA";
+    // var a = s.match(r); //直接调用正则表达式直接量
+    // alert(a); //返回数组["J","J"]
+
+    // //在RegExp()构造函数中可以为正则表达式传递变量，而在正则表达式直接量中不可以
+    // var s = "abc";
+    // var r = new RegExp("a" + s + "c", "gi");
+    // var r2 = /"a"+s+"b"/g; //这里面的s不是变量s的值
+    // alert(r); //返回/aabcc/gi
+    // alert(r2); //返回/"a"+s+"b"/g
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>map</title>
+</head>
+<body>
+<script>
+  //27、map： 方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
+  /*
+  var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+    // Return element for new_array
+  }[, thisArg])
+   */
+  const array1 = [1, 4, 9, 16];
+
+  // pass a function to map
+  const map1 = array1.map(x => x * 2);
+
+  console.log(map1);
+  // expected output: Array [2, 8, 18, 32]
+
+
+  // 下面的代码创建了一个新数组，值为原数组中对应数字的平方根。
+  let numbers = [1, 4, 9];
+  let roots = numbers.map(Math.sqrt);
+  console.log(roots);
+  // roots 的值为 [1, 2, 3], numbers 的值仍为 [1, 4, 9]
+
+
+</script>
+</body>
+</html>

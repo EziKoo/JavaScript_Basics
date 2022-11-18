@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加元素</title>
+    <script>
+        //通过中括号和下标值来添加元素
+        var a = [1, 2, 3]; //定义数组
+        a[3] = 5;
+        console.log(a); //返回[1,2,3,5]
+
+        //通过concat()方法能过把传递的所有参数按顺序添加到数组的尾部
+        var a = [1, 2, 3, 4, 5]; //定义数组
+        var b = a.concat(6, 7, 8); //为数组a连接3个元素
+        console.log(b); //返回[1,2,3,4,5,6,7,8]
+        //还可以利用concat()方法直接在尾部加一个数组
+        var c = [9, 10, 11];
+        var d = b.concat(c);
+        console.log(d); //返回[1,2,3,4,5,6,7,8,9,10,11]
+
+        //使用splice()方法在指定下标位置后添加一个元素或多个元素，splice()方法不仅可以删除元素
+        //还可以在数组中插入元素，其中第1个参数为操作的起始下标位置，设置第2个参数为0，不执行删除操作，
+        //然后通过第3个及后面的参数设置要插入的元素
+        var a = [1, 2, 3, 4, 5];
+        a.splice(1, 0, 10, 11, 12); //执行插入
+        console.log(a); //[1,10,11,12,2,3,4,5]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>插入HTML字符串</title>
+</head>
+
+<body>
+  <div id="div1">
+    <p>陈慧亿我爱你！！！</p>
+    <h1>嗨嗨嗨</h1>
+  </div>
+  <script>
+    var div = document.getElementById("div1");
+    var ch = '<h1>我是来自赣州的陈慧亿</h1><br/><p>今年24岁</p><br/><span>我喜欢吃苹果</span><br/><button>喜欢我请点击按钮</button>';
+    div.innerHTML = ch;
+    //新的DOM片段完全替换调用元素原有的所有子节点，也就是说原来的子节点全部消失
+    //使用innerHTML属性也有一些限制，例如，在大多数浏览器中，通过innerHTML插入<script>标记后，并不会执行其中的脚本
+  </script>
+</body>
+
+</html>

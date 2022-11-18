@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>filter</title>
+</head>
+<body>
+<script>
+  //24、filter
+  // 方法创建一个新数组，其包含通过所提供函数实现的测试的所有元素。
+  // var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
+  // 一个新的、由通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组。
+
+  const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+  const result = words.filter(word => word.length > 6);
+  //函数中返回值中为true的值，被加入到result数组中返回(也可以理解为符合条件的保留下来了，不符合条件的被筛选掉了)
+
+  console.log(result);  //['exuberant', 'destruction', 'present']
+
+  function isBigEnough(element) {
+    return element >= 10;
+  }
+  let filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+  console.log(filtered);  //[12, 130, 44]
+
+</script>
+</body>
+</html>

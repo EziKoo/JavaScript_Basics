@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>映射数组</title>
+    <script>
+        //map()方法为每个元素调用回调函数，并返回包含结果的数组
+        //使用map()方法映射数组，把数组中每个元素的值平方，乘以PI值，把返回的圆的面积值作为新数组的元素值，最后返回这个新数组
+        function f(radius) {
+            var area = Math.PI * (radius * radius);
+            return area.toFixed(0);
+        }
+        var a = [10, 20, 30];
+        var a1 = a.map(f);
+        alert(typeof a1[0]); //string类型
+        console.log(a1); //返回数组[314,1257,2827]
+
+        //使用thisArg参数
+        var obj = {
+            va1: 10,
+            f: function(value) {
+                return value % this.va1;
+            }
+        }
+        var a = [6, 12, 25, 30];
+        var a1 = a.map(obj.f, obj);
+        console.log(a1); //返回6,2,5,0
+
+        //演示如何使用JavaScript内置方法作为回调函数
+        var a = [9, 16];
+        var a1 = a.map(Math.sqrt);
+        console.log(a1); //返回3,4
+
+        function f(value, index, str) {
+            return str.slice(index - 1, index + 2);
+        }
+        var s = "Thursday";
+        var a = [].map.call(s, f);
+        console.log(a);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

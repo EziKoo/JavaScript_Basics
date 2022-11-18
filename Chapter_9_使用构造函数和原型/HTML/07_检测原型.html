@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检测原型</title>
+</head>
+
+<body>
+  <script>
+    //isPrototype()是一个原型方法，可以在每个实例对象上调用
+    var F = function () {}; //构造函数
+    var obj = new F();
+    var proto1 = Object.getPrototypeOf(obj); //引用原型
+    console.log(proto1.isPrototypeOf(obj)); //true
+
+    //检测不同类型的实例
+    var proto = Object.prototype;
+    console.log(proto.isPrototypeOf({})); //true
+    console.log(proto.isPrototypeOf([])); //true
+    console.log(proto.isPrototypeOf(null)); //false
+    console.log(proto.isPrototypeOf(function () {})); //true
+  </script>
+</body>
+
+</html>

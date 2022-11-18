@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>构造函数返回值</title>
+</head>
+
+<body>
+  <script>
+    //构造函数允许使用return语句，如果返回值为对象，则将覆盖this指代的实例，返回return后面跟随的对象
+    //如果构造函数内部有return语句，而且return后面跟着一个对象，会返回return语句指定的对象，否则会忽略return返回值。
+    //直接返回this对象
+    function Point(x, y) {
+      this.x = x;
+      this.y = y;
+      return {
+        x: 'chy',
+        y: 23
+      };
+    }
+    var p1 = new Point(199, 339);
+    console.log(p1.x); //返回chy
+    console.log(p1.y); //返回23
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>screen对象</title>
+</head>
+
+<body>
+  <script>
+    console.log(screen.width); //1536
+    console.log(screen.height); //864  
+    console.log(screen.colorDepth); //24
+
+    function o(url) {
+      var w = screen.availWidth / 2;
+      var h = screen.availHeight / 2;
+      var t = (screen.availHeight - h) / 2;
+      var l = (screen.availWidth - w) / 2;
+      //设计坐标参数字符串
+      var p = "top=" + t + ",left=" + l + ",width=" + w + ",height=" + h;
+      var win = window.open(url, "url", p);
+      win.focus();
+    }
+    o("https://www.baidu.com/"); //调用该函数
+  </script>
+</body>
+
+</html>

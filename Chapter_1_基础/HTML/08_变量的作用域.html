@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的作用域</title>
+    <!-- JS中变量可以分为全局变量和局部变量 -->
+    <!-- 全局变量：变量在整个页面脚本中都是可见的，可以被自由访问 -->
+    <!-- 局部变量: 变量仅能在声明的函数内部可见，函数外是不允许访问的 -->
+    <script>
+        var a = 1; //声明并初始化全局变量
+
+        function f() { //声明函数
+            document.write(a); //显示undefined
+            var a = 2; //声明并初始化局部变量
+            document.write(a); //显示2
+        }
+        f();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

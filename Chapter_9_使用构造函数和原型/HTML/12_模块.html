@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模块</title>
+</head>
+
+<body>
+  <script>
+    // //为Function增加method()原型方法
+    // Function.prototype.method = typeof Function.prototype.method === "function" ?
+    //   Function.prototype.method :
+    //   function (name, func) {
+    //     if (!this.prototype[name]) { //检测当前类型中是否存在指定名称的原型
+    //       this.prototype[name] = func; //绑定原型方法
+    //     }
+    //     return this; //返回类型
+    //   };
+
+    // String.method('toHTML', function () {
+    //   var entity = {
+    //     quot: '"',
+    //     lt: '<',
+    //     gt: '>'
+    //   };
+    //   return function () {
+    //     //注意这里的a参数指的是匹配模式中匹配到的字符串，b参数指的是与匹配模式中子表达式匹配的字符串
+    //     return this.replace(/&([^&;]+);/g, function (a, b) {
+    //       var r = entity[b];
+    //       return typeof r === 'string' ? r : a; //替换并返回
+    //     });
+    //   };
+    // }()); //形成闭包体
+
+    // console.log('&lt;&quot;&gt;'); //返回&lt;&quot;&gt;
+    // console.log('&lt;&quot;&gt;'.toHTML()); //返回<">
+
+    //示例2
+    var toSerial = function () {
+      var prefix = ''; //私有变量，前缀字符，默认为空字符
+      var serial = 0; //私有变量，序列号，默认为0
+      return {
+        setPrefix: function (p) {
+          prefix = String(p); //强制转换为字符串
+        },
+        setSerial: function () {
+          serial = typeof s == "number" ? s : 0; //如果参数不是数字，则设置为0
+        },
+        get: function () {
+          var result = prefix + serial;
+          serial += 1;
+          return result; //返回结果
+        }
+      };
+    };
+    var serial = toSerial(); //获取生成序列号对象
+    serial.setPrefix('No.'); //设置前缀字符串
+    serial.setSerial(100); //设置起始序号
+    console.log(serial.get()); //"No.100"
+    console.log(serial.get()); //"No.101"
+    console.log(serial.get()); //"No.102"
+  </script>
+</body>
+
+</html>

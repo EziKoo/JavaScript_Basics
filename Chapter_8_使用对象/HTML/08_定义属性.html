@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定义属性</title>
+</head>
+
+<body>
+  <script>
+    //1、在直接量中定义属性
+    // var o = {
+    //   x: 1,
+    //   y: {
+    //     x: 2,
+    //     y: {
+    //       x: 3,
+    //       y: false
+    //     }
+    //   }
+    // }
+
+    // console.log(o.y.x); //2
+    // console.log(o.y.y.x); //3
+    // console.log(o.y.y.y); //false
+
+    //2、通过点语法来定义属性
+    // var o = {};
+    // o.x = 1;
+    // o.y = 'chy';
+    // console.log(o.x); //1
+    // console.log(o.y); //chy
+
+    //3、通过构造函数定义属性
+    var o = {};
+    o.x = 2;
+    o.y = function () {
+      return this.x + this.x;
+    }
+    console.log(o.y());//4
+  </script>
+</body>
+
+</html>

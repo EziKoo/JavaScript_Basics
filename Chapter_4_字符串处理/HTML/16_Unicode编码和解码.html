@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicode编码和解码</title>
+    <script>
+        //Unicode编码
+        var toUnicode = String.prototype.toUnicode = function() {
+            //对字符串进行编码
+            var _this = arguments[0] || this;
+            //判断是否存在参数，如果存在则使用静态方法调用参数值，否则作为字符
+            function f() {
+                return "&#" + arguments[0].charCodeAt(0) + ";";
+                //以网页编码格式显示被编码的字符串
+            }
+            return _this.replace(/[^\u00-\uFF]|\w/gmi, f);
+            //使用replace()方法执行匹配、替换操作
+        };
+
+        // var s = "012javascript中国"; //定义字符串直接量
+        // s = toUnicode(s); //以静态方式调用toUnicode()方法
+        // alert(s);
+
+        //Unicode解码
+        var fromUnicode = String.prototype.fromUnicode = function() {
+            //对Unicode编码进行解码操作
+            var _this = arguments[0] || this;
+            //判断是否存在参数，如果存在则使用静态方法调用参数值
+            function f() {
+                return String.fromCharCode(arguments[1]);
+                //把第一个子表达式值(Unicode编码)转换为字符
+            }
+            return _this.replace(/&#(\d*);/gmi, f);
+            //使用replace()匹配并替换Unicode编码为字符
+        };
+
+        //利用上面定义的方法尝试把被toUnicode()方法编码的字符进行解码
+        var s = "javascript中国"; //定义字符串直接量
+        s = s.toUnicode(); //对字符串进行Unicode编码
+        alert(s);
+
+        s = s.fromUnicode(); //对编码的字符串进行解码
+        alert(s); //返回字符串"javascript中国"
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
