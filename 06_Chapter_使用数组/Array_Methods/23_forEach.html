@@ -27,6 +27,28 @@
   console.log("numCallbackRuns: ", numCallbackRuns);
 
 
+  // 如果forEach遍历的数组，数组里面存在对象，然后通过item改变对象里面的值，是会影响到数组里面的对象的值的
+  // 例子:
+  const array2 = [
+    {
+      name:'chy',
+      age: 22
+    },
+    {
+      name: 'BMZ',
+      age: 44
+    }
+  ]
+
+  array2.forEach(item => {
+    if(item.name === 'chy'){
+      item.age = 18
+    }
+  })
+
+  console.log(array2);
+
+
 
 </script>
 </body>
