@@ -33,7 +33,7 @@
         // }
         // alert(a[0]); //x
 
-        // for (var i = 0 in a) {
+        // for (var i in a) {
         //     alert(i); //读取临时变量i的值
         //     alert(a[i]); //读取数组元素的值
         // }
@@ -46,12 +46,12 @@
         // }
 
         //为Object内置对象自定义两个属性，则在for/in结构中可以枚举它们
-        Object.a = 1;
-        Object.b = true;
-        for (var i = 0 in Object) {
-            alert(i);
-            alert(Object[i]);
-        }
+        // Object.a = 1;
+        // Object.b = true;
+        // for (var i in Object) {
+        //     alert(i);
+        //     alert(Object[i]);
+        // }
 
         //但是客户端成员是可以枚举的
         // for (var i = 0 in document) {
@@ -62,7 +62,45 @@
 </head>
 
 <body>
+    <script type="text/javascript">
+			/* 
+				for...in 语句以任意顺序迭代一个对象的除Symbol以外的可枚举属性，包括继承的可枚举属性。
+				备注： for...in不应该用于迭代一个关注索引顺序的 Array。
+				for ... in是为遍历对象属性而构建的，不建议与数组一起使用，数组可以用Array.prototype.forEach()和for ... of，
+				那么for ... in的到底有什么用呢？
+				它最常用的地方应该是用于调试，可以更方便的去检查对象属性（通过输出到控制台或其他方式）
+			*/
 
+			// 下面的函数接受一个对象作为参数。被调用时迭代传入对象的所有可枚举属性然后返回一个所有属性名和其对应值的字符串。
+			var obj = {a:1, b:2, c:3}
+			for (var prop in obj) {
+				console.log('obj.'+ prop + "=" + obj[prop]);
+			}
+			// Output:
+			// "obj.a = 1"
+			// "obj.b = 2"
+			// "obj.c = 3"
+
+			// 下面的函数说明了hasOwnProperty()的用法：继承的属性不显示。
+			var triangle = {a: 1, b: 2, c: 3};
+
+			function ColoredTriangle() {
+				this.color = 'red';
+			}
+
+			ColoredTriangle.prototype = triangle;
+
+			var obj = new ColoredTriangle();
+
+			for (var prop in obj) {
+				if (obj.hasOwnProperty(prop)) {
+					console.log(`obj.${prop} = ${obj[prop]}`);
+				}
+			}
+
+			// Output:
+			// "obj.color = red"
+    </script>
 </body>
 
 </html>
