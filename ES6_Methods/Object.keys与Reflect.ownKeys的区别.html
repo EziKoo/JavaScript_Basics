@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object.keys与Reflect.ownKeys的区别</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /* 
+      Reflect.ownKeys 与 Object.keys 的区别
+
+      两个函数都是接收一个对象参数，并都是以数组形式返回对象属性的集合。
+      而且参数都必须是对象，如果是其他乱七八糟的类型，是会报错的
+
+      *****关于对象属性是否可枚举*****
+      Reflect.ownKeys()可以得到对象自己的所有属性，包括不可枚举属性；
+      Object.keys()只能得到对象的普通可枚举属性，拿不到不可枚举属性。
+
+      *****关于Symbol属性*****
+      Reflect.ownKeys()可以拿到对象的Symbol 的属性；
+      Object.keys()不行。 
+
+      *****关于数组的length属性*****
+      因为Reflect.ownKeys()可以得到对象的不可枚举属性这个特点，所以当目标对象是数组对象时
+      我们可以看到获取的结果会比Object.keys()多一个length属性
+    */
+
+    // const obj = {a:1, b:2}
+    // console.log(Object.keys(obj));      // ["a", "b"]
+    // console.log(Reflect.ownKeys(obj));  // ["a", "b"]
+
+    // arr = ['a','b']
+    // console.log(Object.keys(arr));      // ["0", "1"]
+    // console.log(Reflect.ownKeys(arr));  // ["0", "1", "length"]
+
+
+    // 测试代码汇总：
+    Object.prototype.pr = '我是原型属性';   //在原型对象上添加一个"pr"属性
+    let s = Symbol()
+
+    const obj = {
+      [s]: "this is Symbol",    // 增加一个Symbol属性"[s]"
+      normal:'我是正常属性'     // 一个普通的属性
+    }
+
+    // 再给对象obj添加一个属性name，并设置name属性是不可枚举属性
+    Object.defineProperty(obj, 'name', {
+      value: '露露',
+      configurable: true,
+      writable: true,
+      enumerable: false
+    })
+
+    // 观察打印结果
+    console.log("Object.keys", Object.keys(obj));   // 只得到一个普通属性：["normal"]
+    console.log("Reflect.ownKeys", Reflect.ownKeys(obj));   // 得到普通属性，以及symbol和不可枚举属性：["normal", "name", Symbol()]
+
+    // 遗憾的是，二者都拿不到 原型上的属性“pr”。我们用for in来获取
+    for(let o in obj){
+      console.log(o) // 分别打印：a、pr
+    }
+
+  </script>
+</body>
+</html>
+
