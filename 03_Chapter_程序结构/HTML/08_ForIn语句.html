@@ -64,7 +64,7 @@
 <body>
     <script type="text/javascript">
 			/* 
-				for...in 语句以任意顺序迭代一个对象的除Symbol以外的可枚举属性，包括继承的可枚举属性。
+				for...in 语句以任意顺序迭代一个对象的除Symbol以外的可枚举属性，包括 继承!! 的可枚举属性。
 				备注： for...in不应该用于迭代一个关注索引顺序的 Array。
 				for ... in是为遍历对象属性而构建的，不建议与数组一起使用，数组可以用Array.prototype.forEach()和for ... of，
 				那么for ... in的到底有什么用呢？
@@ -91,6 +91,15 @@
 			ColoredTriangle.prototype = triangle;
 
 			var obj = new ColoredTriangle();
+
+      for (var prop in obj) {
+				console.log('没有使用obj.hasOwnProperty方法', `obj.${prop} = ${obj[prop]}`);
+			}
+			// 没有使用obj.hasOwnProperty方法 obj.color = red
+			// 没有使用obj.hasOwnProperty方法 obj.a = 1
+			// 没有使用obj.hasOwnProperty方法 obj.b = 2
+			// 没有使用obj.hasOwnProperty方法 obj.c = 3
+
 
 			for (var prop in obj) {
 				if (obj.hasOwnProperty(prop)) {
