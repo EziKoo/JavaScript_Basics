@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通过new-Array创建数组</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /* 
+      1、字面量的形式
+      2、通过new的方式
+    */
+
+    // 字面量
+    const arr1 = []
+    const arr2 = ['a','b','c']
+
+    // 通过new的方式
+    /*
+    关于new Array() 参数的说明： 
+      1、new Array()，括号里面不传参，表示创建一个空数组
+      2、new Array(5)，括号里面只传一个数字的话，这一个数字表示该数组的长度。数组元素全为空值
+      3、new Array('world')/ new Array(2,3,4)，括号里面传入字符串或多个参数时，这些参数就都是数组的元素
+    */
+
+    // 1
+    const arr3 = new Array()
+    console.log(arr3);  // []
+
+    // 2
+    const arr4 = new Array(5)
+    console.log(arr4);  // [empty × 5]
+
+    // 3
+    const arr5 = new Array('world')
+    const arr6 = new Array(1,2,3,4)
+    console.log(arr5);  // ["world"]
+    console.log(arr6);  // [1, 2, 3, 4]
+
+  </script>
+</body>
+</html>
