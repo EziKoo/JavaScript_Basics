@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>映射数组</title>
     <script>
+
+        // map() 方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
+        const array1 = [1, 4, 9, 16]
+
+        const map1 = array1.map((item) => {
+            return item * 2
+        })
+
+        console.log(map1);  // [2, 8, 18, 32]
+
         //map()方法为每个元素调用回调函数，并返回包含结果的数组
         //使用map()方法映射数组，把数组中每个元素的值平方，乘以PI值，把返回的圆的面积值作为新数组的元素值，最后返回这个新数组
         function f(radius) {
