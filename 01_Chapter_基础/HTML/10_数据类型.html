@@ -6,16 +6,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数据类型</title>
+    <!-- 
+      基本数据类型ES6之前是有6种，分别是：number, string, boolean, Object, null, undefined
+			在ES6出现后，又新加了一种数据类型：Symbol，作用就是充当对象的属性名
+    -->
     <script>
-        console.log(typeof 1); //返回number
-        console.log(typeof "1"); //返回string
-        console.log(typeof true); //返回boolean
-        console.log(typeof {}); //返回object    对象
-        console.log(typeof []); //返回object    数组对象
-        console.log(typeof
-            function() {}); //返回function
-        console.log(typeof null); //返回object  空对象
-        console.log(typeof undefined); //返回undefined
+        // console.log(typeof 1); //返回number
+        // console.log(typeof "1"); //返回string
+        // console.log(typeof true); //返回boolean
+        // console.log(typeof {}); //返回object    对象
+        // console.log(typeof []); //返回object    数组对象
+        // console.log(typeof function() {}); //返回function
+        // console.log(typeof null); //返回object  空对象
+        // console.log(typeof undefined); //返回undefined\
+				
+
+				// Symbol
+				const sym1 = Symbol()
+				const sym2 = Symbol()
+				console.log(sym1);
+				console.log(typeof sym1);
+				console.log(sym1 === sym2);		// false
+
+				// 咱们创建Symbol的时候，是可以加一个描述，以下就是给name这个属性名加一个chy的描述
+				const name = Symbol('chy')
+				console.log(name);
+
+				// Symbol可以当做是对象的属性名
+				// 对象：key value对
+
+				const leave1 = Symbol('leave')
+				const leave2 = Symbol('leave')
+				const student = {
+					name: '小明',
+					age: 23,
+					// [leave1]: '优秀'
+					// 简写
+					[Symbol('leave1')]: '优秀',
+					[Symbol('leave1')]: '有钱'
+				}
+				console.log(student);
+				// 遍历student这个对象，Symbol属性，不能被 for...in 获取
+				for (const key in student) {
+					console.log(student[key])
+					// 小明
+					// 23
+					// 注意：没有优秀
+				}
+
+				// 如果想拿对象中的Symbol属性
+				console.log(student[leave1]);
+
+
+				// 获取到对象中的所有key，可以用到以下方法
+				console.log(Object.keys(student));
+
+				console.log(Object.getOwnPropertyNames(student));
+
+				for (const key in student) {
+					console.log(key);
+				}
+
+				// 报错！！student is not iterable
+				// for (const item of student) {
+				// 	console.log(item);
+				// }
+
+				let symList = Object.getOwnPropertySymbols(student)
+				console.log(symList);
+
+				for (const item of symList) {
+					console.log(student[item]);
+				}
+
+
+				// Symbol.iterator是一个内置的值
+				const list = [1,2,3,4]
+				console.log(student[Symbol.iterator]);		// undefined
+				console.log(list[Symbol.iterator]);				// ƒ values() { [native code] }
+
+				// 如果一个对象有 Symbol.iterator这个属性的话，就可以使用 for..of 遍历
+				// 所以，当我们使用 for..fo 遍历student的时候，会报错
+				// 报错！！student is not iterable
+				// for (const item of student) {
+				// 	console.log(item);
+				// }
+
+				// 但是我们使用 for..of 遍历list数组的话，是可以遍历出来的
+				for (const item of list) {
+					console.log(item);
+				}
     </script>
 </head>
 
