@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用new关键字创建对象的原理</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /* 
+      使用 new 关键字创建对象的原理（4个步骤）
+      在js中创建对象有两种方式：
+        1、对象字面量，对象字面量是一种灵活方便的书写方式
+          const o = {name: chy}
+        2、使用new 关键字来创建对象
+          function Person(name){
+            this.name = name
+          }
+          const o = new Person('chy')
+        
+        那么：在使用new操作符来调用一个构造函数的时候，发生的4件事
+          第一步：创建一个空对象
+            1、var obj = {}
+          第二步：将这个对象的proto成员指向了构造函数对象的prototype成员对象，这是最关键也是最重要的一步
+            2、obj.__proto__ = Person.prototype
+          第三步：将构造函数的作用域赋给新对象obj，因此Person函数中的this指向新对象obj，然后再执行构造函数里面的代码
+            3、Person.call(obj)
+          第四步：返回一个新对象obj，这一步使我们需要注意的地方，构造函数中如果包含返回值！！！
+            构造函数可以包含返回语句return【不推荐】，但是返回的必须是this，或者其他非引用类型值
+            我们在构造函数中返了参数name，如果返回的是普通类型，则不会有什么影响
+            return 会打断构造函数的执行，如果返回的是基本类型（int,string,float,null）的话会忽略返回的内容 还是返回this,
+            如果return返回引用类型(数组，函数，对象)那么实例化对象就会返回该引用类型值
+            4、return obj
+    */
+
+    // 创建一个Person构造函数
+    function Person(name) {
+      this.name = name
+      /* 
+        构造函数可以包含返回语句return【不推荐】，但是返回的必须是this，或者其他非引用类型值
+        我们在构造函数中返了参数name，如果返回的是普通类型，则不会有什么影响
+        return 会打断构造函数的执行，如果返回的是基本类型（int,string,float,null）的话会忽略返回的内容 还是返回this,
+        如果return返回引用类型(数组，函数，对象)那么实例化对象就会返回该引用类型值
+        如下栗子：
+      */
+      // return name              //  22行代码输出 Person {name: "chy"}
+      // return 'str'             //  22行代码输出 Person {name: "chy"}
+      // return 123               //  22行代码输出 Person {name: "chy"}
+      // return false             //  22行代码输出 Person {name: "chy"}
+      // return null              //  22行代码输出 Person {name: "chy"}
+      // return ['陈','慧','亿']     //  22行代码输出 ["陈", "慧", "亿"]
+      // return function fun(){console.log('我是一个函数');}   //  22行代码输出 ƒ fun(){console.log('我是一个函数');}
+      return {name:'露露',age: 23}  // 22行代码输出{name: "露露", age: 23}
+    }
+
+    const p1 = new Person('chy')
+    console.log(p1);
+  </script>
+</body>
+</html>
