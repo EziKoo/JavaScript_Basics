@@ -24,21 +24,21 @@
   const array1 = [1, 2, 3, 4];
 
   // 0 + 1 + 2 + 3 + 4
-  const initialValue = 0;
+  const initialValue = 5;
   const sumWithInitial = array1.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     initialValue
   );
 
-  //下面没有传入初始值，则会将数组索引为0的元素作为初始值
+  //下面没有传入初始值，则会将数组索引为0的元素作为初始值，并且currentValue的值会从索引为1开始遍历，也就是array[1]
   const sumWithInitial2 = array1.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
   );
 
-  console.log(sumWithInitial);
+  console.log('传了初始值，初始值传的是5', sumWithInitial);
   // expected output: 10
 
-  console.log(sumWithInitial2);
+  console.log('没有传入初始值', sumWithInitial2);
 
 
   //无初始值
@@ -68,6 +68,14 @@
   let sum2 = [{x: 1}, {x: 2}, {x: 3}].reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.x
   }, initialValue2)
+
+  // 遍历一个对象时，没有传入initialValue值的后果是 NAN
+  // let sum2 = [{x: 1}, {x: 2}, {x: 3}].reduce(function (previousValue, currentValue) {
+  //   console.log(previousValue);
+  //   console.log(currentValue);
+  //   // 一定要注意下面的错误，因为第二次的时候，previousValue的值是3，3.x是一个NAN，所以最后的结果是NAN
+  //   return previousValue.x + currentValue.x
+  // })
 
   console.log(sum2) // logs 6
 
