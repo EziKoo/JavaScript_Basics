@@ -61,6 +61,18 @@
 
     }
     console.log(MyClass.prototype == Person.prototype); //false
+
+    function Foo(){}
+    function Bar(){}
+
+    
+    const f1 = new Foo()
+    const f2 = new Foo()
+    
+    Foo.prototype.constructor = Bar
+
+    console.log(f1);
+    console.log(f2);
   </script>
 </body>
 
