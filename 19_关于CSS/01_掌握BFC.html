@@ -1,0 +1,47 @@
+<!-- 
+  
+  BFC
+  Block formatting context 块级格式化上下文
+  形成独立的渲染区域
+  内部元素的渲染不会影响外界
+
+  形成  BFC  常见的条件
+    1、浮动元素             float 不是 none
+    2、绝对定位元素         position 是 absolute 或 fixed
+    3、块级元素             overflow 不是 visible
+    4、flex元素
+    5、inline-block元素
+    
+  
+  应用场景
+  清除浮动等
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于BFC的场景</title>
+  <style>
+    .container{
+      background-color: #ccc;
+    }
+    .container img{
+      float: left;
+      width: 300px;
+    }
+    .bfc{
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1>理解BFC</h1>
+  <div class="container bfc">
+    <img src="../assets/dog.jpg" alt="小狗狗">
+    <p class="bfc">下次一定...</p>
+  </div>
+</body>
+</html>
