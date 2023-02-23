@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于函数变量提升问题</title>
+</head>
+<body>
+  <script type="text/javascript">
+    
+    // let f1 = 'fff'
+    // let h = 666
+    // function g() {
+    //   if(false){
+    //     function f1() {
+    //       console.log('我是里面的');
+    //     }
+    //   }
+    //   console.log('gggg',f1);
+    //   console.log(h);
+    // }
+    // g()  // gggg,undefined 666
+
+    // 定义函数有两种方式：
+
+    // 1、函数声明形式
+    // console.log(foo);  //function foo(){};
+    // function foo(){};
+    // var f00 = 'i am text';
+
+    // 2、函数表达式形式
+    console.log(foo);   //undifined
+    var foo = function(){};
+    var foo = 'i am text';
+  </script>
+</body>
+</html>
