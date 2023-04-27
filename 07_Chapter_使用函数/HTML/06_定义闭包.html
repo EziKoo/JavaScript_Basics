@@ -1,46 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>定义闭包</title>
+    <!-- 
+        /* 
+            很多人过于把闭包讲的太复杂了，
+            其实关于闭包的一些特点就是函数的特点，没必要和闭包搭上关系，导致看着闭包好像很复杂一样：
+							正常一个函数的特点：
+							1、避免变量全局污染
+							2、使数据私有化，外部无法修改内部的数据
+							3、可以让外部使用内部的私有数据(函数的return)
+
+						但实际上，闭包最大的用途就是：
+							使变量可以驻留在内存，不被回收 （普通函数不具备的）
+							也可能造成内存泄露
+        */    
+    -->
     <script>
-        //定义闭包
-        // function f(x) {
-        //     return function() {
-        //         return x;
-        //     };
-        // }
+      let num = 10;
 
-        // var c = f(5);
-        // alert(c()); //返回5
+      function fn() {
+        let num = 10;
+        return function () {
+          num++;
+          console.log(num);
+        };
+      }
 
-        // //闭包
-        // function f(x) { //外部函数
-        //     return function(y) { //内部函数，通过返回内部函数，实现外部引用
-        //         return x + y; //访问外部函数的参数
-        //     };
-        // }
-        // var c = f(5); //调用外部函数，获取引用内部函数
-        // alert(c(6)); //返回11，调用内部函数，原外部函数的参数继续存在
+      let f = fn();
+			f()
+			f()
+			f()
 
+			// 避免内存泄露
+			f = null
 
-        //第二种闭包
-        var c; //声明全局变量
-        function f(x) {
-            c = function(y) {
-                return x + y;
-            };
-        }
-        f(5);
-        console.log(c(6)); //使用全局变量c调用内部函数，返回11
+      //定义闭包
+      // function f(x) {
+      //     return function() {
+      //         return x;
+      //     };
+      // }
+
+      // var c = f(5);
+      // alert(c()); //返回5
+
+      // //闭包
+      // function f(x) { //外部函数
+      //     return function(y) { //内部函数，通过返回内部函数，实现外部引用
+      //         return x + y; //访问外部函数的参数
+      //     };
+      // }
+      // var c = f(5); //调用外部函数，获取引用内部函数
+      // alert(c(6)); //返回11，调用内部函数，原外部函数的参数继续存在
+
+      //第二种闭包
+      // var c; //声明全局变量
+      // function f(x) {
+      //   c = function (y) {
+      //     return x + y;
+      //   };
+      // }
+      // f(5);
+      // console.log(c(6)); //使用全局变量c调用内部函数，返回11
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>
