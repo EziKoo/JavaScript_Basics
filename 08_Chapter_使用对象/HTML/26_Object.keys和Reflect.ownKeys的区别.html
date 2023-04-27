@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于Object.keys和Reflect.ownKeys的区别</title>
+</head>
+<body>
+  <script type="text/javascript">
+    const obj = {a: 1, b: 2}
+    Object.defineProperty(obj,'c',{
+      value: 3,
+      // 设置不可枚举
+      enumerable: false
+    })
+
+    console.log(Object.keys(obj));      // ["a", "b"]
+    console.log(Reflect.ownKeys(obj));  // ["a", "b", "c"]
+
+    const obj2 = {aa: 1, bb: 2}
+    console.log(Object.keys(obj2));     // ["aa", "bb"]
+    console.log(Reflect.ownKeys(obj2)); // ["aa", "bb"]
+
+    // 在Vue中，如果是在data中定义的一个数组，如果使用Reflect.ownKeys(this.array)，会多出一个__ob__属性
+    // 如果使用Object.keys(this.array)，就不会出现__ob__属性
+    // 所以通常情况下，我们最好还是使用Object.keys()
+  </script>
+</body>
+</html>
