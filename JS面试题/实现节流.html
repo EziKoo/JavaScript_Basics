@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现节流函数</title>
+  <div class="box" draggable="true"></div>
+  <style>
+    .box{
+      height: 100px;
+      width: 100px;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+    // 获取盒子对象
+    const box = document.querySelector('.box')
+    // 节流函数
+    const throttle = (cb, delay) => {
+      let timer = null
+      return function() {
+        if(timer){
+          return
+        }
+        timer = setTimeout(() => {
+          cb()
+          timer = null
+        }, delay);
+      }
+    }
+    // 拖动事件的回调函数
+    const dragFun = () => {
+      console.log('我被拖动了');
+    }
+    // 给盒子添加拖动事件
+    box.addEventListener('drag', throttle(dragFun, 1000))
+  </script>
+</body>
+</html>
