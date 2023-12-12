@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>27_灵活使用对象</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /* 
+        在工作上的一些体会：
+          在需要一些数据或者两者之中需要相互的数据时，一定要多思考，利用对象map来解决。
+          比如在下面两个数组中，因为两者中都有相同的物料Id，考虑将propsData和retainData中相同的物料id，价格以propsData中的价格
+          此时，就可以这样做，创建一个tempData对象，然后遍历propsData数组，tempData中就只保留，以materialSkuId为key，price为value的形式。
+          然后，再改变retainData中每个对象中的price值，
+
+          其实就是将已有的数据，抽离成一个自己需要的这么一个键值对的对象，然后，取值的时候，就用两者共同有的属性。
+      */
+      const propsData = [
+        {
+          materialSkuId: 111,
+          materialName: "长裤",
+          price: 109,
+        },
+        {
+          materialSkuId: 145,
+          materialName: "长裙",
+          price: 145,
+        },
+        {
+          materialSkuId: 123,
+          materialName: "卫衣",
+          price: 56,
+        },
+        {
+          materialSkuId: 189,
+          materialName: "袜子",
+          price: 99,
+        },
+      ];
+
+      const retainData = [
+        {
+          materialSkuId: 111,
+          materialName: "长裤",
+          price: 30,
+        },
+        {
+          materialSkuId: 145,
+          materialName: "长裙",
+          price: 45,
+        },
+        {
+          materialSkuId: 123,
+          materialName: "卫衣",
+          price: 89,
+        },
+        {
+          materialSkuId: 189,
+          materialName: "袜子",
+          price: 2,
+        },
+        {
+          materialSkuId: 178,
+          materialName: "布条",
+          price: 20,
+        },
+      ];
+
+      // 创建一个临时对象
+      const tempData = {};
+      propsData.forEach((item) => {
+        tempData[item.materialSkuId] = item.price;
+      });
+
+      retainData.forEach((item) => {
+        // 如果存在相同的物料id，价格以propsData数据中的为准，没有则使用原来的
+        item.price = tempData[item.materialSkuId] ?? item.price;
+      });
+
+      console.log(retainData, "修改后的数据");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function chy() {
+
+      /* 
+        下面三种循环，使用return会中断整个循环。
+      */
+      // for (let i = 0; i < 5; i++) {
+      //   if(i == 3){
+      //     return 'chy'
+      //   }
+      //   console.log(i);
+      // }
+
+      // const arr = [1,2,3,4,5]
+      // for (const item of arr) {
+      //   if(item === 3){
+      //     return 'chy'
+      //   }
+      //   console.log(item);
+      // }
+
+      // const arr = [1,2,3,4,5]
+      // for (const key in arr) {
+      //   if(arr[key] === 3){
+      //     return 'chy'
+      //   }
+      //   console.log(arr[key]);
+      // }
+
+      // 在forEach回调函数中使用return，不会中断整个循环，仍然会继续迭代数组中的下一个元素，直到遍历完所有元素。
+      // const arr = [1,2,3,4,5]
+      // arr.forEach(item => {
+      //   if(item === 3){
+      //     return 'chy'
+      //   }
+      //   console.log(item);
+      // })
+    }
+    console.log(chy());
+  </script>
+</body>
+</html>
