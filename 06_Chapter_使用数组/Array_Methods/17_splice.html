@@ -5,6 +5,7 @@
   <title>splice</title>
 </head>
 <body>
+  <div id="test">点击我</div>
 <script>
   //17、splice
   /*
@@ -17,27 +18,26 @@
     3、替换
    */
 
-  //1、删除
-  const months = ['Jan', 'March', 'April', 'June'];
-  //从下标为1开始，往后删除2个元素
-  months.splice(1,2);
-  console.log(months);  //['Jan', 'June']
+  // //1、删除
+  // const months = ['Jan', 'March', 'April', 'June'];
+  // //从下标为1开始，往后删除2个元素
+  // months.splice(1,2);
+  // console.log(months);  //['Jan', 'June']
 
-  //2、添加
-  const array = [2,3,4,1,66]
-  array.splice(1, 0, 99);
-  console.log(array); //[2, 99, 3, 4, 1, 66]
-
-  //3、替换(其实替换的原理是在删除的基础上，先将指定删除的元素删除掉，然后将后面元素代替掉删除的元素，形成替换效果)
-  const array1 = [22,32,44,89]
-  array1.splice(1,1,888)
-  console.log(array1);  //[22, 888, 44, 89]
+  // //2、添加
+  // const array = [2,3,4,1,66]
+  // array.splice(1, 0, 99);
+  // console.log(array); //[2, 99, 3, 4, 1, 66]
 
   // 4、第二个参数如果是0 或者 是负数，则不会移除任何元素
   const array2 = [11,22,33,44,55,66]
   array2.splice(3,-2)
   console.log(array2);
 
+  var array = [-1, -10 ,20,5,0 , 30,-7]
+  var TempArray = array.map(item => {return Math.abs(item)})
+  console.log(TempArray);
+  console.log(TempArray.sort((item1,item2) => {return item2-item1}));
 </script>
 </body>
 </html>
