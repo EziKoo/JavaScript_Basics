@@ -11,7 +11,7 @@
   // var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
   // 一个新的、由通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组。
 
-  const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+  let words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
   const result = words.filter(word => word.length > 6);
   //函数中返回值中为true的值，被加入到result数组中返回(也可以理解为符合条件的保留下来了，不符合条件的被筛选掉了)
@@ -23,6 +23,42 @@
   }
   let filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
   console.log(filtered);  //[12, 130, 44]
+
+  // 修改每个单词
+  const modifiedWords = words.filter((word, index, arr) => {
+    arr[index + 1] += " extra";
+    return word.length < 6;
+  });
+
+  console.log(modifiedWords, '修改每个单词');
+  console.log(words, '修改每个单词');
+  // 注意，在长度为 6 以下有三个单词，但是由于它们已经被修改，所以返回一个单词
+  // ["spray"]
+
+  // 添加新单词
+  words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+  const appendedWords = words.filter((word, index, arr) => {
+    console.log(index); // 执行了6次，而不会边添加边遍历，只会遍历最初的状态。
+    arr.push("new");
+    return word.length < 6;
+  });
+
+  console.log(appendedWords, '添加新单词');
+  console.log(words, '添加新单词');
+  // 只有三个符合条件，即使 `words` 【本身现在】有更多字符长度小于 6 的单词
+  // ["spray" ,"limit" ,"elite"]
+
+  // 删除单词
+  words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+  const deleteWords = words.filter((word, index, arr) => {
+    arr.pop();
+    return word.length < 6;
+  });
+
+  console.log(deleteWords, '删除单词');
+  console.log(words, '删除单词');
+  // 注意我们没有得到 'elite'，因为它在过滤器访问到它之前就已经从 'words' 弹出了
+  // ["spray" ,"limit"]
 
 </script>
 </body>
